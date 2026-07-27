@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ollive — Agents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <a class="brand" href="dashboard.html"><span class="mark">O</span> Ollive</a>
+    <a class="navitem" href="dashboard.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a class="navitem on" href="agents.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg> Agents</a>
+    <div class="navsub">
+      <a class="navitem" href="assessment.html">Manage — TEST swarm</a>
+      <a class="navitem" href="assessment.html">[Live] Aqua FS Florida</a>
+      <a class="navitem" href="assessment.html">3. Lakeside Ped Wells Rx</a>
+      <a class="navitem" href="assessment.html">2. Lakeside Ped Rx Refill</a>
+    </div>
+    <a class="navitem" href="monitor.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg> Monitor</a>
+    <a class="navitem" href="risk.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg> Risk &amp; liability</a>
+    <div class="navgroup">Settings</div>
+    <a class="navitem" href="disclosures.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg> Disclosures</a>
+    <a class="navitem" href="documents.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h8l3 3v12a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M10 12h6M10 16h6"/></svg> Documents</a>
+    <a class="navitem" href="integrations.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v5M15 3v5"/><path d="M7 8h10v3a5 5 0 01-10 0z"/><path d="M12 16v5"/></svg> Integrations</a>
+    <a class="navitem" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M17 8h5M19.5 5.5v5"/></svg> Invite team</a>
+    <div class="side-spacer"></div>
+    <div class="user"><span class="ava">R</span> Rounak <a class="signout" href="#">Sign out</a></div>
+  </aside>
+
+  <main class="content"><div class="page">
+    <div class="page-head">
+      <div>
+        <div class="h1">Agents</div>
+        <div class="sub">Evaluate risks of each agent before deploying to production</div>
+      </div>
+      <div class="head-actions">
+        <a class="btn primary" href="integrations.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13M7 11l5 5 5-5M4 21h16"/></svg> Import agents</a>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab on" data-tab="risk">At risk <span class="n">3</span></button>
+      <button class="tab" data-tab="not">Not assessed <span class="n">1</span></button>
+      <button class="tab" data-tab="assessing">Assessing <span class="n">0</span></button>
+      <button class="tab" data-tab="ready">Ready to deploy <span class="n">0</span></button>
+      <button class="tab" data-tab="deploy">Deployments <span class="n">0</span></button>
+    </div>
+
+    <!-- At risk -->
+    <div class="pane" id="pane-risk">
+      <div class="blk">
+        <table class="tbl">
+          <thead><tr><th>Agent</th><th>Latest activity</th><th>Last assessed</th><th class="right">Score</th><th class="right"></th></tr></thead>
+          <tbody>
+            <tr class="rowlink" onclick="location.href='assessment.html'">
+              <td style="min-width:220px">
+                <div style="display:flex;align-items:center;gap:8px"><b style="font-weight:600">Manage — TEST swarm</b><span class="pill fail">At risk</span></div>
+                <div style="display:flex;gap:6px;margin-top:6px"><span class="tag">Swarm of 3</span><span class="tag">Voice</span><span class="tag">Retell</span></div>
+              </td>
+              <td style="max-width:320px"><span style="font-size:12.5px;color:var(--muted);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Triage: front desk → team-member wording · share provider first</span></td>
+              <td class="mono">Jul 25, 2026</td>
+              <td class="right"><span class="score low" style="font-size:18px">50<span class="of">/100</span></span></td>
+              <td class="right"><button class="btn ghost sm" onclick="event.stopPropagation()">Re-run</button></td>
+            </tr>
+            <tr class="rowlink" onclick="location.href='assessment.html'">
+              <td>
+                <div style="display:flex;align-items:center;gap:8px"><b style="font-weight:600">[Live] Aqua FS Florida</b><span class="pill fail">At risk</span></div>
+                <div style="display:flex;gap:6px;margin-top:6px"><span class="tag">Swarm of 3</span><span class="tag">Voice</span><span class="tag">Retell</span></div>
+              </td>
+              <td style="max-width:320px"><span style="font-size:12.5px;color:var(--muted);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Payment fix: restore agent_detection_timeout_ms to 300000</span></td>
+              <td class="mono">Jul 24, 2026</td>
+              <td class="right"><span class="score mid" style="font-size:18px">71<span class="of">/100</span></span></td>
+              <td class="right"><button class="btn ghost sm" onclick="event.stopPropagation()">Re-run</button></td>
+            </tr>
+            <tr class="rowlink" onclick="location.href='assessment.html'">
+              <td>
+                <div style="display:flex;align-items:center;gap:8px"><b style="font-weight:600">2. Lakeside Ped Rx Refill</b><span class="pill fail">At risk</span></div>
+                <div style="display:flex;gap:6px;margin-top:6px"><span class="tag">Single agent</span><span class="tag">Voice</span><span class="tag">Retell</span></div>
+              </td>
+              <td style="max-width:320px"><span style="font-size:12.5px;color:var(--muted);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Sarah, virtual assistant for Lakeside Pediatrics</span></td>
+              <td class="mono">Jul 22, 2026</td>
+              <td class="right"><span class="score high" style="font-size:18px">89<span class="of">/100</span></span></td>
+              <td class="right"><button class="btn ghost sm" onclick="event.stopPropagation()">Re-run</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted)">A high score can still be at risk — any open high-severity issue blocks deployment regardless of score.</p>
+    </div>
+
+    <!-- Not assessed -->
+    <div class="pane" id="pane-not" hidden>
+      <div class="blk">
+        <table class="tbl">
+          <thead><tr><th>Agent</th><th>Imported</th><th class="right"></th></tr></thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:8px"><b style="font-weight:600">3. Lakeside Ped Wells Rx</b><span class="pill off">Not assessed</span></div>
+                <div style="display:flex;gap:6px;margin-top:6px"><span class="tag">Single agent</span><span class="tag">Voice</span><span class="tag">Retell</span></div>
+              </td>
+              <td class="mono">Jul 21, 2026</td>
+              <td class="right"><button class="btn primary sm">Run assessment</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Assessing -->
+    <div class="pane" id="pane-assessing" hidden>
+      <div class="blk"><div class="empty">
+        <b>Nothing being assessed</b>
+        <p>When an assessment is running you'll see its live progress here.</p>
+      </div></div>
+    </div>
+
+    <!-- Ready -->
+    <div class="pane" id="pane-ready" hidden>
+      <div class="blk"><div class="empty">
+        <b>No agents ready to deploy</b>
+        <p>Agents move here when every high-severity issue is resolved or formally accepted.</p>
+      </div></div>
+    </div>
+
+    <!-- Deployments -->
+    <div class="pane" id="pane-deploy" hidden>
+      <div class="blk"><div class="empty">
+        <b>No production deployments</b>
+        <p>Deployed agents are monitored on every session — traffic, guardrail interventions and anomalies.</p>
+      </div></div>
+    </div>
+  </div></main>
+</div>
+
+<script>
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('on'));
+    t.classList.add('on');
+    document.querySelectorAll('.pane').forEach(p => p.hidden = true);
+    document.getElementById('pane-' + t.dataset.tab).hidden = false;
+  }));
+</script>
+</body>
+</html>

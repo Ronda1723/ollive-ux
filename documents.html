@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ollive — Documents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <a class="brand" href="dashboard.html"><span class="mark">O</span> Ollive</a>
+    <a class="navitem" href="dashboard.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a class="navitem" href="agents.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg> Agents</a>
+    <a class="navitem" href="monitor.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg> Monitor</a>
+    <a class="navitem" href="risk.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg> Risk &amp; liability</a>
+    <div class="navgroup">Settings</div>
+    <a class="navitem" href="disclosures.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg> Disclosures</a>
+    <a class="navitem on" href="documents.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h8l3 3v12a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M10 12h6M10 16h6"/></svg> Documents</a>
+    <a class="navitem" href="integrations.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v5M15 3v5"/><path d="M7 8h10v3a5 5 0 01-10 0z"/><path d="M12 16v5"/></svg> Integrations</a>
+    <a class="navitem" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M17 8h5M19.5 5.5v5"/></svg> Invite team</a>
+    <div class="side-spacer"></div>
+    <div class="user"><span class="ava">R</span> Rounak <a class="signout" href="#">Sign out</a></div>
+  </aside>
+
+  <main class="content"><div class="page">
+    <div class="crumb"><span>Settings</span></div>
+    <div class="page-head">
+      <div>
+        <div class="h1">Documents</div>
+        <div class="sub">Policies and agreements that support underwriting and disclosure review</div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="blk-h">
+        <div><b>Insurance policies</b><div class="note" style="margin-top:2px">Cyber, Tech E&amp;O, CGL and other in-force policy documents</div></div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input class="input" placeholder="Tags (optional)" style="width:200px" />
+          <button class="btn ghost sm"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg> Upload</button>
+        </div>
+      </div>
+      <div class="def"><span class="q" style="color:var(--faint);font-style:italic;font-weight:400">No documents uploaded yet</span></div>
+    </div>
+
+    <div class="blk">
+      <div class="blk-h">
+        <div><b>Order forms &amp; MSAs</b><div class="note" style="margin-top:2px">Signed order forms and master service agreements, tagged by customer</div></div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input class="input" placeholder="Customer name(s)" style="width:200px" />
+          <button class="btn ghost sm"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg> Upload</button>
+        </div>
+      </div>
+      <div class="def"><span class="q" style="color:var(--faint);font-style:italic;font-weight:400">No documents uploaded yet</span></div>
+    </div>
+
+    <div class="blk">
+      <div class="blk-h">
+        <div><b>Privacy policy</b><div class="note" style="margin-top:2px">Your published privacy policy</div></div>
+        <button class="btn ghost sm"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg> Upload</button>
+      </div>
+      <div class="def"><span class="q" style="color:var(--faint);font-style:italic;font-weight:400">No documents uploaded yet</span></div>
+    </div>
+
+    <div class="blk">
+      <div class="blk-h">
+        <div><b>Terms of usage</b><div class="note" style="margin-top:2px">Your published terms of service / terms of use</div></div>
+        <button class="btn ghost sm"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg> Upload</button>
+      </div>
+      <div class="def"><span class="q" style="color:var(--faint);font-style:italic;font-weight:400">No documents uploaded yet</span></div>
+    </div>
+  </div></main>
+</div>
+</body>
+</html>

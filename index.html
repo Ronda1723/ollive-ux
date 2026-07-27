@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ollive UX — Source of truth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+  <style>
+    .swatch { display: flex; align-items: center; gap: 12px; padding: 10px 24px; border-bottom: 1px solid var(--border-soft); font-size: 13px; }
+    .swatch:last-child { border-bottom: none; }
+    .swatch .chip { width: 36px; height: 24px; border-radius: 6px; border: 1px solid rgba(25,25,24,.08); flex-shrink: 0; }
+    .swatch .tok { font-family: var(--mono); font-size: 11.5px; color: var(--green); width: 120px; }
+    .swatch .val { font-family: var(--mono); font-size: 11.5px; color: var(--muted); width: 90px; }
+    .swatch .use { color: var(--ink-2); }
+    .rule { display: flex; gap: 12px; padding: 12px 24px; border-bottom: 1px solid var(--border-soft); font-size: 13.5px; line-height: 1.6; }
+    .rule:last-child { border-bottom: none; }
+    .rule .no { font-family: var(--mono); font-size: 11.5px; color: var(--green); flex-shrink: 0; padding-top: 2px; }
+    .screen-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 24px; border-bottom: 1px solid var(--border-soft); transition: background .15s; }
+    .screen-link:last-child { border-bottom: none; }
+    .screen-link:hover { background: var(--bg); }
+    .screen-link b { font-size: 14px; font-weight: 600; }
+    .screen-link p { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  </style>
+</head>
+<body>
+<main class="content" style="min-height:100vh"><div class="page" style="max-width:880px">
+  <div class="crumb"><span>Ollive UX</span></div>
+  <div class="page-head" style="margin-bottom:40px">
+    <div>
+      <div class="h1">Design source of truth</div>
+      <div class="sub">The reference the real platform UI should follow. Built from the live product's IA — cleaned up, respaced, and put on one type and color system.</div>
+    </div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><b>Screens</b><span class="note">click through — tabs, rows and the attempt drawer work</span></div>
+    <a class="screen-link" href="dashboard.html"><span><b>Dashboard</b><p>Risk snapshot — stat band, agents needing attention, fleet risk, locked monitoring</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="agents.html"><span><b>Agents</b><p>Status tabs, agent table with severity-colored scores and re-run actions</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="assessment.html"><span><b>Assessment</b><p>The core screen — issue work queue with fix &amp; verify drawer and risk-acceptance flow, per-turn trace view with failure localization, config diff beside run diff, deploy gate, significance-tested runs, coverage vs taxonomy</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="adjudicate.html"><span><b>Adjudicate</b><p>Keyboard-driven human verdicts on indeterminates — each label recalibrates the judges and the κ trend is public</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="monitor.html"><span><b>Monitor</b><p>The production journey — API access → conversation ingest → runtime checks on every session → alert rules → Slack delivery with inline acknowledge</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="risk.html"><span><b>Risk &amp; liability</b><p>Liability in dollars — regulations broken ranked by impact, per-agent evidence base (runs, attempts, violations), fastest reductions, contractual exposure</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="trust.html"><span><b>Trust page</b><p>Buyer-facing, shareable — posture with benchmark, what gets tested, compliance badges; read-only and Ollive-verified</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="disclosures.html"><span><b>Disclosures</b><p>Company profile and letter of intent with completeness state</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="documents.html"><span><b>Documents</b><p>Upload buckets for policies, MSAs, privacy and terms</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="integrations.html"><span><b>Integrations</b><p>Platform connections with clear connected state</p></span><span style="color:var(--faint)">→</span></a>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><b>Type</b><span class="note">Geist only — Geist Mono for data</span></div>
+    <div class="rule"><span class="no">T1</span><span><b style="font-weight:600">Geist</b> for every heading, label and body. Page title 24/600 tight (-.02em) · section title 14/600 · body 13.5–14/400 · captions 12.5 muted.</span></div>
+    <div class="rule"><span class="no">T2</span><span><b style="font-weight:600">Geist Mono</b> is the data voice: scores, counts, dates, timestamps, TEC codes, IDs. If a value could appear in a CSV, it's mono.</span></div>
+    <div class="rule"><span class="no">T3</span><span>One uppercase style only: 11/600, letter-spacing .08em, muted — used for table headers, stat labels and section eyebrows. Nothing else is uppercase.</span></div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><b>Color</b><span class="note">one green + calm status tints</span></div>
+    <div class="swatch"><span class="chip" style="background:#191918"></span><span class="tok">--ink</span><span class="val">#191918</span><span class="use">Headings, primary text</span></div>
+    <div class="swatch"><span class="chip" style="background:#55554F"></span><span class="tok">--ink-2</span><span class="val">#55554F</span><span class="use">Body, secondary text</span></div>
+    <div class="swatch"><span class="chip" style="background:#8A8A83"></span><span class="tok">--muted</span><span class="val">#8A8A83</span><span class="use">Captions, meta, labels</span></div>
+    <div class="swatch"><span class="chip" style="background:#FAFAF9"></span><span class="tok">--bg</span><span class="val">#FAFAF9</span><span class="use">Page canvas (cards sit white on it)</span></div>
+    <div class="swatch"><span class="chip" style="background:#E8E8E4"></span><span class="tok">--border</span><span class="val">#E8E8E4</span><span class="use">Hairlines — structure comes from borders, not shadows</span></div>
+    <div class="swatch"><span class="chip" style="background:#2F5A40"></span><span class="tok">--green</span><span class="val">#2F5A40</span><span class="use">The only brand color: primary buttons, active nav, links</span></div>
+    <div class="swatch"><span class="chip" style="background:#FAECE8"></span><span class="tok">--fail</span><span class="val">#FAECE8 / #A03A24</span><span class="use">Fail / at-risk — soft tint, dark text, never loud</span></div>
+    <div class="swatch"><span class="chip" style="background:#EAF2EC"></span><span class="tok">--pass</span><span class="val">#EAF2EC / #2A5039</span><span class="use">Pass / connected</span></div>
+    <div class="swatch"><span class="chip" style="background:#F7F0DF"></span><span class="tok">--indeterminate</span><span class="val">#F7F0DF / #8A6A1E</span><span class="use">Indeterminate / pending</span></div>
+    <div class="swatch"><span class="chip" style="background:linear-gradient(90deg,#B0452C 33%,#9A6A1B 33%,#9A6A1B 66%,#2F7A4D 66%)"></span><span class="tok">score scale</span><span class="val">&lt;60 / 60–79 / ≥80</span><span class="use">Scores always encode severity — an 89 is never alarm-red</span></div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><b>Spacing &amp; layout</b><span class="note">4 · 8 · 12 · 16 · 24 · 32 · 48 · 64</span></div>
+    <div class="rule"><span class="no">S1</span><span>Content column max 1040, centered, 48px page padding. Sidebar fixed 240. One reading width per page — nothing stretches edge to edge.</span></div>
+    <div class="rule"><span class="no">S2</span><span>24px between blocks, 24px card padding, 16/24 table cell padding. Page header gets 32px before the first block.</span></div>
+    <div class="rule"><span class="no">S3</span><span>Radius: 8 small (buttons, inputs) · 12 cards · full pills. Shadows are whispers (1–2px); hierarchy comes from hairlines and spacing.</span></div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><b>Behavior rules</b><span class="note">the fixes over the current app</span></div>
+    <div class="rule"><span class="no">B1</span><span>Never leak internals: <span style="font-family:var(--mono);font-size:12px">OUTPUT_RELIABILITY_AND_ACCURACY</span> renders as "Output reliability &amp; accuracy". UUIDs and TEC codes live on a mono second line, truncated, never in titles.</span></div>
+    <div class="rule"><span class="no">B2</span><span>Dashboard reflects reality — stats derive from the same data as the Agents page. Locked modules explain exactly what unlocks them and show progress.</span></div>
+    <div class="rule"><span class="no">B3</span><span>Status is a pill, severity is a color, and they never disagree. "At risk" with a high score explains itself (open high-severity issue blocks deployment).</span></div>
+    <div class="rule"><span class="no">B4</span><span>Every empty state says what the space is for and offers the one action that fills it.</span></div>
+    <div class="rule"><span class="no">B5</span><span>Detail lives in a right drawer (560px) opened from rows — verdict first, then metric, judge reasoning, transcript. Esc or scrim closes.</span></div>
+    <div class="rule"><span class="no">B6</span><span><b style="font-weight:600">Issues are work, not facts.</b> Every issue has severity, state (Open → Fixing → Verify → Resolved / Risk accepted), an owner, a root cause, a suggested fix (diff), and a targeted "Verify fix" that re-runs only its failing scenarios. Risk acceptance requires sign-off and is audit-logged.</span></div>
+    <div class="rule"><span class="no">B7</span><span><b style="font-weight:600">Every risk has a price.</b> Issues carry expected-loss dollars (probability × severity from the disclosure profile), lists rank by exposure reduction, and the methodology is always one click away. Money is always mono.</span></div>
+    <div class="rule"><span class="no">B8</span><span><b style="font-weight:600">Scores bind to versions.</b> Each run pins the agent version + prompt hash; if the deployed config differs from the assessed one, a staleness banner appears. Runs are diffable — newly-failing scenarios surface first.</span></div>
+    <div class="rule"><span class="no">B9</span><span><b style="font-weight:600">Trust is outward-facing.</b> The trust page is shareable, read-only, watermarked "Verified by Ollive", and derives from live platform data — the customer can't edit it, which is what makes it worth showing a buyer.</span></div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><b>Eval integrity rules</b><span class="note">what makes the score defensible</span></div>
+    <div class="rule"><span class="no">E1</span><span><b style="font-weight:600">No number without an interval.</b> Scores show 95% CIs (clustered by failure mode); run deltas use paired tests and are labelled <i>significant</i> or <i>within noise</i> — a noise delta is never celebrated.</span></div>
+    <div class="rule"><span class="no">E2</span><span><b style="font-weight:600">Judges carry credentials.</b> Every metric shows its judge-vs-human κ and label count; below κ 0.5 it's excluded from the score. High-severity verdicts use a vendor-diverse 3-judge panel with a consensus rule.</span></div>
+    <div class="rule"><span class="no">E3</span><span><b style="font-weight:600">Indeterminate is a queue, not a bucket.</b> Humans adjudicate splits at keyboard speed; labels become rubric guidance, judges recalibrate, queued attempts re-judge, and the κ + indeterminate-rate trends are shown.</span></div>
+    <div class="rule"><span class="no">E4</span><span><b style="font-weight:600">Coverage is computed, not claimed.</b> The taxonomy is versioned and mapped to OWASP/NIST; applicability derives from the agent's actual tools and data access; applicable-but-untested modes are a visible defect with one-click pack generation.</span></div>
+    <div class="rule"><span class="no">E5</span><span><b style="font-weight:600">Personas are specified, reality is the referee.</b> Every attempt records its caller persona and audio conditions (cooperative-only testing inflates scores); real production calls import as regression scenarios and the sim-to-real gap is tracked as the eval's own honesty metric.</span></div>
+    <div class="rule"><span class="no">E6</span><span><b style="font-weight:600">Everything is pinned.</b> Scenario packs, judge prompts, judge models and seeds are versioned per run — same agent + same pack ⇒ same result within the stated variance band.</span></div>
+  </div>
+</div></main>
+</body>
+</html>
