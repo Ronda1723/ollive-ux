@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ollive — Compliance penalty reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+  <style>
+    .law td { vertical-align: top; }
+    .law .lname { font-weight: 600; }
+    .law .lsub { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+    .law .case { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; max-width: 300px; }
+    .law .pen { font-family: var(--mono); font-size: 12px; color: var(--ink); white-space: nowrap; }
+    .law .pen small { display: block; font-family: var(--font); font-size: 11px; color: var(--muted); white-space: normal; margin-top: 2px; }
+    .law .enf { font-size: 12px; color: var(--ink-2); }
+    .prr { color: var(--score-low); font-weight: 600; }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <a class="brand" href="dashboard.html"><span class="mark">O</span> Ollive</a>
+    <a class="navitem" href="dashboard.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a class="navitem" href="agents.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg> Agents</a>
+    <a class="navitem" href="monitor.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg> Monitor</a>
+    <a class="navitem" href="risk.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg> Risk &amp; liability</a>
+    <a class="navitem on" href="compliance.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M5 6h14M7 6l-3 6a3.5 3.5 0 007 0zM17 6l-3 6a3.5 3.5 0 007 0z"/></svg> Compliance</a>
+    <div class="navgroup">Settings</div>
+    <a class="navitem" href="disclosures.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg> Disclosures</a>
+    <a class="navitem" href="documents.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h8l3 3v12a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M10 12h6M10 16h6"/></svg> Documents</a>
+    <a class="navitem" href="integrations.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v5M15 3v5"/><path d="M7 8h10v3a5 5 0 01-10 0z"/><path d="M12 16v5"/></svg> Integrations</a>
+    <a class="navitem" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M17 8h5M19.5 5.5v5"/></svg> Invite team</a>
+    <div class="side-spacer"></div>
+    <div class="user"><span class="ava">R</span> Rounak <a class="signout" href="#">Sign out</a></div>
+  </aside>
+
+  <main class="content"><div class="page" style="max-width:1120px">
+    <div class="page-head">
+      <div>
+        <div class="h1">Compliance penalty reference</div>
+        <div class="sub">Every regime a conversational agent can violate, what the violating case looks like, and what it costs — the table behind the liability model</div>
+      </div>
+      <div class="head-actions">
+        <button class="btn ghost">Export CSV</button>
+        <a class="btn primary" href="risk.html">Your liability →</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="lbl">Regimes tracked</div><div class="num money">27</div><div class="meta">federal · state · EU/UK</div></div>
+      <div class="stat"><div class="lbl">Largest single fine</div><div class="num money" style="color:var(--score-low)">€35M<span class="of"> / 7%</span></div><div class="meta">EU AI Act · prohibited practices</div></div>
+      <div class="stat"><div class="lbl">Fastest accrual</div><div class="num money" style="color:var(--score-low)">$1,500<span class="of">/call</span></div><div class="meta">TCPA · every call is a violation</div></div>
+      <div class="stat"><div class="lbl">Private right of action</div><div class="num" style="color:var(--score-mid)">7</div><div class="meta">regimes where anyone can sue</div></div>
+    </div>
+
+    <div class="banner fail">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.5"/></svg>
+      <span><b>The pattern to fear is per-unit accrual, not headline maximums.</b> A voice agent making 500 non-compliant outbound calls a day accrues TCPA exposure of up to $750k/day — class actions, not regulators, drive most real losses. Regimes with a <span class="prr">private right of action</span> are marked.</span>
+    </div>
+
+    <!-- ── US Federal ── -->
+    <div class="blk">
+      <div class="blk-h"><b>US federal</b><span class="note">apply everywhere you operate · all in force</span></div>
+      <table class="tbl law">
+        <thead><tr><th style="width:19%">Act</th><th style="width:30%">Violating-agent case</th><th>Penalty per violation</th><th>Maximum exposure</th><th style="width:15%">Enforced by</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="lname">HIPAA</div><div class="lsub">Privacy · Security · Breach Rules</div></td>
+            <td class="case">Agent reads PHI — balance, diagnosis, treatment codes — to an unverified caller; transcripts with PHI retained beyond policy; no BAA with the voice vendor.</td>
+            <td class="pen">$145 – $73,011<small>4 culpability tiers (2026-adjusted) · willful-uncorrected: $73,011 min</small></td>
+            <td class="pen">$2.19M / yr<small>per provision violated · criminal referral possible</small></td>
+            <td class="enf">HHS OCR + state AGs</td>
+          </tr>
+          <tr>
+            <td><div class="lname">42 CFR Part 2</div><div class="lsub">Substance-use records</div></td>
+            <td class="case">Agent references addiction-treatment history in a callback or leaves it in a voicemail.</td>
+            <td class="pen">HIPAA tiers apply<small>aligned to HIPAA CMPs since the 2024 final rule</small></td>
+            <td class="pen">$2.19M / yr</td>
+            <td class="enf">HHS OCR / DOJ</td>
+          </tr>
+          <tr>
+            <td><div class="lname">TCPA <span class="prr">· PRA</span></div><div class="lsub">FCC: AI voice = "artificial voice" (2024)</div></td>
+            <td class="case">Outbound AI-voice call without prior express consent; calling after opt-out; no identity disclosure at call start.</td>
+            <td class="pen">$500 / call<small>$1,500 if willful — every call and text is a separate violation</small></td>
+            <td class="pen">Uncapped<small>class actions; FCC forfeitures up to ~$10k/call for intentional</small></td>
+            <td class="enf"><span class="prr">Private right</span> + FCC</td>
+          </tr>
+          <tr>
+            <td><div class="lname">Telemarketing Sales Rule</div><div class="lsub">FTC · DNC registry</div></td>
+            <td class="case">Agent cold-calls numbers on the Do-Not-Call registry; misrepresents offers on calls.</td>
+            <td class="pen">≈ $53,088 / violation<small>inflation-adjusted annually</small></td>
+            <td class="pen">Uncapped<small>per call per day</small></td>
+            <td class="enf">FTC / state AGs</td>
+          </tr>
+          <tr>
+            <td><div class="lname">FTC Act §5</div><div class="lsub">Unfair &amp; deceptive practices · "Operation AI Comply"</div></td>
+            <td class="case">Agent claims to be human when asked; overstated accuracy or "doctor-reviewed" claims; dark patterns in voice flows.</td>
+            <td class="pen">≈ $53,088 / violation<small>for order/rule breaches; first §5 case → injunction + redress</small></td>
+            <td class="pen">Uncapped<small>+ 20-yr consent decrees, algorithm disgorgement</small></td>
+            <td class="enf">FTC</td>
+          </tr>
+          <tr>
+            <td><div class="lname">COPPA</div><div class="lsub">Children under 13</div></td>
+            <td class="case">Pediatric-clinic agent collects a child's info from the child without verified parental consent.</td>
+            <td class="pen">≈ $53,088 / violation</td>
+            <td class="pen">Uncapped<small>per child per collection event</small></td>
+            <td class="enf">FTC / state AGs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── State: general AI acts ── -->
+    <div class="blk">
+      <div class="blk-h"><b>US state — general AI acts</b><span class="note">apply by where your users are, not where you are</span></div>
+      <table class="tbl law">
+        <thead><tr><th style="width:19%">Act</th><th style="width:30%">Violating-agent case</th><th>Penalty per violation</th><th>Maximum exposure</th><th style="width:15%">Enforced by</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="lname">Texas TRAIGA</div><div class="lsub">In force Jan 1, 2026</div></td>
+            <td class="case">Agent used for prohibited manipulation, unlawful discrimination, or capturing biometric identifiers without consent; false statements to the AG.</td>
+            <td class="pen">$10k – $12k curable<small>$80k – $200k uncurable · 60-day cure bars suit if certified</small></td>
+            <td class="pen">$2k – $40k / day<small>for continuing violations</small></td>
+            <td class="enf">Texas AG</td>
+          </tr>
+          <tr>
+            <td><div class="lname">Colorado SB 26-189</div><div class="lsub">Replaces SB 24-205 · obligations Jan 1, 2027</div></td>
+            <td class="case">Agent makes a consequential decision (appointment eligibility, coverage) without pre-use notice, 30-day adverse-outcome explanation, or human-review path.</td>
+            <td class="pen">$2,000 – $20,000<small>per violation · 60-day cure period first</small></td>
+            <td class="pen">Uncapped<small>per affected consumer</small></td>
+            <td class="enf">Colorado AG (exclusive)</td>
+          </tr>
+          <tr>
+            <td><div class="lname">California SB 942 / AB 853</div><div class="lsub">AI Transparency Act · phasing 2026–27</div></td>
+            <td class="case">AI-generated content without required disclosure or latent provenance data; missing AI-detection tool for covered providers.</td>
+            <td class="pen">$5,000 / day<small>each day of non-compliance is a separate violation</small></td>
+            <td class="pen">Uncapped<small>$1.83M per item per year if ignored</small></td>
+            <td class="enf">CA AG · city / county counsel</td>
+          </tr>
+          <tr>
+            <td><div class="lname">Utah AI Policy Act</div><div class="lsub">SB 149 / SB 226 · in force</div></td>
+            <td class="case">Agent in a regulated occupation fails to disclose it's AI when asked, or proactively where required (health, licensed services).</td>
+            <td class="pen">$2,500 / violation<small>admin fine · up to $5,000/violation in court for repeat</small></td>
+            <td class="pen">Uncapped<small>per interaction · disgorgement available</small></td>
+            <td class="enf">UT Div. of Consumer Protection</td>
+          </tr>
+          <tr>
+            <td><div class="lname">California B.O.T. Act</div><div class="lsub">SB 1001 · in force since 2019</div></td>
+            <td class="case">Bot conceals its artificial identity to influence a purchase or vote.</td>
+            <td class="pen">UCL remedies<small>up to $2,500/violation via Unfair Competition Law</small></td>
+            <td class="pen">Uncapped</td>
+            <td class="enf">CA AG / UDAP</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── State: healthcare & chatbot-specific ── -->
+    <div class="blk">
+      <div class="blk-h"><b>US state — healthcare &amp; chatbot-specific</b><span class="note">the sharpest edge for clinical voice agents</span></div>
+      <table class="tbl law">
+        <thead><tr><th style="width:19%">Act</th><th style="width:30%">Violating-agent case</th><th>Penalty per violation</th><th>Maximum exposure</th><th style="width:15%">Enforced by</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="lname">Illinois WOPR Act</div><div class="lsub">AI therapy ban · in force Aug 2025</div></td>
+            <td class="case">Agent gives therapeutic advice or is marketed as therapy without a licensed professional in charge — even one empathetic overstep on a refill line can qualify.</td>
+            <td class="pen">up to $10,000 / violation</td>
+            <td class="pen">Uncapped<small>per interaction</small></td>
+            <td class="enf">IDFPR</td>
+          </tr>
+          <tr>
+            <td><div class="lname">Nevada AB 406</div><div class="lsub">In force Jul 2025</div></td>
+            <td class="case">AI provides mental or behavioral health care; agent represents itself as capable of mental-health treatment.</td>
+            <td class="pen">up to $15,000 / violation</td>
+            <td class="pen">Uncapped<small>per incident</small></td>
+            <td class="enf">Nevada AG / boards</td>
+          </tr>
+          <tr>
+            <td><div class="lname">Utah HB 452</div><div class="lsub">Mental-health chatbots · in force May 2025</div></td>
+            <td class="case">Chatbot misses a required AI disclosure — before access, after 7 days away, or <b>any time the user asks</b>; ads inside sessions; selling session data.</td>
+            <td class="pen">$2,500 / violation<small>+ disgorgement</small></td>
+            <td class="pen">Uncapped<small>every missed trigger is a violation</small></td>
+            <td class="enf">UT Div. of Consumer Protection</td>
+          </tr>
+          <tr>
+            <td><div class="lname">California SB 243 <span class="prr">· PRA</span></div><div class="lsub">Companion chatbots · in force Jan 2026</div></td>
+            <td class="case">Companion-style agent without AI disclosure, minor safeguards, or a self-harm crisis protocol.</td>
+            <td class="pen">≥ $1,000 / violation<small>statutory damages + attorney's fees</small></td>
+            <td class="pen">Uncapped<small>per user per violation</small></td>
+            <td class="enf"><span class="prr">Private right</span></td>
+          </tr>
+          <tr>
+            <td><div class="lname">New York AI Companion law</div><div class="lsub">In force Nov 2025</div></td>
+            <td class="case">Companion agent lacking suicidal-ideation detection with crisis-line referral, or the every-3-hours "you're talking to AI" reminder.</td>
+            <td class="pen">Civil penalties via AG<small>amounts set by court; injunctions</small></td>
+            <td class="pen">Uncapped</td>
+            <td class="enf">New York AG</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── State: privacy, biometrics, call recording ── -->
+    <div class="blk">
+      <div class="blk-h"><b>US state — privacy, biometrics &amp; call recording</b><span class="note">where voice agents get sued today, before any "AI law" applies</span></div>
+      <table class="tbl law">
+        <thead><tr><th style="width:19%">Act</th><th style="width:30%">Violating-agent case</th><th>Penalty per violation</th><th>Maximum exposure</th><th style="width:15%">Enforced by</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="lname">Illinois BIPA <span class="prr">· PRA</span></div><div class="lsub">Biometric privacy · voiceprints covered</div></td>
+            <td class="case">Voiceprint-based caller verification or speaker ID without written consent and a retention policy.</td>
+            <td class="pen">$1,000 negligent<small>$5,000 reckless/intentional · one recovery per person per method since 2024 amendment</small></td>
+            <td class="pen">Uncapped classes<small>largest settlement to date: $650M</small></td>
+            <td class="enf"><span class="prr">Private right</span></td>
+          </tr>
+          <tr>
+            <td><div class="lname">California CIPA <span class="prr">· PRA</span></div><div class="lsub">§632.7 · all-party consent</div></td>
+            <td class="case">Call recorded or transcribed without all-party consent notice; transcripts shared with an AI vendor — the current "AI wiretap" suit wave.</td>
+            <td class="pen">$5,000 / violation<small>or 3× actual damages · per call</small></td>
+            <td class="pen">Uncapped classes</td>
+            <td class="enf"><span class="prr">Private right</span> + AG</td>
+          </tr>
+          <tr>
+            <td><div class="lname">CCPA / CPRA <span class="prr">· PRA*</span></div><div class="lsub">California privacy</div></td>
+            <td class="case">Voice recordings sold/shared without opt-out; no notice at collection that calls train models.</td>
+            <td class="pen">$2,663 / violation<small>$7,988 intentional or minors (2025-adjusted)</small></td>
+            <td class="pen">Uncapped<small>*private right for breaches: $107–$799 per consumer per incident</small></td>
+            <td class="enf">CPPA / CA AG</td>
+          </tr>
+          <tr>
+            <td><div class="lname">Washington My Health My Data <span class="prr">· PRA</span></div><div class="lsub">Health data beyond HIPAA</div></td>
+            <td class="case">Health-adjacent voice data (symptoms mentioned on a call) shared without separate authorization.</td>
+            <td class="pen">up to $7,500 / violation<small>via Consumer Protection Act</small></td>
+            <td class="pen">Uncapped<small>+ actual damages, fees</small></td>
+            <td class="enf"><span class="prr">Private right</span> + WA AG</td>
+          </tr>
+          <tr>
+            <td><div class="lname">FL FTSA &amp; state mini-TCPAs <span class="prr">· PRA</span></div><div class="lsub">FL · OK · WA · MD and growing</div></td>
+            <td class="case">Outbound automated-voice sales call without prior express written consent — state layer on top of federal TCPA for the same call.</td>
+            <td class="pen">$500 / call<small>$1,500 willful — stacks with federal TCPA</small></td>
+            <td class="pen">Uncapped classes</td>
+            <td class="enf"><span class="prr">Private right</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── EU & international ── -->
+    <div class="blk">
+      <div class="blk-h"><b>EU &amp; international</b><span class="note">turnover-based — the % is of global revenue, whichever is higher</span></div>
+      <table class="tbl law">
+        <thead><tr><th style="width:19%">Act</th><th style="width:30%">Violating-agent case</th><th>Penalty per violation</th><th>Maximum exposure</th><th style="width:15%">Enforced by</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="lname">EU AI Act — prohibited</div><div class="lsub">Art. 5 / 99 · enforceable since Aug 2025</div></td>
+            <td class="case">Agent uses manipulative techniques or exploits vulnerabilities (age, disability) — e.g. pressuring elderly patients into paid bookings.</td>
+            <td class="pen">€35M or 7%<small>of total worldwide annual turnover, whichever is higher</small></td>
+            <td class="pen">€35M / 7%</td>
+            <td class="enf">National authorities + AI Office</td>
+          </tr>
+          <tr>
+            <td><div class="lname">EU AI Act — high-risk &amp; transparency</div><div class="lsub">Art. 50 disclosure Aug 2026 · high-risk Dec 2027 (Omnibus)</div></td>
+            <td class="case">Caller not told they're talking to AI; high-risk system (health triage) without risk management, logging, human oversight, conformity assessment.</td>
+            <td class="pen">€15M or 3%</td>
+            <td class="pen">€15M / 3%</td>
+            <td class="enf">National authorities</td>
+          </tr>
+          <tr>
+            <td><div class="lname">EU AI Act — misleading info</div><div class="lsub">Art. 99(5)</div></td>
+            <td class="case">Incorrect, incomplete or misleading information supplied to notified bodies or authorities.</td>
+            <td class="pen">€7.5M or 1%</td>
+            <td class="pen">€7.5M / 1%</td>
+            <td class="enf">National authorities</td>
+          </tr>
+          <tr>
+            <td><div class="lname">GDPR</div><div class="lsub">In force · voice = personal data, voiceprints = biometric</div></td>
+            <td class="case">Calls processed without lawful basis; no DPIA for voice biometrics; transcripts to a US model vendor without transfer safeguards.</td>
+            <td class="pen">€20M or 4%<small>Art. 83(5) · lower tier €10M or 2%</small></td>
+            <td class="pen">€20M / 4%<small>per infringement category</small></td>
+            <td class="enf">EU DPAs</td>
+          </tr>
+          <tr>
+            <td><div class="lname">UK GDPR / DPA 2018</div><div class="lsub">In force</div></td>
+            <td class="case">Same as GDPR for UK callers.</td>
+            <td class="pen">£17.5M or 4%</td>
+            <td class="pen">£17.5M / 4%</td>
+            <td class="enf">ICO</td>
+          </tr>
+          <tr>
+            <td><div class="lname">EU Product Liability Directive</div><div class="lsub">2024/2853 · national law by Dec 2026</div></td>
+            <td class="case">Defective AI software causes personal injury — wrong medication guidance from an agent. Software explicitly covered; strict liability, no fault needed.</td>
+            <td class="pen">Uncapped civil damages<small>burden-of-proof eased for complex AI</small></td>
+            <td class="pen">Uncapped</td>
+            <td class="enf">National courts</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="blk">
+      <div class="blk-b" style="font-size:12px;color:var(--muted);line-height:1.7">
+        <b style="color:var(--ink-2);font-weight:600">How Ollive uses this table.</b> Your disclosure profile (states, industry, call direction, user ages) selects which rows apply; scenario packs map to each applicable row; every violation found is priced from this table's per-violation and accrual mechanics — that's the liability number on <a class="link" href="risk.html">Risk &amp; liability</a>. Amounts are statutory maxima or adjusted figures as of mid-2026; HIPAA, FTC and CCPA figures inflation-adjust annually; EU high-risk dates reflect the Digital Omnibus deferral. This is a modelled reference, <b style="color:var(--ink-2);font-weight:600">not legal advice</b> — counsel reviews before anything is represented to a regulator or buyer.
+        <div style="margin-top:10px;font-family:var(--mono);font-size:10.5px">Key sources: HHS 45 CFR 102.3 (Jan 2026 adjustment) · Texas HB 149 §552 · Colorado SB 26-189 · Cal. Bus. &amp; Prof. Code §22757 (SB 942) · 225 ILCS WOPR · Nev. AB 406 · Utah §13-72 · Cal. SB 243 · 740 ILCS 14 (BIPA) · Cal. Penal Code §632.7 · EU AI Act Art. 99 · GDPR Art. 83 · Directive (EU) 2024/2853</div>
+      </div>
+    </div>
+  </div></main>
+</div>
+</body>
+</html>
