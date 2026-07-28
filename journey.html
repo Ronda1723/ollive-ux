@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ollive UX — v2 flow &amp; user journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+  <style>
+    .layer { display: grid; grid-template-columns: 150px 1fr 210px; gap: 20px; padding: 18px 24px; border-bottom: 1px solid var(--border-soft); font-size: 13px; align-items: start; }
+    .layer:last-child { border-bottom: none; }
+    .layer .l-name { font-weight: 600; font-size: 13px; }
+    .layer .l-name .mono { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 3px; }
+    .layer .l-how { font-size: 12px; color: var(--muted); }
+    .layer .l-how b { display: block; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 20px 24px 24px; }
+    .fstep { border: 1px solid var(--border); border-radius: var(--r-sm); padding: 14px 16px; position: relative; background: var(--surface); }
+    .fstep .fn { font-family: var(--mono); font-size: 11px; color: var(--green); margin-bottom: 6px; }
+    .fstep b { font-size: 13px; font-weight: 600; display: block; }
+    .fstep p { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.55; }
+    .fstep .fs { font-family: var(--mono); font-size: 10px; color: var(--faint); margin-top: 8px; }
+    .jt td { vertical-align: top; }
+    .jt .stage { font-weight: 600; white-space: nowrap; }
+    .jt .stage .mono { display: block; font-family: var(--mono); font-size: 10px; color: var(--faint); font-weight: 400; margin-top: 2px; }
+    .chain { font-family: var(--mono); font-size: 12px; line-height: 2.1; padding: 18px 24px; color: var(--ink-2); overflow-x: auto; white-space: nowrap; }
+    .chain .lvl { color: var(--faint); }
+    .chain .hit { color: var(--green); }
+    .amb { padding: 14px 24px; border-bottom: 1px solid var(--border-soft); font-size: 13px; display: grid; grid-template-columns: 190px 1fr 190px; gap: 20px; align-items: start; }
+    .amb:last-child { border-bottom: none; }
+    .amb b { font-size: 13px; font-weight: 600; }
+    .amb .why { font-size: 12px; color: var(--ink-2); line-height: 1.6; }
+    .amb .res { font-size: 12px; color: var(--muted); }
+    .amb .res b { display: block; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .persona { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; background: var(--off-bg); color: var(--off-text); white-space: nowrap; }
+    .persona.eng { background: var(--green-tint); color: var(--green-text); }
+    .persona.ext { background: #EEF1F5; color: #40506B; }
+  </style>
+</head>
+<body>
+<main class="content" style="min-height:100vh"><div class="page" style="max-width:920px">
+  <div class="crumb"><a href="index.html">Ollive UX</a><span>/</span><span>v2 flow</span></div>
+  <div class="page-head" style="margin-bottom:40px">
+    <div>
+      <div class="h1">v2 flow &amp; user journey</div>
+      <div class="sub">From agent behavior testing to organizational compliance: layers, loops, and the report that survives a stranger's scrutiny.</div>
+    </div>
+  </div>
+
+  <!-- ── The claim shift ── -->
+  <div class="blk">
+    <div class="blk-h"><b>The claim</b><span class="note">what the product asserts, before and after</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+      <div style="padding:18px 24px;border-right:1px solid var(--border-soft)">
+        <div class="eyebrow" style="margin-bottom:8px">v1 claims</div>
+        <b style="font-size:14px;font-weight:600">"This agent behaves correctly."</b>
+        <p style="font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6">Verified by adversarial test attempts against the agent. True even when the org around the agent has no DLP policy, no access controls, no incident plan.</p>
+      </div>
+      <div style="padding:18px 24px">
+        <div class="eyebrow" style="margin-bottom:8px">v2 claims</div>
+        <b style="font-size:14px;font-weight:600">"This organization is compliant."</b>
+        <p style="font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6">A larger claim that behavior tests alone cannot support. Requires evidence of organizational practice plus tested agent behavior — each verified by the method that fits it.</p>
+      </div>
+    </div>
+    <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
+      Acceptance bar: the report holds up when a customer's customer questions it — a reader with no trust in Ollive, only in the evidence chain.
+    </div>
+  </div>
+
+  <!-- ── The compliance model ── -->
+  <div class="blk">
+    <div class="blk-h"><b>The compliance model</b><span class="note">one framework decomposes into directives; each directive has exactly one verification method</span></div>
+    <div class="layer">
+      <span class="l-name">Org directives<span class="mono">ORG-*</span></span>
+      <span style="color:var(--ink-2);line-height:1.6">Organizational practices: encryption standards, DLP, access permissions, retention, contingency and incident plans. Cannot be tested by prompting an agent — they exist as policy and process.</span>
+      <span class="l-how"><b>Verified by</b>Document evidence — uploaded, reviewed, versioned, expiring. No document, no score.</span>
+    </div>
+    <div class="layer">
+      <span class="l-name">Agent directives<span class="mono">AGT-*</span></span>
+      <span style="color:var(--ink-2);line-height:1.6">Behavioral rules for the agent: discloses AI on ask, gates PHI behind identity, refuses clinical advice, escalates controlled-substance requests. Testable per rule.</span>
+      <span class="l-how"><b>Verified by</b>Pro / anti behavior test cases — does required X, refuses prohibited Y. Ollive-curated, replayable.</span>
+    </div>
+    <div class="layer" style="opacity:.55">
+      <span class="l-name">Model-level<span class="mono">tabled</span></span>
+      <span style="color:var(--ink-2);line-height:1.6">Prescriptions about the underlying model. Not a scored category in v2; surfaces as general findings where relevant.</span>
+      <span class="l-how"><b>Verified by</b>—</span>
+    </div>
+    <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
+      The taxonomy is versioned and Ollive-defined — no industry standard exists. New buckets require explicit justification. Every framework mapping (EU AI Act, NIST AI RMF, ISO/IEC 42001, HIPAA) inherits it, so classification errors propagate; see stress points below.
+    </div>
+  </div>
+
+  <!-- ── End-to-end flow ── -->
+  <div class="blk">
+    <div class="blk-h"><b>End-to-end flow</b><span class="note">two verification loops feed one completion score</span></div>
+    <div class="flow">
+      <div class="fstep"><div class="fn">1 · Connect</div><b>Import agents</b><p>Connect the voice platform, import the fleet. Unimported agents stay visibly unmeasured.</p><div class="fs">integrations · agents</div></div>
+      <div class="fstep"><div class="fn">2 · Declare</div><b>Disclosure profile</b><p>Industry, states, PHI access, call direction, patient ages. Derives which frameworks and regulations apply.</p><div class="fs">disclosures</div></div>
+      <div class="fstep"><div class="fn">3 · Scope</div><b>Framework breakdown</b><p>Each applicable framework decomposes into org and agent directives with a per-directive verification method.</p><div class="fs">frameworks — new</div></div>
+      <div class="fstep" style="border-color:rgba(154,106,27,.4)"><div class="fn">4 · Evidence loop</div><b>Verify org directives</b><p>Evidence requests per directive. Upload → review → verified, with expiry. Missing evidence caps the framework score.</p><div class="fs">documents → evidence — upgraded</div></div>
+      <div class="fstep" style="border-color:rgba(154,106,27,.4)"><div class="fn">5 · Test loop</div><b>Assess agent directives</b><p>Directives compile to pro/anti scenarios. Run → issues → fix → verify fix → re-score. Indeterminates go to adjudication.</p><div class="fs">assessment · adjudicate</div></div>
+      <div class="fstep"><div class="fn">6 · Score</div><b>Framework completion</b><p>Org evidence × agent tests roll up per framework, at org and per-agent level. Every number expands to its evidence.</p><div class="fs">dashboard · risk &amp; compliance</div></div>
+      <div class="fstep"><div class="fn">7 · Maintain</div><b>Continuous governance</b><p>Sessions checked in production; documents expire and re-request; agent version drift triggers re-assessment.</p><div class="fs">monitor</div></div>
+      <div class="fstep"><div class="fn">8 · Prove</div><b>Audit report &amp; portal</b><p>Claims split by layer, each traceable to a verified document or a replayable test attempt. Versioned methodology.</p><div class="fs">report — new · trust portal</div></div>
+      <div class="fstep" style="border-style:dashed;opacity:.6"><div class="fn">later</div><b>Assurance</b><p>Underwriting angle parked until the classification is validated — you can't price what you haven't defined.</p><div class="fs">—</div></div>
+    </div>
+  </div>
+
+  <!-- ── Score rollup ── -->
+  <div class="blk">
+    <div class="blk-h"><b>Score rollup</b><span class="note">the anti-black-box rule: every number expands to its evidence</span></div>
+    <div class="chain">
+      <span class="lvl">framework</span>&nbsp;&nbsp;EU AI Act — completion 61% <span class="lvl">· org 14/23 verified · agent 21/28 passing</span><br>
+      <span class="lvl">└ directive</span>&nbsp;&nbsp;Art. 13 → AGT-104 "agent discloses AI on ask" <span class="hit">passing</span><br>
+      <span class="lvl">&nbsp;&nbsp;└ tests</span>&nbsp;&nbsp;6 scenarios · pro 4 / anti 2 · pack v3.2 pinned<br>
+      <span class="lvl">&nbsp;&nbsp;&nbsp;&nbsp;└ attempts</span>&nbsp;&nbsp;18 attempts · 17 pass · 1 indeterminate → adjudication<br>
+      <span class="lvl">└ directive</span>&nbsp;&nbsp;Art. 10 → ORG-031 "data governance policy" <span style="color:var(--score-mid)">awaiting evidence</span> <span class="lvl">· caps completion until verified</span>
+    </div>
+    <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
+      A directive is passing when all its test cases pass on the latest run, or verified when its evidence is reviewed and unexpired. A framework is complete only when every applicable directive is one of the two. Eval selection is Ollive-curated — customizable eval sets would make the report's claims non-standard and indefensible to a third party.
+    </div>
+  </div>
+
+  <!-- ── User journey ── -->
+  <div class="blk">
+    <div class="blk-h"><b>User journey</b><span class="note">compliance lead owns the loop; engineering enters at issues</span></div>
+    <table class="tbl jt" style="font-size:12px">
+      <thead><tr><th style="width:15%">Stage</th><th style="width:11%">Who</th><th style="width:24%">User does</th><th style="width:26%">System does</th><th style="width:24%">Exit criteria</th></tr></thead>
+      <tbody>
+        <tr><td class="stage">Connect &amp; declare<span class="mono">day 1</span></td><td><span class="persona">Compliance</span></td><td>Connects platform, imports agents, completes disclosure profile</td><td>Derives applicable frameworks and regulations; flags profile gaps</td><td>Fleet visible; scope derived, not chosen</td></tr>
+        <tr><td class="stage">Scope review<span class="mono">day 1</span></td><td><span class="persona">Compliance</span></td><td>Reviews each framework's directive breakdown; accepts scope</td><td>Shows org/agent split per framework with verification method per directive</td><td>Scope accepted and versioned</td></tr>
+        <tr><td class="stage">Evidence loop<span class="mono">week 1–2</span></td><td><span class="persona">Compliance</span></td><td>Uploads policy documents against evidence requests; fixes rejections</td><td>Reviews evidence, verifies or rejects with reason; caps scores while missing</td><td>Org directives verified; expiries scheduled</td></tr>
+        <tr><td class="stage">Assessment<span class="mono">week 1</span></td><td><span class="persona">Compliance</span></td><td>Runs assessment per agent</td><td>Compiles agent directives into pro/anti scenarios; runs; opens ranked issues</td><td>Issues ranked by exposure; indeterminates queued</td></tr>
+        <tr><td class="stage">Fix &amp; verify<span class="mono">continuous</span></td><td><span class="persona eng">Engineer</span></td><td>Takes issue, applies fix, runs targeted verify on the issue's failing scenarios</td><td>Re-runs only affected scenarios; updates directive and framework state provisionally</td><td>Issue resolved or risk-accepted with sign-off</td></tr>
+        <tr><td class="stage">Score<span class="mono">week 2</span></td><td><span class="persona">Compliance</span></td><td>Reads completion per framework, org-level and per-agent; drills any number to its evidence</td><td>Rolls up: evidence × tests → directive → framework; shows what caps the score and the shortest path to raise it</td><td>Score understood, not just displayed</td></tr>
+        <tr><td class="stage">Maintain<span class="mono">continuous</span></td><td><span class="persona">Compliance</span> <span class="persona eng">Engineer</span></td><td>Triages monitoring flags; re-uploads expiring evidence; re-assesses on version drift</td><td>Checks every production session; expires documents; flags assessed-vs-deployed drift</td><td>Status current; staleness impossible to miss</td></tr>
+        <tr><td class="stage">Prove<span class="mono">on demand</span></td><td><span class="persona">Compliance</span> <span class="persona ext">Buyer's auditor</span></td><td>Shares the report or portal</td><td>Generates versioned report: claims by layer, each with provenance</td><td>Third party can trace every claim without trusting Ollive</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Skeptic's journey ── -->
+  <div class="blk">
+    <div class="blk-h"><b>The skeptic's journey</b><span class="note">the customer's customer — the report's real acceptance test</span></div>
+    <div style="padding:18px 24px;font-size:13px;color:var(--ink-2);line-height:1.7">
+      <div style="display:grid;grid-template-columns:24px 1fr;gap:10px 14px">
+        <span class="mono" style="color:var(--faint);font-size:11px;padding-top:2px">1</span><span>Opens the report cold. Reads scope first: which frameworks, which agents, which dates, what was excluded. Exclusions are stated, not discovered.</span>
+        <span class="mono" style="color:var(--faint);font-size:11px;padding-top:2px">2</span><span>Checks the method: taxonomy version, pack versions, judge calibration, review process for evidence. All pinned and cited inline.</span>
+        <span class="mono" style="color:var(--faint);font-size:11px;padding-top:2px">3</span><span>Picks any claim. An org claim resolves to a reviewed document — hash, reviewer, review date, expiry. An agent claim resolves to replayable test attempts — scenario IDs, seeds, transcripts.</span>
+        <span class="mono" style="color:var(--faint);font-size:11px;padding-top:2px">4</span><span>Looks for the gap: an agent claim presented as an org claim, or a questionnaire answer presented as evidence. The layer split exists so this search comes up empty.</span>
+      </div>
+    </div>
+    <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
+      Design consequence: the report never says "compliant" where it means "agent passed behavior tests." Layer labels appear on every claim.
+    </div>
+  </div>
+
+  <!-- ── Where the split gets stressed ── -->
+  <div class="blk">
+    <div class="blk-h"><b>Taxonomy stress points</b><span class="note">where org/agent gets ambiguous when mapped to real frameworks — the load-bearing risk</span></div>
+    <div class="amb">
+      <b>Human oversight<span style="display:block;font-family:var(--mono);font-size:10px;color:var(--faint);font-weight:400;margin-top:2px">EU AI Act Art. 14</span></b>
+      <span class="why">Requires both an org process (named humans, authority to intervene) and agent behavior (escalates, defers). One requirement, two verification methods.</span>
+      <span class="res"><b>Resolution rule</b>Split into two linked directives — ORG half and AGT half — never a third bucket.</span>
+    </div>
+    <div class="amb">
+      <b>Logging &amp; traceability<span style="display:block;font-family:var(--mono);font-size:10px;color:var(--faint);font-weight:400;margin-top:2px">Art. 12 · NIST MAP/MEASURE</span></b>
+      <span class="why">Neither a policy document nor promptable behavior — it's a platform capability. Verifying it means introspecting the integration, a third verification method entering quietly.</span>
+      <span class="res"><b>Resolution rule</b>Treat as org directive with system evidence (config export, log sample) instead of policy PDF — evidence types expand, buckets don't.</span>
+    </div>
+    <div class="amb">
+      <b>Retention &amp; deletion<span style="display:block;font-family:var(--mono);font-size:10px;color:var(--faint);font-weight:400;margin-top:2px">HIPAA · GDPR Art. 17</span></b>
+      <span class="why">Policy says 30 days (org, documented); the agent tells callers "we delete recordings" (agent, testable). The two can verify independently and still contradict each other.</span>
+      <span class="res"><b>Resolution rule</b>Cross-layer consistency check: linked directives must agree or both flag.</span>
+    </div>
+    <div class="amb">
+      <b>Accuracy &amp; robustness<span style="display:block;font-family:var(--mono);font-size:10px;color:var(--faint);font-weight:400;margin-top:2px">Art. 15</span></b>
+      <span class="why">Looks agent-testable, but a sample-based pass rate is a statistical estimate, not a binary directive state. "Passing at 94% ±3" is not "complies."</span>
+      <span class="res"><b>Resolution rule</b>Directives with statistical verdicts carry thresholds and intervals in the report — never collapsed to a checkmark.</span>
+    </div>
+    <div class="amb">
+      <b>Incident response<span style="display:block;font-family:var(--mono);font-size:10px;color:var(--faint);font-weight:400;margin-top:2px">NIST MANAGE · HIPAA §164.308</span></b>
+      <span class="why">A contingency plan PDF proves the process exists. Only the monitoring config — alert routes wired, on-call set — proves it operates.</span>
+      <span class="res"><b>Resolution rule</b>Evidence tiers: documented vs operating. The report shows which tier was verified.</span>
+    </div>
+  </div>
+
+  <!-- ── Screen inventory ── -->
+  <div class="blk">
+    <div class="blk-h"><b>Screen inventory</b><span class="note">what v2 reuses, upgrades, and adds</span></div>
+    <table class="tbl" style="font-size:12px">
+      <thead><tr><th style="width:26%">Screen</th><th style="width:14%">Status</th><th>v2 role</th></tr></thead>
+      <tbody>
+        <tr><td><b style="font-weight:600">Integrations · Disclosures · Agents</b></td><td><span class="pill pass">Reuse</span></td><td style="color:var(--ink-2)">Connect and declare — unchanged mechanics, now feeding framework derivation</td></tr>
+        <tr><td><b style="font-weight:600">Assessment · Adjudicate · Monitor</b></td><td><span class="pill pass">Reuse</span></td><td style="color:var(--ink-2)">The agent-directive test loop — issues, fix-and-verify, adjudication, production checks</td></tr>
+        <tr><td><b style="font-weight:600">Documents → Evidence</b></td><td><span class="pill ind">Upgrade</span></td><td style="color:var(--ink-2)">From upload buckets to evidence requests: per-directive asks, review states, reviewer, expiry, rejection reasons</td></tr>
+        <tr><td><b style="font-weight:600">Risk &amp; compliance · Dashboard</b></td><td><span class="pill ind">Upgrade</span></td><td style="color:var(--ink-2)">Add framework completion (org × agent) beside regulation status; keep drill-to-evidence</td></tr>
+        <tr><td><b style="font-weight:600">Frameworks</b></td><td><span class="pill fail">New</span></td><td style="color:var(--ink-2)">Per-framework directive breakdown: org/agent split, verification method, state, what caps the score</td></tr>
+        <tr><td><b style="font-weight:600">Directive detail</b></td><td><span class="pill fail">New</span></td><td style="color:var(--ink-2)">One directive: source clause, verification method, evidence or test results, history — the drawer pattern extended</td></tr>
+        <tr><td><b style="font-weight:600">Audit report</b></td><td><span class="pill fail">New</span></td><td style="color:var(--ink-2)">Versioned, claim-level provenance, layer labels on every claim; the portal's NDA tier renders it</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></main>
+</body>
+</html>
