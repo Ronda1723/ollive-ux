@@ -78,22 +78,22 @@
       <div class="stat">
         <div class="lbl">Open liability</div>
         <div class="num money" style="color:var(--score-low)" id="st-open">$204k</div>
-        <div class="meta" id="st-open-m">26 open violations · fleet</div>
-      </div>
-      <div class="stat">
-        <div class="lbl">Liability retired</div>
-        <div class="num money" style="color:var(--score-high)" id="st-ret">$128k</div>
-        <div class="meta" id="st-ret-m">14 violations fixed &amp; verified</div>
+        <div class="meta" id="st-open-m">26 open violations · <span class="delta down">▲ +$12k this week</span></div>
       </div>
       <div class="stat">
         <div class="lbl">Regulations violated</div>
         <div class="num" style="color:var(--score-low)" id="st-reg">4<span class="of">/12</span></div>
-        <div class="meta">of applicable, from your profile</div>
+        <div class="meta" id="st-reg-m">HIPAA leads · $92k</div>
       </div>
       <div class="stat">
-        <div class="lbl">Evidence base</div>
-        <div class="num money" id="st-ev">4,932</div>
-        <div class="meta" id="st-ev-m">attempts · 23 runs · 4 agents</div>
+        <div class="lbl">Worst single event</div>
+        <div class="num money" style="color:var(--score-low)" id="st-worst">$250k</div>
+        <div class="meta" id="st-worst-m">Bayside MSA §4.2 indemnity · one incident</div>
+      </div>
+      <div class="stat">
+        <div class="lbl">Cost to clear</div>
+        <div class="num money" style="color:var(--score-high)" id="st-clear">2 days</div>
+        <div class="meta" id="st-clear-m">top 3 fixes retire $156k · 76% of open</div>
       </div>
     </div>
 
@@ -202,7 +202,7 @@
         </tbody>
       </table>
       <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12.5px;color:var(--muted)">
-        Applicability derives from your disclosure profile — industry, states, call direction, patient ages, recording. <a class="link" href="compliance.html">Full penalty reference (27 regimes · 88 provisions) →</a> · <a class="link" href="disclosures.html">2 profile gaps may hide applicable rules →</a>
+        Backed by 4,932 scenario attempts across 23 runs. Applicability derives from your disclosure profile — industry, states, call direction, patient ages, recording. <a class="link" href="compliance.html">Full penalty reference (27 regimes · 88 provisions) →</a> · <a class="link" href="disclosures.html">2 profile gaps may hide applicable rules →</a>
       </div>
     </div>
 
@@ -337,15 +337,20 @@
 
 <script>
   const STATS = {
-    all:    { open:'$204k', openM:'26 open violations · fleet', ret:'$128k', retM:'14 violations fixed & verified', reg:'4<span class="of">/12</span>', ev:'4,932', evM:'attempts · 23 runs · 4 agents',
+    all:    { open:'$204k', openM:'26 open violations · <span class="delta down">▲ +$12k this week</span>', reg:'4<span class="of">/12</span>', regM:'HIPAA leads · $92k',
+              worst:'$250k', worstM:'Bayside MSA §4.2 indemnity · one incident', clear:'2 days', clearM:'top 3 fixes retire $156k · 76% of open',
               note:'12 apply to this fleet, derived from your disclosure profile · 4 violated · 7 clear · 1 not tested' },
-    swarm:  { open:'$114k', openM:'14 open violations', ret:'$67k', retM:'8 fixed & verified', reg:'3<span class="of">/8</span>', ev:'2,140', evM:'attempts · 7 runs',
+    swarm:  { open:'$114k', openM:'14 open violations', reg:'3<span class="of">/8</span>', regM:'HIPAA leads · $48k',
+              worst:'$250k', worstM:'Bayside MSA §4.2 indemnity · one incident', clear:'1.6 days', clearM:'3 fixes retire $96k · 84% of open',
               note:'8 apply to this agent · 3 violated · 4 clear · 1 not tested' },
-    aqua:   { open:'$63k', openM:'8 open violations', ret:'$41k', retM:'4 fixed & verified', reg:'2<span class="of">/7</span>', ev:'1,872', evM:'attempts · 9 runs',
+    aqua:   { open:'$63k', openM:'8 open violations · live in prod', reg:'2<span class="of">/7</span>', regM:'HIPAA leads · $26k',
+              worst:'$150k', worstM:'TCPA class exposure · per-call stacking', clear:'0.1 days', clearM:'1 fix retires $28k · 44% of open',
               note:'7 apply to this agent · 2 violated · 4 clear · 1 not tested' },
-    refill: { open:'$27k', openM:'4 open violations', ret:'$20k', retM:'2 fixed & verified', reg:'1<span class="of">/6</span>', ev:'812', evM:'attempts · 5 runs',
+    refill: { open:'$27k', openM:'4 open violations', reg:'1<span class="of">/6</span>', regM:'HIPAA only · $18k',
+              worst:'$100k', worstM:'Lakeside BAA breach-notification cap', clear:'0.5 days', clearM:'1 fix retires $18k · 67% of open',
               note:'6 apply to this agent · 1 violated · 4 clear · 1 not tested' },
-    wells:  { open:'—', openM:'never assessed', ret:'—', retM:'never assessed', reg:'—', ev:'0', evM:'no runs yet',
+    wells:  { open:'—', openM:'never assessed', reg:'—', regM:'unknown until assessed',
+              worst:'—', worstM:'unmeasured — not zero', clear:'—', clearM:'run first assessment',
               note:'Applicability known from profile — violations unknown until first assessment' }
   };
   function setAgent(btn, key) {
@@ -353,12 +358,13 @@
     btn.classList.add('on');
     const s = STATS[key];
     document.getElementById('st-open').textContent = s.open;
-    document.getElementById('st-open-m').textContent = s.openM;
-    document.getElementById('st-ret').textContent = s.ret;
-    document.getElementById('st-ret-m').textContent = s.retM;
+    document.getElementById('st-open-m').innerHTML = s.openM;
     document.getElementById('st-reg').innerHTML = s.reg;
-    document.getElementById('st-ev').textContent = s.ev;
-    document.getElementById('st-ev-m').textContent = s.evM;
+    document.getElementById('st-reg-m').textContent = s.regM;
+    document.getElementById('st-worst').textContent = s.worst;
+    document.getElementById('st-worst-m').textContent = s.worstM;
+    document.getElementById('st-clear').textContent = s.clear;
+    document.getElementById('st-clear-m').textContent = s.clearM;
     document.getElementById('reg-note').textContent = s.note;
     document.getElementById('unassessed').hidden = (key !== 'wells');
     // filter every tagged row
