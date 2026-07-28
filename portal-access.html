@@ -14,7 +14,7 @@
     <span class="p-brand"><span class="cmark">C</span> Confido Agent Trust Centre <span class="by">Evaluated independently by Ollive</span></span>
     <span class="p-meta">
       <span><b style="font-weight:600;color:var(--ink-2)">Acme Health</b> · access expires Aug 30, 2026</span>
-      <button class="btn ghost sm" onclick="toast('Access log exported — access_log_acme.csv · logged')">Export log</button>
+      <button class="btn ghost sm" onclick="toast('access_log_acme.csv exported · logged')">Export log</button>
     </span>
   </header>
 
@@ -33,13 +33,13 @@
 
     <main style="flex:1;min-width:0">
       <h1 style="font-size:22px;font-weight:600;letter-spacing:-.02em">Access history</h1>
-      <p style="font-size:13.5px;color:var(--muted);margin-top:6px;max-width:620px">Activity from your organisation on this portal. Confido sees access across all invited organisations — transparency runs both ways.</p>
+      <p style="font-size:13.5px;color:var(--muted);margin-top:6px;max-width:620px">Activity from your organisation on this portal. Access activity is visible to Confido.</p>
 
       <div class="stats" style="margin-top:24px">
         <div class="stat"><div class="lbl">Page views</div><div class="num money">12</div><div class="meta">since access granted Jul 20</div></div>
         <div class="stat"><div class="lbl">Downloads</div><div class="num money">4</div><div class="meta">all watermarked</div></div>
         <div class="stat"><div class="lbl">Your users</div><div class="num money">3</div><div class="meta">under one access code</div></div>
-        <div class="stat"><div class="lbl">Access expires</div><div class="num" style="font-size:17px;padding-top:8px">Aug 30, 2026</div><div class="meta"><a class="link" href="#" onclick="toast('Extension requested from Confido — ref Q-1044');return false">Request extension →</a></div></div>
+        <div class="stat"><div class="lbl">Access expires</div><div class="num" style="font-size:17px;padding-top:8px">Aug 30, 2026</div><div class="meta"><a class="link" href="#" onclick="toast('Extension requested · ref Q-1044');return false">Request extension</a></div></div>
       </div>
 
       <div class="blk">
@@ -59,12 +59,12 @@
           </tbody>
         </table>
         <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12.5px;color:var(--muted)">
-          Showing 9 of 16 events · <a class="link" href="#" onclick="toast('Full log exported — access_log_acme.csv');return false">Export full log</a>
+          Showing 9 of 16 events · <a class="link" href="#" onclick="toast('access_log_acme.csv exported');return false">Export full log</a>
         </div>
       </div>
 
       <div class="card card-pad" style="font-size:12.5px;color:var(--muted);line-height:1.7">
-        <b style="font-weight:600;color:var(--ink-2)">How access works.</b> Your organisation holds one access code with an expiry set by Confido. Every view, download and question is logged and visible to Confido's team. Watermarks on downloads identify your organisation and timestamp. To add teammates or change access, contact your Confido representative — requests from this portal route to them, not to Ollive.
+        <b style="font-weight:600;color:var(--ink-2)">How access works.</b> Your organisation holds one access code with an expiry set by Confido; views, downloads and questions are logged and visible to Confido, and downloads are watermarked with your organisation and timestamp. To add users or change access, contact your Confido representative.
       </div>
     </main>
   </div>

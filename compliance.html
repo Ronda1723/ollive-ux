@@ -40,33 +40,33 @@
     <div class="page-head">
       <div>
         <div class="h1">Compliance penalty reference</div>
-        <div class="sub">Every regime a conversational agent can violate, what the violating case looks like, and what it costs — every act expanded to its separately-fineable provisions — the table behind the liability model</div>
+        <div class="sub">Regimes, fineable provisions, and penalty amounts used by the liability model</div>
       </div>
       <div class="head-actions">
         <button class="btn ghost">Export CSV</button>
-        <a class="btn primary" href="risk.html">Your liability →</a>
+        <a class="btn primary" href="risk.html">View your liability</a>
       </div>
     </div>
 
     <div class="stats">
       <div class="stat"><div class="lbl">Regimes tracked</div><div class="num money">27<span class="of"> · 88</span></div><div class="meta">regimes · fineable provisions mapped</div></div>
       <div class="stat"><div class="lbl">Largest single fine</div><div class="num money" style="color:var(--score-low)">€35M<span class="of"> / 7%</span></div><div class="meta">EU AI Act · prohibited practices</div></div>
-      <div class="stat"><div class="lbl">Fastest accrual</div><div class="num money" style="color:var(--score-low)">$1,500<span class="of">/call</span></div><div class="meta">TCPA · every call is a violation</div></div>
-      <div class="stat"><div class="lbl">Private right of action</div><div class="num" style="color:var(--score-mid)">7</div><div class="meta">regimes where anyone can sue</div></div>
+      <div class="stat"><div class="lbl">Fastest accrual</div><div class="num money" style="color:var(--score-low)">$1,500<span class="of">/call</span></div><div class="meta">TCPA · accrues per call</div></div>
+      <div class="stat"><div class="lbl">Private right of action</div><div class="num" style="color:var(--score-mid)">7</div><div class="meta">regimes with a private right of action</div></div>
     </div>
 
     <div class="banner fail">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.5"/></svg>
-      <span><b>The pattern to fear is per-unit accrual, not headline maximums.</b> A voice agent making 500 non-compliant outbound calls a day accrues TCPA exposure of up to $750k/day — class actions, not regulators, drive most real losses. Regimes with a <span class="prr">private right of action</span> are marked.</span>
+      <span>Most exposure accrues per unit: 500 non-compliant outbound calls per day can accrue up to $750k/day under TCPA. Regimes with a <span class="prr">private right of action</span> are marked.</span>
     </div>
 
     <div class="blk">
-      <div class="blk-h"><b>US federal</b><span class="note">apply everywhere you operate · all in force</span></div>
+      <div class="blk-h"><b>US federal</b><span class="note">Nationwide · in force</span></div>
       <table class="tbl law">
         <thead><tr><th style="width:19%">Act</th><th style="width:29%">Violating-agent case</th><th>Penalty per violation</th><th>Maximum exposure</th><th style="width:14%">Enforced by</th></tr></thead>
         <tbody>
           <tr class="rowlink" onclick="toggleRows(this)">
-            <td><div class="lname" style="display:flex;align-items:center;gap:6px">HIPAA<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">Privacy · Security · Breach Rules — each standard is a separate CMP<span class="tag mono" style="margin-left:8px">8 provisions</span></div></td>
+            <td><div class="lname" style="display:flex;align-items:center;gap:6px">HIPAA<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">Privacy · Security · Breach Rules · each standard is a separate CMP<span class="tag mono" style="margin-left:8px">8 provisions</span></div></td>
             <td class="case">Agent reads PHI to an unverified caller; PHI-bearing transcripts over-retained; no BAA with the voice vendor.</td>
             <td class="pen">$145 – $73,011<small>4 culpability tiers (2026-adjusted)</small></td>
             <td class="pen">$2.19M / yr<small>per provision violated — 3 provisions broken = 3 caps</small></td>
@@ -90,8 +90,8 @@
             <td class="enf">HHS OCR / DOJ</td>
           </tr>
           <tr class="rowlink" onclick="toggleRows(this)">
-            <td><div class="lname" style="display:flex;align-items:center;gap:6px">TCPA <span class="prr">· PRA</span><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">FCC 2024: AI voice = "artificial voice" — provisions stack on the same call<span class="tag mono" style="margin-left:8px">7 provisions</span></div></td>
-            <td class="case">One non-compliant outbound AI call can violate three provisions at once — consent, identification and opt-out.</td>
+            <td><div class="lname" style="display:flex;align-items:center;gap:6px">TCPA <span class="prr">· PRA</span><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">FCC 2024: AI voice = "artificial voice" · provisions stack per call<span class="tag mono" style="margin-left:8px">7 provisions</span></div></td>
+            <td class="case">A single non-compliant outbound AI call can violate the consent, identification, and opt-out provisions.</td>
             <td class="pen">$500 / call<small>$1,500 willful — every call/text separate</small></td>
             <td class="pen">Uncapped<small>class actions; FCC forfeitures ~$10k/call intentional</small></td>
             <td class="enf"><span class="prr">Private right</span> + FCC</td>
@@ -101,7 +101,7 @@
               <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">§227(c) / 64.1200(c)</span><span class="r-desc" style="white-space:normal">Do-Not-Call registry — 2+ calls in 12 months to a registered number creates the claim</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">$500–$1,500 per call · PRA</span></div>
               <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">64.1200(b)(1)</span><span class="r-desc" style="white-space:normal">Identity disclosure — entity name at the start of the message; agent must say who's calling</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">forfeiture per call</span></div>
               <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">64.1200(b)(3)</span><span class="r-desc" style="white-space:normal">Interactive opt-out mechanism within the prerecorded/AI call itself</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">forfeiture per call</span></div>
-              <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">64.1200(a)(7)</span><span class="r-desc" style="white-space:normal">Abandonment / dead-air limits — answer-detection timeouts that leave silence violate this (your agent_detection_timeout fix)</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">forfeiture per call</span></div>
+              <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">64.1200(a)(7)</span><span class="r-desc" style="white-space:normal">Abandonment / dead-air limits — answer-detection timeouts that leave silence violate this</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">forfeiture per call</span></div>
               <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">2024 revocation rule</span><span class="r-desc" style="white-space:normal">Opt-out honored if expressed in any reasonable manner, within 10 business days, across all channels</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">$500–$1,500 per later call</span></div>
               <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">64.1200(c)(1)</span><span class="r-desc" style="white-space:normal">Calling-time windows — 8am–9pm called party's local time</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">$500–$1,500 per call</span></div>
           </td></tr>
@@ -118,7 +118,7 @@
               <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">310.4(d)</span><span class="r-desc" style="white-space:normal">Prompt disclosure of identity, sales purpose, and nature of goods at call start</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">≈$53k per call</span></div>
           </td></tr>
           <tr class="rowlink" onclick="toggleRows(this)">
-            <td><div class="lname" style="display:flex;align-items:center;gap:6px">FTC Act §5 + rules<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">"Operation AI Comply" — the impersonation & health-data rules carry direct penalties<span class="tag mono" style="margin-left:8px">4 provisions</span></div></td>
+            <td><div class="lname" style="display:flex;align-items:center;gap:6px">FTC Act §5 + rules<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">Impersonation and health-data rules carry direct civil penalties<span class="tag mono" style="margin-left:8px">4 provisions</span></div></td>
             <td class="case">Agent claims to be human when asked; unfounded accuracy or "doctor-reviewed" claims.</td>
             <td class="pen">≈ $53,088<small>for rule/order breaches; first §5 case → injunction + redress</small></td>
             <td class="pen">Uncapped<small>+ 20-yr consent decrees, algorithm disgorgement</small></td>
@@ -146,7 +146,7 @@
     </div>
 
     <div class="blk">
-      <div class="blk-h"><b>US state — general AI acts</b><span class="note">apply by where your users are, not where you are</span></div>
+      <div class="blk-h"><b>US state — general AI acts</b><span class="note">Applicability by user location</span></div>
       <table class="tbl law">
         <thead><tr><th style="width:19%">Act</th><th style="width:29%">Violating-agent case</th><th>Penalty per violation</th><th>Maximum exposure</th><th style="width:14%">Enforced by</th></tr></thead>
         <tbody>
@@ -212,13 +212,13 @@
     </div>
 
     <div class="blk">
-      <div class="blk-h"><b>US state — healthcare & chatbot-specific</b><span class="note">the sharpest edge for clinical voice agents</span></div>
+      <div class="blk-h"><b>US state — healthcare & chatbot-specific</b><span class="note">Applicability by patient location</span></div>
       <table class="tbl law">
         <thead><tr><th style="width:19%">Act</th><th style="width:29%">Violating-agent case</th><th>Penalty per violation</th><th>Maximum exposure</th><th style="width:14%">Enforced by</th></tr></thead>
         <tbody>
           <tr class="rowlink" onclick="toggleRows(this)">
             <td><div class="lname" style="display:flex;align-items:center;gap:6px">Illinois WOPR Act<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">AI therapy ban · in force Aug 2025<span class="tag mono" style="margin-left:8px">3 provisions</span></div></td>
-            <td class="case">One empathetic overstep on a refill line can cross into 'therapeutic advice'.</td>
+            <td class="case">Agent on an administrative call provides therapeutic advice.</td>
             <td class="pen">up to $10,000<small>per violation</small></td>
             <td class="pen">Uncapped<small>per interaction</small></td>
             <td class="enf">IDFPR</td>
@@ -226,7 +226,7 @@
           <tr class="subrows" hidden><td colspan="5" style="padding:0">
               <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">§ therapy ban</span><span class="r-desc" style="white-space:normal">AI may not make therapeutic decisions, generate treatment plans, or deliver therapy without a licensed professional in charge</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">$10k per interaction</span></div>
               <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">§ marketing ban</span><span class="r-desc" style="white-space:normal">Service may not be marketed or represented as therapy / a therapist</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">$10k per representation</span></div>
-              <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">§ permitted uses</span><span class="r-desc" style="white-space:normal">Admin & scheduling uses allowed only with disclosure — undisclosed clinical drift is the trap</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">$10k per interaction</span></div>
+              <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">§ permitted uses</span><span class="r-desc" style="white-space:normal">Admin &amp; scheduling uses allowed only with disclosure; undisclosed clinical use violates</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">$10k per interaction</span></div>
           </td></tr>
           <tr class="rowlink" onclick="toggleRows(this)">
             <td><div class="lname" style="display:flex;align-items:center;gap:6px">Nevada AB 406<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">In force Jul 2025<span class="tag mono" style="margin-left:8px">2 provisions</span></div></td>
@@ -280,12 +280,12 @@
     </div>
 
     <div class="blk">
-      <div class="blk-h"><b>US state — privacy, biometrics & call recording</b><span class="note">where voice agents get sued today, before any "AI law" applies</span></div>
+      <div class="blk-h"><b>US state — privacy, biometrics & call recording</b><span class="note">Applicability by caller location</span></div>
       <table class="tbl law">
         <thead><tr><th style="width:19%">Act</th><th style="width:29%">Violating-agent case</th><th>Penalty per violation</th><th>Maximum exposure</th><th style="width:14%">Enforced by</th></tr></thead>
         <tbody>
           <tr class="rowlink" onclick="toggleRows(this)">
-            <td><div class="lname" style="display:flex;align-items:center;gap:6px">Illinois BIPA <span class="prr">· PRA</span><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">Voiceprints covered — every subsection independently actionable<span class="tag mono" style="margin-left:8px">5 provisions</span></div></td>
+            <td><div class="lname" style="display:flex;align-items:center;gap:6px">Illinois BIPA <span class="prr">· PRA</span><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">Voiceprints covered · each subsection independently actionable<span class="tag mono" style="margin-left:8px">5 provisions</span></div></td>
             <td class="case">Voiceprint caller-verification without the §15 stack = up to five claims per person.</td>
             <td class="pen">$1,000 / $5,000<small>negligent / reckless · one recovery per person per method (2024 am.)</small></td>
             <td class="pen">Uncapped classes<small>largest settlement: $650M</small></td>
@@ -299,7 +299,7 @@
               <div class="subrow" style="cursor:default"><span class="r-time" style="width:150px;flex-shrink:0">§15(e)</span><span class="r-desc" style="white-space:normal">Reasonable safeguards — industry-standard storage & transmission</span><span class="pen" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);flex-shrink:0;text-align:right;max-width:160px;white-space:normal">$1k–$5k · PRA</span></div>
           </td></tr>
           <tr class="rowlink" onclick="toggleRows(this)">
-            <td><div class="lname" style="display:flex;align-items:center;gap:6px">California CIPA <span class="prr">· PRA</span><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">Invasion of Privacy Act — the "AI wiretap" suit wave<span class="tag mono" style="margin-left:8px">4 provisions</span></div></td>
+            <td><div class="lname" style="display:flex;align-items:center;gap:6px">California CIPA <span class="prr">· PRA</span><svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">Invasion of Privacy Act · third-party interception claims<span class="tag mono" style="margin-left:8px">4 provisions</span></div></td>
             <td class="case">Sharing live transcripts with an AI vendor is being pled as third-party eavesdropping.</td>
             <td class="pen">$5,000<small>per violation, or 3× actual damages (§637.2)</small></td>
             <td class="pen">Uncapped classes<small></small></td>
@@ -352,7 +352,7 @@
     </div>
 
     <div class="blk">
-      <div class="blk-h"><b>EU & international</b><span class="note">turnover-based — the % is of global revenue, whichever is higher</span></div>
+      <div class="blk-h"><b>EU & international</b><span class="note">Percentage fines apply to global annual turnover, whichever is higher</span></div>
       <table class="tbl law">
         <thead><tr><th style="width:19%">Act</th><th style="width:29%">Violating-agent case</th><th>Penalty per violation</th><th>Maximum exposure</th><th style="width:14%">Enforced by</th></tr></thead>
         <tbody>
@@ -393,7 +393,7 @@
           </tr>
           <tr class="rowlink" onclick="toggleRows(this)">
             <td><div class="lname" style="display:flex;align-items:center;gap:6px">GDPR<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M6 9l6 6 6-6"/></svg></div><div class="lsub">Voice = personal data · voiceprints = biometric special category<span class="tag mono" style="margin-left:8px">8 provisions</span></div></td>
-            <td class="case">One badly-configured voice pipeline can breach five articles at once.</td>
+            <td class="case">A single voice-pipeline misconfiguration can breach multiple articles.</td>
             <td class="pen">€20M or 4%<small>Art. 83(5) tier · lower tier €10M or 2%</small></td>
             <td class="pen">€20M / 4%<small>per infringement category</small></td>
             <td class="enf">EU DPAs</td>
@@ -428,7 +428,7 @@
 
     <div class="blk">
       <div class="blk-b" style="font-size:12px;color:var(--muted);line-height:1.7">
-        <b style="color:var(--ink-2);font-weight:600">How Ollive uses this table.</b> Your disclosure profile (states, industry, call direction, user ages) selects which rows apply; scenario packs map to each applicable row; every violation found is priced from this table's per-violation and accrual mechanics — that's the liability number on <a class="link" href="risk.html">Risk &amp; compliance</a>. Amounts are statutory maxima or adjusted figures as of mid-2026; HIPAA, FTC and CCPA figures inflation-adjust annually; EU high-risk dates reflect the Digital Omnibus deferral. This is a modelled reference, <b style="color:var(--ink-2);font-weight:600">not legal advice</b> — counsel reviews before anything is represented to a regulator or buyer.
+        <b style="color:var(--ink-2);font-weight:600">Methodology.</b> The disclosure profile (states, industry, call direction, user ages) selects applicable rows; violations are priced from each row's per-violation and accrual mechanics to produce the figures on <a class="link" href="risk.html">Risk &amp; compliance</a>. Amounts are statutory maxima or adjusted figures as of mid-2026; HIPAA, FTC, and CCPA amounts adjust annually for inflation; EU high-risk dates reflect the Digital Omnibus deferral. This reference is not legal advice.
         <div style="margin-top:10px;font-family:var(--mono);font-size:10.5px">Key sources: HHS 45 CFR 102.3 (Jan 2026 adjustment) · Texas HB 149 §552 · Colorado SB 26-189 · Cal. Bus. &amp; Prof. Code §22757 (SB 942) · 225 ILCS WOPR · Nev. AB 406 · Utah §13-72 · Cal. SB 243 · 740 ILCS 14 (BIPA) · Cal. Penal Code §632.7 · EU AI Act Art. 99 · GDPR Art. 83 · Directive (EU) 2024/2853</div>
       </div>
     </div>

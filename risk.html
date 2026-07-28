@@ -30,7 +30,7 @@
     <div class="page-head">
       <div>
         <div class="h1">Risk &amp; compliance</div>
-        <div class="sub">Every regulation that applies to your fleet, what it costs where you break it — filterable per agent</div>
+        <div class="sub">Applicable regulations, violations, and modelled liability</div>
       </div>
       <div class="head-actions">
         <button class="btn ghost">Export board summary</button>
@@ -46,11 +46,11 @@
         <div class="bar" style="width:140px;margin-top:8px"><i class="mid" style="width:10%"></i></div>
       </div>
       <div style="flex:1;min-width:280px">
-        <b style="font-size:14px;font-weight:600">This page models 10% of your fleet.</b>
-        <p style="font-size:12.5px;color:var(--ink-2);margin-top:4px;line-height:1.6">Your connected Retell workspace has <b class="money">40</b> agents — everything here covers only the 4 you've imported. The other 36 aren't low-risk, they're <b style="font-weight:600">unmeasured</b>: at your current average of <span class="money">$51k</span> modelled liability per assessed agent, up to <span class="money" style="color:var(--score-mid)">~$1.8M</span> may sit outside this model <span style="color:var(--faint)">(extrapolation, not a finding)</span>.</p>
+        <b style="font-size:14px;font-weight:600">36 agents not imported</b>
+        <p style="font-size:12.5px;color:var(--ink-2);margin-top:4px;line-height:1.6">Figures on this page cover 4 of <b class="money">40</b> agents in the connected Retell workspace. Unmodelled exposure for the remaining 36: <span class="money" style="color:var(--score-mid)">~$1.8M</span>, based on <span class="money">$51k</span> average modelled liability per assessed agent. Estimate; excluded from totals.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;flex-shrink:0">
-        <button class="btn primary sm" onclick="toast('Importing 36 agents — read-only, assessments queued')">Import all 40</button>
+        <button class="btn primary sm" onclick="toast('Import started · 36 agents queued')">Import all 40</button>
         <button class="btn ghost sm">Review agent list</button>
       </div>
     </div>
@@ -58,10 +58,10 @@
     <!-- ── Always-on governance ── -->
     <div class="card" style="display:flex;align-items:center;gap:12px;padding:13px 20px;margin-bottom:20px;flex-wrap:wrap">
       <span style="width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px var(--green-tint);flex-shrink:0"></span>
-      <span style="font-size:12.5px;color:var(--ink-2);line-height:1.6"><b style="font-weight:600">Governance is always on.</b> Every obligation below is re-checked on each assessment run and each monitored production session — status shown is compliant as of <b style="font-weight:600;font-family:var(--mono);font-size:12px">Jul 28, 06:04</b>.</span>
+      <span style="font-size:12.5px;color:var(--ink-2);line-height:1.6">Continuous governance · Last scan <b style="font-weight:600;font-family:var(--mono);font-size:12px">Jul 28, 06:04</b></span>
       <span style="margin-left:auto;display:flex;align-items:center;gap:12px;flex-shrink:0">
-        <span style="font-size:12px;color:var(--muted)">Next full scan tonight, 02:00</span>
-        <button class="btn ghost sm" onclick="toast('Governance scan started — 12 obligations × 4 agents · ~3 min')">Re-scan now</button>
+        <span style="font-size:12px;color:var(--muted)">Next scan 02:00</span>
+        <button class="btn ghost sm" onclick="toast('Scan started')">Re-scan now</button>
       </span>
     </div>
 
@@ -80,8 +80,8 @@
     <!-- Unassessed-agent notice (only for 'wells') -->
     <div class="banner fail" id="unassessed" hidden>
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.5"/></svg>
-      <span><b>This agent has never been assessed.</b> Its risk isn't zero — it's unmeasured. Nothing below includes it.</span>
-      <button class="btn primary sm" style="margin-left:auto;flex-shrink:0" onclick="toast('Assessment queued — usually ~25 min')">Run first assessment</button>
+      <span><b>This agent has not been assessed.</b> It is excluded from all figures on this page.</span>
+      <button class="btn primary sm" style="margin-left:auto;flex-shrink:0" onclick="toast('Assessment queued')">Run first assessment</button>
     </div>
 
     <div class="stats">
@@ -93,7 +93,7 @@
       <div class="stat">
         <div class="lbl">Regulations violated</div>
         <div class="num" style="color:var(--score-low)" id="st-reg">4<span class="of">/12</span></div>
-        <div class="meta" id="st-reg-m">HIPAA leads · $92k</div>
+        <div class="meta" id="st-reg-m">HIPAA · $92k</div>
       </div>
       <div class="stat">
         <div class="lbl">Worst single event</div>
@@ -103,7 +103,7 @@
       <div class="stat">
         <div class="lbl">Cost to clear</div>
         <div class="num money" style="color:var(--score-high)" id="st-clear">2 days</div>
-        <div class="meta" id="st-clear-m">top 3 fixes retire $156k · 76% of open</div>
+        <div class="meta" id="st-clear-m">Top 3 fixes · $156k · 76% of open</div>
       </div>
     </div>
 
@@ -117,47 +117,47 @@
           <button onclick="setStatus(this,'c')">Compliant <span class="mono" data-c="c" style="font-size:11.5px;color:var(--score-high)">7</span></button>
           <button onclick="setStatus(this,'nt')">Not tested <span class="mono" data-c="nt" style="font-size:11.5px">1</span></button>
         </span>
-        <span class="note" id="reg-note">derived from your disclosure profile</span>
+        <span class="note" id="reg-note">Derived from disclosure profile</span>
       </div>
       <table class="tbl law">
-        <thead><tr><th style="width:24%">Regulation</th><th style="width:22%">Why it applies to you</th><th>Status</th><th>Violations</th><th>Agents</th><th class="right">Liability</th></tr></thead>
+        <thead><tr><th style="width:24%">Regulation</th><th style="width:22%">Applicability</th><th>Status</th><th>Violations</th><th>Agents</th><th class="right">Liability</th></tr></thead>
         <tbody id="reg-body">
           <tr class="rowlink" data-s="v" data-a="swarm,aqua,refill" onclick="location.href='assessment.html'">
             <td><b style="font-weight:600">HIPAA §164.502</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Minimum necessary · identity before PHI</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Healthcare · agents access PHI</td>
-            <td><span class="pill fail dot">Violated</span><div style="font-size:11px;color:var(--faint);margin-top:4px">re-checked Jul 28, 06:04</div></td>
+            <td><span class="pill fail dot">Violated</span><div style="font-size:11px;color:var(--faint);margin-top:4px">Checked Jul 28, 06:04</div></td>
             <td class="mono" data-v="swarm:3,aqua:2,refill:1">6</td>
-            <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('hipaa')">3 of 4 →</button></td>
+            <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('hipaa')">3 of 4</button></td>
             <td class="right money" data-m="swarm:$48k,aqua:$26k,refill:$18k">$92k</td>
           </tr>
           <tr class="rowlink" data-s="v" data-a="swarm" onclick="location.href='assessment.html'">
             <td><b style="font-weight:600">FL AI disclosure</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Caller must know it's AI</div></td>
-            <td style="font-size:12.5px;color:var(--ink-2)">You operate in Florida</td>
-            <td><span class="pill fail dot">Violated</span><div style="font-size:11px;color:var(--faint);margin-top:4px">re-checked Jul 28, 06:04</div></td>
+            <td style="font-size:12.5px;color:var(--ink-2)">Florida operations</td>
+            <td><span class="pill fail dot">Violated</span><div style="font-size:11px;color:var(--faint);margin-top:4px">Checked Jul 28, 06:04</div></td>
             <td class="mono">3</td>
-            <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('fl')">1 of 4 →</button></td>
+            <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('fl')">1 of 4</button></td>
             <td class="right money">$34k</td>
           </tr>
           <tr class="rowlink" data-s="v" data-a="aqua" onclick="location.href='assessment.html'">
             <td><b style="font-weight:600">TCPA §227(b)</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Consent for AI-voice calls</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Outbound calling enabled</td>
-            <td><span class="pill fail dot">Violated</span><div style="font-size:11px;color:var(--faint);margin-top:4px">re-checked Jul 28, 06:04</div></td>
+            <td><span class="pill fail dot">Violated</span><div style="font-size:11px;color:var(--faint);margin-top:4px">Checked Jul 28, 06:04</div></td>
             <td class="mono">2</td>
-            <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('tcpa')">1 of 4 →</button></td>
+            <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('tcpa')">1 of 4</button></td>
             <td class="right money">$28k</td>
           </tr>
           <tr class="rowlink" data-s="v" data-a="swarm" onclick="location.href='assessment.html'">
             <td><b style="font-weight:600">Utah HB 452</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Ask-if-AI disclosure triggers</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Utah users · health-adjacent</td>
-            <td><span class="pill fail dot">Violated</span><div style="font-size:11px;color:var(--faint);margin-top:4px">re-checked Jul 28, 06:04</div></td>
+            <td><span class="pill fail dot">Violated</span><div style="font-size:11px;color:var(--faint);margin-top:4px">Checked Jul 28, 06:04</div></td>
             <td class="mono">4</td>
-            <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('utah')">1 of 4 →</button></td>
+            <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('utah')">1 of 4</button></td>
             <td class="right money">$18k</td>
           </tr>
           <tr data-s="c" data-a="swarm,aqua,refill">
             <td><b style="font-weight:600">HIPAA §164.312</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Security · access &amp; audit controls</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Healthcare · PHI storage</td>
-            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">Verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">3 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
@@ -165,7 +165,7 @@
           <tr data-s="c" data-a="aqua">
             <td><b style="font-weight:600">TCPA opt-out &amp; revocation</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">64.1200(b)(3) · 2024 revocation rule</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Outbound calling enabled</td>
-            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">Verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">1 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
@@ -173,7 +173,7 @@
           <tr data-s="c" data-a="aqua">
             <td><b style="font-weight:600">TSR / Do-Not-Call</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">16 CFR 310.4</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Outbound calling enabled</td>
-            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">Verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">1 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
@@ -181,7 +181,7 @@
           <tr data-s="c" data-a="swarm,aqua,refill">
             <td><b style="font-weight:600">FTC Act §5</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Deception · denies being AI</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">All consumer-facing agents</td>
-            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">Verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">3 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
@@ -189,7 +189,7 @@
           <tr data-s="c" data-a="refill">
             <td><b style="font-weight:600">COPPA</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Children's info on calls</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Pediatric clinic workflows</td>
-            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">Verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">1 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
@@ -197,7 +197,7 @@
           <tr data-s="c" data-a="refill">
             <td><b style="font-weight:600">Illinois WOPR Act</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">No AI-delivered therapy</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Illinois patients served</td>
-            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">Verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">1 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
@@ -205,7 +205,7 @@
           <tr data-s="c" data-a="swarm">
             <td><b style="font-weight:600">Utah AI Policy Act</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Disclose on ask · regulated occupations</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Utah users</td>
-            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">Verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">1 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
@@ -213,21 +213,21 @@
           <tr data-s="nt" data-a="swarm,aqua,refill">
             <td><b style="font-weight:600">California CIPA</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">All-party consent to record</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Calls recorded · CA callers possible</td>
-            <td><span class="pill off">Not tested</span><div style="font-size:11px;color:var(--faint);margin-top:4px">never scanned</div></td>
+            <td><span class="pill off">Not tested</span><div style="font-size:11px;color:var(--faint);margin-top:4px">Not scanned</div></td>
             <td class="mono" style="color:var(--faint)">—</td>
             <td style="font-size:12.5px;color:var(--muted)">—</td>
-            <td class="right"><button class="btn ghost sm" onclick="event.stopPropagation();toast('CIPA consent-notice pack queued for next run')">Generate pack</button></td>
+            <td class="right"><button class="btn ghost sm" onclick="event.stopPropagation();toast('Consent-notice pack queued')">Generate pack</button></td>
           </tr>
         </tbody>
       </table>
       <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12.5px;color:var(--muted)">
-        Backed by 4,932 scenario attempts across 23 runs. Applicability derives from your disclosure profile — industry, states, call direction, patient ages, recording. <a class="link" href="compliance.html">Full penalty reference (27 regimes · 88 provisions) →</a> · <a class="link" href="disclosures.html">2 profile gaps may hide applicable rules →</a>
+        4,932 attempts · 23 runs · Updated Jul 28, 06:04 · <a class="link" href="compliance.html">Penalty reference</a> · <a class="link" href="disclosures.html">2 profile gaps</a>
       </div>
     </div>
 
     <!-- ── Liability by agent ── -->
     <div class="blk" id="blk-agents">
-      <div class="blk-h"><b>Liability by agent</b><span class="note">every number traces to attempts you can replay</span></div>
+      <div class="blk-h"><b>Liability by agent</b><span class="note">Traceable to recorded attempts</span></div>
       <table class="tbl">
         <thead><tr><th style="width:26%">Agent</th><th class="right">Runs</th><th class="right">Attempts</th><th class="right">Open violations</th><th>Regulations broken</th><th class="right">Liability</th></tr></thead>
         <tbody>
@@ -256,23 +256,23 @@
             <td class="right money">$27k</td>
           </tr>
           <tr data-a="wells">
-            <td><b style="font-weight:600;color:var(--muted)">3. Lakeside Ped Wells Rx</b><div style="font-size:12px;color:var(--muted);margin-top:2px">Never assessed</div></td>
+            <td><b style="font-weight:600;color:var(--muted)">3. Lakeside Ped Wells Rx</b><div style="font-size:12px;color:var(--muted);margin-top:2px">Not assessed</div></td>
             <td class="right mono" style="color:var(--faint)">0</td>
             <td class="right mono" style="color:var(--faint)">0</td>
             <td class="right" style="color:var(--faint)">—</td>
-            <td><span class="pill off">Unmodelled risk</span></td>
+            <td><span class="pill off">Not assessed</span></td>
             <td class="right"><button class="btn primary sm" onclick="event.stopPropagation();toast('Assessment queued')">Assess</button></td>
           </tr>
         </tbody>
       </table>
       <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12.5px;color:var(--muted)">
-        Liability = per-violation probability × penalty basis, calibrated by regulation and your disclosure profile. <a class="link" href="compliance.html">Methodology →</a>
+        Liability = violation probability × penalty basis, per regulation and disclosure profile. <a class="link" href="compliance.html">Methodology</a>
       </div>
     </div>
 
     <!-- ── Fastest liability reductions ── -->
     <div class="blk">
-      <div class="blk-h"><b>Fastest liability reductions</b><span class="note">fixes ranked by $ retired per engineering day</span></div>
+      <div class="blk-h"><b>Fastest liability reductions</b><span class="note">Ranked by reduction per engineering day</span></div>
       <table class="tbl">
         <thead><tr><th style="width:34%">Fix</th><th>Agent</th><th>Regulation</th><th class="right">Liability ↓</th><th class="right">Score</th><th class="right"></th></tr></thead>
         <tbody>
@@ -282,7 +282,7 @@
             <td><span class="tag">HIPAA</span></td>
             <td class="right money" style="color:var(--score-high)">−$68k</td>
             <td class="right"><span class="delta up">+11</span></td>
-            <td class="right" style="color:var(--faint)">→</td>
+            <td class="right" style="color:var(--faint)"></td>
           </tr>
           <tr class="rowlink" data-a="swarm" onclick="location.href='assessment.html'">
             <td><b style="font-weight:600">Sensitive Data Leakage in Outputs</b><div style="font-size:12px;color:var(--muted);margin-top:2px">Identity gate before PHI · in progress (Purvish) · ~1 day</div></td>
@@ -290,7 +290,7 @@
             <td><span class="tag">HIPAA</span></td>
             <td class="right money" style="color:var(--score-high)">−$54k</td>
             <td class="right"><span class="delta up">+8</span></td>
-            <td class="right" style="color:var(--faint)">→</td>
+            <td class="right" style="color:var(--faint)"></td>
           </tr>
           <tr class="rowlink" data-a="swarm" onclick="location.href='assessment.html'">
             <td><b style="font-weight:600">AI self-disclosure in greeting</b><div style="font-size:12px;color:var(--muted);margin-top:2px">One-line greeting patch · ~0.1 day</div></td>
@@ -298,7 +298,7 @@
             <td><span class="tag">FL AI disclosure</span></td>
             <td class="right money" style="color:var(--score-high)">−$34k</td>
             <td class="right"><span class="delta up">+5</span></td>
-            <td class="right" style="color:var(--faint)">→</td>
+            <td class="right" style="color:var(--faint)"></td>
           </tr>
           <tr class="rowlink" data-a="aqua" onclick="location.href='assessment.html'">
             <td><b style="font-weight:600">Payment detection timeout</b><div style="font-size:12px;color:var(--muted);margin-top:2px">Restore agent_detection_timeout_ms to 300000 · ~0.1 day</div></td>
@@ -306,18 +306,18 @@
             <td><span class="tag">TCPA</span></td>
             <td class="right money" style="color:var(--score-high)">−$28k</td>
             <td class="right"><span class="delta up">+6</span></td>
-            <td class="right" style="color:var(--faint)">→</td>
+            <td class="right" style="color:var(--faint)"></td>
           </tr>
         </tbody>
       </table>
       <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12.5px;color:var(--muted)">
-        Top three fixes retire <b class="money" style="color:var(--score-high)">$156k</b> — 76% of open liability — in under two engineering days.
+        Top 3 fixes: <b class="money" style="color:var(--score-high)">$156k</b> · 76% of open liability · ~2 engineering days.
       </div>
     </div>
 
     <!-- ── Contractual liability ── -->
     <div class="blk">
-      <div class="blk-h"><b>Contractual liability by customer</b><span class="note">clauses matched from your uploaded MSAs</span></div>
+      <div class="blk-h"><b>Contractual liability by customer</b><span class="note">Matched from uploaded MSAs</span></div>
       <table class="tbl">
         <thead><tr><th>Customer</th><th>Clause</th><th>Obligation</th><th>Triggered by</th><th class="right">Exposure</th></tr></thead>
         <tbody>
@@ -331,12 +331,12 @@
           <tr data-a="refill">
             <td><b style="font-weight:600">Lakeside Pediatrics</b></td>
             <td class="mono">Order form §7</td>
-            <td style="font-size:13px;color:var(--ink-2)">PHI handling per BAA — breach notification duty</td>
+            <td style="font-size:13px;color:var(--ink-2)">PHI handling per BAA · breach notification duty</td>
             <td style="font-size:13px;color:var(--ink-2)">Data Leakage <span class="pill ind" style="margin-left:4px">Fixing</span></td>
             <td class="right money">$100k cap</td>
           </tr>
           <tr>
-            <td colspan="5" style="font-size:12.5px;color:var(--muted)">2 customers have no MSA uploaded — their exposure is unmodelled. <a class="link" href="documents.html">Upload in Documents →</a></td>
+            <td colspan="5" style="font-size:12.5px;color:var(--muted)">2 customers have no uploaded MSA; exposure not modelled. <a class="link" href="documents.html">Upload in Documents</a></td>
           </tr>
         </tbody>
       </table>
@@ -356,21 +356,21 @@
 
 <script>
   const STATS = {
-    all:    { open:'$204k', openM:'26 open violations · <span class="delta down">▲ +$12k this week</span>', reg:'4<span class="of">/12</span>', regM:'HIPAA leads · $92k',
-              worst:'$250k', worstM:'Bayside MSA §4.2 indemnity · one incident', clear:'2 days', clearM:'top 3 fixes retire $156k · 76% of open',
-              note:'derived from your disclosure profile' },
-    swarm:  { open:'$114k', openM:'14 open violations', reg:'3<span class="of">/8</span>', regM:'HIPAA leads · $48k',
-              worst:'$250k', worstM:'Bayside MSA §4.2 indemnity · one incident', clear:'1.6 days', clearM:'3 fixes retire $96k · 84% of open',
-              note:'derived from your disclosure profile' },
-    aqua:   { open:'$63k', openM:'8 open violations · live in prod', reg:'2<span class="of">/7</span>', regM:'HIPAA leads · $26k',
-              worst:'$150k', worstM:'TCPA class exposure · per-call stacking', clear:'0.1 days', clearM:'1 fix retires $28k · 44% of open',
-              note:'derived from your disclosure profile' },
+    all:    { open:'$204k', openM:'26 open violations · <span class="delta down">▲ +$12k this week</span>', reg:'4<span class="of">/12</span>', regM:'HIPAA · $92k',
+              worst:'$250k', worstM:'Bayside MSA §4.2 indemnity · one incident', clear:'2 days', clearM:'Top 3 fixes · $156k · 76% of open',
+              note:'Derived from disclosure profile' },
+    swarm:  { open:'$114k', openM:'14 open violations', reg:'3<span class="of">/8</span>', regM:'HIPAA · $48k',
+              worst:'$250k', worstM:'Bayside MSA §4.2 indemnity · one incident', clear:'1.6 days', clearM:'3 fixes · $96k · 84% of open',
+              note:'Derived from disclosure profile' },
+    aqua:   { open:'$63k', openM:'8 open violations · live in production', reg:'2<span class="of">/7</span>', regM:'HIPAA · $26k',
+              worst:'$150k', worstM:'TCPA class exposure · per-call stacking', clear:'0.1 days', clearM:'1 fix · $28k · 44% of open',
+              note:'Derived from disclosure profile' },
     refill: { open:'$27k', openM:'4 open violations', reg:'1<span class="of">/6</span>', regM:'HIPAA only · $18k',
-              worst:'$100k', worstM:'Lakeside BAA breach-notification cap', clear:'0.5 days', clearM:'1 fix retires $18k · 67% of open',
-              note:'derived from your disclosure profile' },
-    wells:  { open:'—', openM:'never assessed', reg:'—', regM:'unknown until assessed',
-              worst:'—', worstM:'unmeasured — not zero', clear:'—', clearM:'run first assessment',
-              note:'applicability known from profile — violations unknown until first assessment' }
+              worst:'$100k', worstM:'Lakeside BAA breach-notification cap', clear:'0.5 days', clearM:'1 fix · $18k · 67% of open',
+              note:'Derived from disclosure profile' },
+    wells:  { open:'—', openM:'Not assessed', reg:'—', regM:'Not assessed',
+              worst:'—', worstM:'Not assessed', clear:'—', clearM:'Not assessed',
+              note:'Applicability from profile · agent not assessed' }
   };
   let curAgent = 'all', curStatus = 'all';
   function applyRegFilters() {
@@ -475,7 +475,7 @@
       <h2 style="font-size:18px;font-weight:600;letter-spacing:-.01em;margin-top:12px">${r.name}</h2>
       <div style="font-size:12.5px;color:var(--muted);margin-top:4px">${r.sub}</div>
       <div class="d-sec">
-        <div class="d-sec-h">Affected agents <span style="font-family:var(--mono);text-transform:none;letter-spacing:0">${r.agents.length} of 4 · select one</span></div>
+        <div class="d-sec-h">Affected agents <span style="font-family:var(--mono);text-transform:none;letter-spacing:0">${r.agents.length} of 4</span></div>
         <div class="d-sec-b" style="padding:0">
           ${r.agents.map((a,i) => `
             <div class="subrow" style="padding:14px 16px" onclick="renderRegAgent('${key}',${i})">
@@ -488,7 +488,7 @@
             </div>`).join('')}
         </div>
       </div>
-      <p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6">Liability shown is this regulation's share for each agent. The fourth agent (Lakeside Ped Wells Rx) has never been assessed — its status under ${r.name} is unknown.</p>`;
+      <p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6">Amounts are this regulation's share per agent. Lakeside Ped Wells Rx: not assessed.</p>`;
   }
   function renderRegAgent(key, i) {
     const r = REGS[key], a = r.agents[i];
@@ -515,8 +515,8 @@
       </div>
       <div class="d-sec" style="border-color:var(--green);background:var(--green-tint)">
         <div class="d-sec-b" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-          <span style="font-size:13px;color:var(--green-text)">Full evidence, traces and suggested fixes live in the assessment.</span>
-          <a class="btn primary sm" style="flex-shrink:0" href="assessment.html">Open assessment →</a>
+          <span style="font-size:13px;color:var(--green-text)">Evidence, traces, and suggested fixes are in the assessment.</span>
+          <a class="btn primary sm" style="flex-shrink:0" href="assessment.html">Open assessment</a>
         </div>
       </div>`;
   }

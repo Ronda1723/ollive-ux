@@ -31,27 +31,27 @@
   <div class="page-head" style="margin-bottom:40px">
     <div>
       <div class="h1">Design source of truth</div>
-      <div class="sub">The reference the real platform UI should follow. Built from the live product's IA — cleaned up, respaced, and put on one type and color system.</div>
+      <div class="sub">Reference for the platform UI: screens, type, color, spacing, behavior, and voice.</div>
     </div>
   </div>
 
   <div class="blk">
-    <div class="blk-h"><b>Screens</b><span class="note">click through — tabs, rows and the attempt drawer work</span></div>
-    <a class="screen-link" href="dashboard.html"><span><b>Dashboard</b><p>Risk snapshot — stat band, agents needing attention, fleet risk, locked monitoring</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="agents.html"><span><b>Agents</b><p>Status tabs, agent table with severity-colored scores and re-run actions</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="assessment.html"><span><b>Assessment</b><p>The core screen — issue work queue with fix &amp; verify drawer and risk-acceptance flow, per-turn trace view with failure localization, config diff beside run diff, deploy gate, significance-tested runs, coverage vs taxonomy</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="adjudicate.html"><span><b>Adjudicate</b><p>Keyboard-driven human verdicts on indeterminates — each label recalibrates the judges and the κ trend is public</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="monitor.html"><span><b>Monitor</b><p>The production journey — API access → conversation ingest → runtime checks on every session → alert rules → Slack delivery with inline acknowledge</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="risk.html"><span><b>Risk &amp; compliance</b><p>Merged view — all applicable regulations for the fleet with per-agent filtering, liability in dollars, the 4-of-40 import-coverage nudge, fastest reductions, contractual exposure</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="compliance.html"><span><b>Compliance penalty reference</b><p>Appendix to Risk &amp; compliance — 27 regimes, 88 provisions, each with the violating-agent case, per-violation fine and max exposure</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="trust.html"><span><b>Trust page</b><p>Buyer-facing, shareable — posture with benchmark, what gets tested, compliance badges; read-only and Ollive-verified</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="portal-login.html"><span><b>Customer trust portal — access gate</b><p>ollive.confido.health — co-branded entry with access code, confidentiality notice, independence statement</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="portal.html"><span><b>Customer trust portal — dashboard</b><p>Portfolio summary and per-agent cards with honest differentiation: Certified · Certified with monitoring · Conditionally certified</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="portal-agent.html"><span><b>Customer trust portal — agent profile</b><p>The 10-section trust profile, data-driven for all three agents (?a=scheduling / payments / refill): excluded workflows, banded dimensions, verified controls, sanitised scenarios &amp; findings, certification, residual risk</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="portal-methodology.html"><span><b>Customer trust portal — reference</b><p>Methodology (pipeline, band definitions, certification levels, judge reliability), Documents (watermarked library + NDA-gated tier), Access history (two-way transparency log)</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="disclosures.html"><span><b>Disclosures</b><p>Company profile and letter of intent with completeness state</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="documents.html"><span><b>Documents</b><p>Upload buckets for policies, MSAs, privacy and terms</p></span><span style="color:var(--faint)">→</span></a>
-    <a class="screen-link" href="integrations.html"><span><b>Integrations</b><p>Platform connections with clear connected state</p></span><span style="color:var(--faint)">→</span></a>
+    <div class="blk-h"><b>Screens</b><span class="note">all screens interactive</span></div>
+    <a class="screen-link" href="dashboard.html"><span><b>Dashboard</b><p>Fleet posture, exposure, agents needing attention, monitoring summary</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="agents.html"><span><b>Agents</b><p>Agent list with status, severity-colored scores, and re-run</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="assessment.html"><span><b>Assessment</b><p>Issues, scenarios, runs, coverage, evaluations — fix-and-verify drawer, trace view, config diff, deploy gate</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="adjudicate.html"><span><b>Adjudicate</b><p>Keyboard review queue for indeterminate verdicts; judge calibration</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="monitor.html"><span><b>Monitor</b><p>Ingest, per-session checks, alert rules, Slack delivery</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="risk.html"><span><b>Risk &amp; compliance</b><p>Applicable regulations, per-agent liability, fastest reductions, contractual exposure</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="compliance.html"><span><b>Compliance penalty reference</b><p>Penalty reference — 27 regimes, 88 provisions with per-violation amounts</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="trust.html"><span><b>Trust page</b><p>Public posture page with benchmark, test coverage, and badges</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="portal-login.html"><span><b>Customer trust portal — access gate</b><p>Access-code gate with confidentiality notice</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="portal.html"><span><b>Customer trust portal — dashboard</b><p>Portfolio summary and per-agent certification cards</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="portal-agent.html"><span><b>Customer trust portal — agent profile</b><p>Agent profile — scope, banded dimensions, controls, findings, certification (?a=scheduling / payments / refill)</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="portal-methodology.html"><span><b>Customer trust portal — reference</b><p>Methodology, documents, access history</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="disclosures.html"><span><b>Disclosures</b><p>Company profile and completeness state</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="documents.html"><span><b>Documents</b><p>Policy, MSA, privacy and terms uploads</p></span><span style="color:var(--faint)">→</span></a>
+    <a class="screen-link" href="integrations.html"><span><b>Integrations</b><p>Platform connections and status</p></span><span style="color:var(--faint)">→</span></a>
   </div>
 
   <div class="blk">
@@ -80,6 +80,15 @@
     <div class="rule"><span class="no">S1</span><span>Content column max 1040, centered, 48px page padding. Sidebar fixed 240. One reading width per page — nothing stretches edge to edge.</span></div>
     <div class="rule"><span class="no">S2</span><span>24px between blocks, 24px card padding, 16/24 table cell padding. Page header gets 32px before the first block.</span></div>
     <div class="rule"><span class="no">S3</span><span>Radius: 8 small (buttons, inputs) · 12 cards · full pills. Shadows are whispers (1–2px); hierarchy comes from hairlines and spacing.</span></div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><b>Voice</b><span class="note">enterprise, not narrated</span></div>
+    <div class="rule"><span class="no">V1</span><span><b style="font-weight:600">Labels, not arguments.</b> UI copy states facts. Persuasion, editorializing and rhetorical flourishes do not ship — "its risk isn't zero, it's unmeasured" renders as "Not assessed".</span></div>
+    <div class="rule"><span class="no">V2</span><span><b style="font-weight:600">Subtitles are one clause.</b> Table and card footers are provenance metadata ("4,932 attempts · 23 runs · Updated Jul 28"), never explanations of why the number matters.</span></div>
+    <div class="rule"><span class="no">V3</span><span><b style="font-weight:600">Toasts are receipts.</b> What happened plus an identifier ("Exported access_log_acme.csv"). No narration, no reassurance.</span></div>
+    <div class="rule"><span class="no">V4</span><span>Sentence case everywhere. Bold marks entities and values only. "·" separates metadata, three segments max. No exclamation marks, no decorative arrows in buttons or cells.</span></div>
+    <div class="rule"><span class="no">V5</span><span>Qualifiers are single standard words — <i>provisional</i>, <i>estimate</i>, <i>not assessed</i> — never clauses.</span></div>
   </div>
 
   <div class="blk">

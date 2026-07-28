@@ -14,7 +14,7 @@
     <span class="p-brand"><span class="cmark">C</span> Confido Agent Trust Centre <span class="by">Evaluated independently by Ollive</span></span>
     <span class="p-meta">
       <span><b style="font-weight:600;color:var(--ink-2)">Acme Health</b> · access expires Aug 30, 2026</span>
-      <button class="btn ghost sm" onclick="toast('Evaluation summary downloaded — watermarked for Acme Health · logged')">Download summary</button>
+      <button class="btn ghost sm" onclick="toast('Evaluation summary downloaded · watermarked · logged')">Download summary</button>
     </span>
   </header>
 
@@ -59,7 +59,7 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>Trust summary</b><span class="note">bands, not decimals — banded results reflect evaluated scenarios</span></div>
+        <div class="blk-h"><b>Trust summary</b><span class="note">results reported as bands</span></div>
         <div class="blk-b" style="padding-bottom:8px">
           <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
             <span class="grade" id="t-grade">B</span>
@@ -88,17 +88,17 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>Regulatory and obligation coverage</b><button class="btn ghost sm" onclick="toast('Obligation map downloaded — XLSX, watermarked for Acme Health')">View detailed obligation map</button></div>
+        <div class="blk-h"><b>Regulatory and obligation coverage</b><button class="btn ghost sm" onclick="toast('Obligation map downloaded · XLSX · watermarked · logged')">View detailed obligation map</button></div>
         <div class="blk-b" style="display:grid;grid-template-columns:1fr 1fr;gap:24px" id="r-cats"></div>
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>Key controls verified</b><span class="note">verified in evaluated scenarios — not guaranteed in all conditions</span></div>
+        <div class="blk-h"><b>Key controls verified</b><span class="note">verified in evaluated scenarios only</span></div>
         <div class="blk-b"><ul class="ctrl" style="columns:2;column-gap:32px" id="c-list"></ul></div>
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>Representative scenarios</b><span class="note">sanitised examples — adversarial details withheld</span></div>
+        <div class="blk-h"><b>Representative scenarios</b><span class="note">sanitised · adversarial details withheld</span></div>
         <div class="blk-b" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px" id="s-cards"></div>
       </div>
 
@@ -111,7 +111,7 @@
         <div class="blk-b" style="border-top:1px solid var(--border-soft)">
           <div class="eyebrow">Examples of resolved findings</div>
           <ul class="ctrl" id="f-ex"></ul>
-          <p style="font-size:11.5px;color:var(--muted);margin-top:10px">Exact prompts, transcripts, and adversarial techniques are withheld from this profile and available to Confido in the confidential technical report.</p>
+          <p style="font-size:11.5px;color:var(--muted);margin-top:10px">Prompts, transcripts, and adversarial techniques are withheld from this profile. They are available to Confido in the confidential technical report.</p>
         </div>
       </div>
 
@@ -155,7 +155,7 @@
       <div class="blk">
         <div class="blk-h"><b>AI liability insurance readiness</b><span class="pill ind">Eligible for underwriting review</span></div>
         <div class="blk-b">
-          <p style="font-size:13px;color:var(--ink-2)">This evaluation can support:</p>
+          <p style="font-size:13px;color:var(--ink-2)">This evaluation may be used for:</p>
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
             <span class="tag" style="padding:5px 11px">Underwriting assessment</span>
             <span class="tag" style="padding:5px 11px">Coverage design</span>
@@ -171,11 +171,11 @@
         <div class="blk" style="margin-bottom:0">
           <div class="blk-h"><b>Downloads</b><span class="note">watermarked per recipient</span></div>
           <div class="blk-b" style="display:flex;flex-direction:column;gap:10px">
-            <button class="btn ghost sm" style="justify-content:flex-start" onclick="toast('Evaluation summary downloaded — eval_summary.pdf · watermarked · logged')">↓ Evaluation summary (PDF)</button>
-            <button class="btn ghost sm" style="justify-content:flex-start" onclick="toast('Certification letter downloaded — cert_letter.pdf · watermarked · logged')">↓ Certification letter</button>
-            <button class="btn ghost sm" style="justify-content:flex-start" onclick="toast('Regulatory coverage summary downloaded — reg_coverage.pdf · logged')">↓ Regulatory coverage summary</button>
-            <button class="btn ghost sm" style="justify-content:flex-start" onclick="toast('Questionnaire responses downloaded — SIG-Lite format · logged')">↓ Security &amp; risk questionnaire responses</button>
-            <button class="btn ghost sm" style="justify-content:flex-start;opacity:.5" disabled>↓ Certificate of insurance — available when coverage is bound</button>
+            <button class="btn ghost sm" style="justify-content:flex-start" onclick="toast('eval_summary.pdf downloaded · watermarked · logged')">↓ Evaluation summary (PDF)</button>
+            <button class="btn ghost sm" style="justify-content:flex-start" onclick="toast('cert_letter.pdf downloaded · watermarked · logged')">↓ Certification letter</button>
+            <button class="btn ghost sm" style="justify-content:flex-start" onclick="toast('reg_coverage.pdf downloaded · logged')">↓ Regulatory coverage summary</button>
+            <button class="btn ghost sm" style="justify-content:flex-start" onclick="toast('Questionnaire responses downloaded · SIG-Lite · logged')">↓ Security &amp; risk questionnaire responses</button>
+            <button class="btn ghost sm" style="justify-content:flex-start;opacity:.5" disabled>↓ Certificate of insurance · issued when coverage is bound</button>
           </div>
         </div>
         <div class="blk" style="margin-bottom:0" id="ask">
@@ -214,12 +214,12 @@ const AGENTS = {
   scheduling: {
     name: 'Confido Scheduling Agent', grade: 'a', letter: 'A',
     status: '<span class="pill pass dot">Certified</span><span style="font-size:12.5px;color:var(--muted)">Administrative workflow · exceeds baseline deployment threshold</span>',
-    purpose: 'Handles appointment scheduling, rescheduling and cancellations — confirming availability against the practice calendar and issuing confirmations and reminders.',
+    purpose: 'Handles appointment scheduling, rescheduling and cancellations. Confirms availability against the practice calendar and issues confirmations and reminders.',
     meta: [['Agent owner','Confido Patient Access'],['Deployment status','Production'],['Channels','Voice · Phone · Web'],['Version evaluated','v14'],['Evaluation date','Jul 18, 2026'],['Next review','Jan 18, 2027']],
     railNext: 'Jan 18, 2027', ver: 'v14',
     supported: ['Appointment scheduling, rescheduling and cancellation','Availability lookup from the practice calendar','Confirmations and consented SMS reminders','Waitlist placement'],
     excluded: ['Provide clinical advice or triage symptoms','Assess urgency of a medical concern','Guarantee a specific provider or outcome','Book procedures requiring clinical pre-approval','Modify another patient’s appointment without authorisation'],
-    tHead: 'A — Exceeds baseline deployment threshold', tSub: 'Certified — all six dimensions at or above threshold',
+    tHead: 'A — Exceeds baseline deployment threshold', tSub: 'Certified · all six dimensions at or above threshold',
     dims: [['Privacy and PHI handling','strong','Strong'],['Patient authorisation','strong','Strong'],['Clinical boundaries','strong','Strong'],['Workflow accuracy','meets','Meets threshold'],['Escalation behaviour','strong','Strong'],['Unsupported claims','meets','Meets threshold']],
     metrics: [['42','legal & policy obligations'],['186','scenarios generated'],['1,240','interactions evaluated'],['10','failure categories'],['2','review cycles']],
     regs: [
@@ -275,7 +275,7 @@ const AGENTS = {
     railNext: 'Oct 18, 2026', ver: 'v9',
     supported: ['Refill request intake and information collection','Routing to clinical or administrative teams','Status callbacks from authorised system data','Pharmacy preference updates'],
     excluded: ['Provide clinical advice','Recommend dosage changes','Approve prescription refills','Confirm a prescription was processed unless verified through an authorised system','Process controlled-substance requests without escalation'],
-    tHead: 'B — Meets baseline deployment threshold', tSub: 'Conditional certification — two dimensions carry monitoring or hardening requirements',
+    tHead: 'B — Meets baseline deployment threshold', tSub: 'Conditional certification · two dimensions carry monitoring or hardening requirements',
     dims: [['Privacy and PHI handling','strong','Strong'],['Patient authorisation','meets','Meets threshold'],['Clinical boundaries','meets','Meets threshold'],['Workflow accuracy','watch','Needs monitoring'],['Escalation behaviour','strong','Strong'],['Unsupported claims','hard','Needs hardening']],
     metrics: [['47','legal & policy obligations'],['218','scenarios generated'],['1,460','interactions evaluated'],['12','failure categories'],['3','review cycles']],
     regs: [
@@ -328,8 +328,8 @@ render(AGENTS[key] ? key : 'refill');
 
 function sendAsk() {
   const t = document.getElementById('ask-text');
-  if (!t.value.trim()) { toast('Add a question first'); return; }
-  toast('Sent to Confido — ref Q-1042 · response within 2 business days');
+  if (!t.value.trim()) { toast('Enter a question'); return; }
+  toast('Request sent · ref Q-1042');
   t.value = '';
 }
 let tt;

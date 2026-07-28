@@ -14,7 +14,7 @@
     <span class="p-brand"><span class="cmark">C</span> Confido Agent Trust Centre <span class="by">Evaluated independently by Ollive</span></span>
     <span class="p-meta">
       <span><b style="font-weight:600;color:var(--ink-2)">Acme Health</b> · access expires Aug 30, 2026</span>
-      <button class="btn ghost sm" onclick="toast('Methodology overview downloaded — methodology_v1.8.pdf · watermarked · logged')">Download PDF</button>
+      <button class="btn ghost sm" onclick="toast('methodology_v1.8.pdf downloaded · watermarked · logged')">Download PDF</button>
     </span>
   </header>
 
@@ -33,7 +33,7 @@
 
     <main style="flex:1;min-width:0;max-width:760px">
       <h1 style="font-size:22px;font-weight:600;letter-spacing:-.02em">How Ollive evaluates</h1>
-      <p style="font-size:13.5px;color:var(--ink-2);margin-top:8px;line-height:1.65">Enough detail to judge the rigour of the process — without disclosing adversarial techniques, prompts, or anything that would make the evaluation easier to game. Legal interpretation and methodology reviewed in consultation with Crowell &amp; Moring.</p>
+      <p style="font-size:13.5px;color:var(--ink-2);margin-top:8px;line-height:1.65">Summary of the evaluation process; adversarial techniques and prompts are withheld. Legal interpretation and methodology reviewed in consultation with Crowell &amp; Moring.</p>
 
       <div class="blk" style="margin-top:24px">
         <div class="blk-h"><b>The evaluation pipeline</b><span class="note">methodology v1.8 · packs versioned per run</span></div>
@@ -44,27 +44,27 @@
           </div>
           <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">2</span>
-            <div><b style="font-size:13.5px;font-weight:600">Scenario generation</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Each obligation gets scenarios spanning cooperative, confused, frustrated, and adversarial callers — including personas research shows are under-tested (elderly speech, interruptions, ambiguity). Scenarios that fail ambiguously are refined and re-run in rounds.</p></div>
+            <div><b style="font-size:13.5px;font-weight:600">Scenario generation</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Each obligation is tested with scenarios spanning cooperative, confused, frustrated, and adversarial callers, including elderly speech, interruptions, and ambiguous requests. Scenarios that fail ambiguously are refined and re-run.</p></div>
           </div>
           <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">3</span>
-            <div><b style="font-size:13.5px;font-weight:600">Simulation</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Multi-turn, voice-native interactions against the live agent build — audio conditions, interruptions and tool calls included. Every attempt records its persona, conditions, and seed so results are reproducible.</p></div>
+            <div><b style="font-size:13.5px;font-weight:600">Simulation</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Multi-turn, voice-native interactions run against the live agent build, including audio conditions, interruptions and tool calls. Each attempt records its persona, conditions, and seed for reproducibility.</p></div>
           </div>
           <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">4</span>
-            <div><b style="font-size:13.5px;font-weight:600">Judging</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">A vendor-diverse panel of three model judges scores each interaction against the obligation's rubric, with a 2-of-3 consensus rule. Judges are calibrated against human expert labels; splits go to human adjudication rather than being forced.</p></div>
+            <div><b style="font-size:13.5px;font-weight:600">Judging</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">A vendor-diverse panel of three model judges scores each interaction against the obligation's rubric, with a 2-of-3 consensus rule. Judges are calibrated against human expert labels; judge splits go to human adjudication.</p></div>
           </div>
           <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">5</span>
-            <div><b style="font-size:13.5px;font-weight:600">Banding &amp; certification</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Dimension results are reported as bands, not decimals — the precision shown never exceeds the precision the method supports. Certification is decided against published thresholds (below).</p></div>
+            <div><b style="font-size:13.5px;font-weight:600">Banding &amp; certification</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Dimension results are reported as bands, not decimals. Certification is decided against the published thresholds below.</p></div>
           </div>
           <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">6</span>
-            <div><b style="font-size:13.5px;font-weight:600">Remediation &amp; re-verification</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Findings go to Confido with root cause and suggested fix; fixes are re-verified by re-running the failing scenarios against the updated agent version before a finding is marked resolved.</p></div>
+            <div><b style="font-size:13.5px;font-weight:600">Remediation &amp; re-verification</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Findings are reported to Confido with root cause and suggested fix. A finding is marked resolved only after the failing scenarios are re-run against the updated agent version.</p></div>
           </div>
           <div style="display:flex;gap:14px;padding:16px 24px">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">7</span>
-            <div><b style="font-size:13.5px;font-weight:600">Monitoring</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">For certified agents in production, the same checks run against live conversations. Production failures the evaluation didn't predict become permanent regression scenarios, and the simulation-to-production gap is tracked.</p></div>
+            <div><b style="font-size:13.5px;font-weight:600">Monitoring</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">For certified agents in production, the same checks run against live conversations. Unpredicted production failures become permanent regression scenarios; the simulation-to-production gap is tracked.</p></div>
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>Judge reliability</b><span class="note">the evaluation's own credentials</span></div>
+        <div class="blk-h"><b>Judge reliability</b><span class="note">calibration statistics</span></div>
         <div class="blk-b">
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-soft);border:1px solid var(--border-soft);border-radius:var(--r-sm);overflow:hidden">
             <div style="background:var(--surface);padding:14px;text-align:center"><b class="money" style="font-size:18px">3</b><div style="font-size:11px;color:var(--muted);margin-top:2px">judge panel · vendor-diverse</div></div>
@@ -108,7 +108,7 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>What is deliberately not disclosed</b></div>
+        <div class="blk-h"><b>Information not disclosed</b></div>
         <div class="blk-b">
           <div class="excl"><ul>
             <li>Adversarial techniques, payloads, and attack sequencing</li>
@@ -117,7 +117,7 @@
             <li>Unresolved vulnerability details</li>
             <li>Judge prompts and rubric internals</li>
           </ul></div>
-          <p style="font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6">These are available to Confido in the confidential technical report. Publishing them here would make the evaluation easier to game and weaker for everyone it protects.</p>
+          <p style="font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6">These items are available to Confido in the confidential technical report.</p>
         </div>
       </div>
     </main>
