@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confido Agent Trust Centre — Documents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+</head>
+<body>
+  <header class="p-top">
+    <span class="p-brand"><span class="cmark">C</span> Confido Agent Trust Centre <span class="by">Evaluated independently by Ollive</span></span>
+    <span class="p-meta">
+      <span><b style="font-weight:600;color:var(--ink-2)">Acme Health</b> · access expires Aug 30, 2026</span>
+      <button class="btn ghost sm" onclick="toast('All available documents downloaded as ZIP — watermarked · logged')">Download all</button>
+    </span>
+  </header>
+
+  <div class="p-wrap" style="display:flex;gap:36px;align-items:flex-start;max-width:1180px">
+    <nav class="p-nav">
+      <a href="portal.html">Overview</a>
+      <div class="grp">Agents</div>
+      <a href="portal-agent.html?a=scheduling">Scheduling Agent</a>
+      <a href="portal-agent.html?a=payments">Payments Agent</a>
+      <a href="portal-agent.html?a=refill">Prescription Refills</a>
+      <div class="grp">Reference</div>
+      <a href="portal-methodology.html">Methodology</a>
+      <a class="on" href="portal-documents.html">Documents</a>
+      <a href="portal-access.html">Access history</a>
+    </nav>
+
+    <main style="flex:1;min-width:0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
+        <div>
+          <h1 style="font-size:22px;font-weight:600;letter-spacing:-.02em">Documents</h1>
+          <p style="font-size:13.5px;color:var(--muted);margin-top:6px">Everything available at your access level. Downloads are watermarked per recipient and logged.</p>
+        </div>
+        <span class="tag" style="padding:6px 12px;font-size:12.5px">Access level: <b style="font-weight:600;margin-left:4px">Standard</b></span>
+      </div>
+
+      <div class="blk" style="margin-top:24px">
+        <div class="blk-h"><b>Evaluation documents</b><span class="note">9 available · 1 pending</span></div>
+        <table class="tbl">
+          <thead><tr><th style="width:34%">Document</th><th>Applies to</th><th>Format</th><th>Updated</th><th class="right"></th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b style="font-weight:600">Portfolio evaluation summary</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Status, scope, scores and findings across all shared agents</div></td>
+              <td style="font-size:12.5px;color:var(--ink-2)">All agents</td><td class="mono">PDF · 9 pp</td><td class="mono">Jul 18, 2026</td>
+              <td class="right"><button class="btn ghost sm" onclick="toast('eval_summary_portfolio.pdf downloaded — watermarked · logged')">Download</button></td>
+            </tr>
+            <tr>
+              <td><b style="font-weight:600">Certification letter — Scheduling Agent</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Certified · v14 · signed by Ollive</div></td>
+              <td style="font-size:12.5px;color:var(--ink-2)">Scheduling</td><td class="mono">PDF · 2 pp</td><td class="mono">Jul 18, 2026</td>
+              <td class="right"><button class="btn ghost sm" onclick="toast('cert_scheduling_v14.pdf downloaded — watermarked · logged')">Download</button></td>
+            </tr>
+            <tr>
+              <td><b style="font-weight:600">Certification letter — Payments Agent</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Certified with monitoring · v11 · names the monitoring condition</div></td>
+              <td style="font-size:12.5px;color:var(--ink-2)">Payments</td><td class="mono">PDF · 2 pp</td><td class="mono">Jul 18, 2026</td>
+              <td class="right"><button class="btn ghost sm" onclick="toast('cert_payments_v11.pdf downloaded — watermarked · logged')">Download</button></td>
+            </tr>
+            <tr>
+              <td><b style="font-weight:600">Certification letter — Prescription Refill Agent</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Conditionally certified · v9 · conditions annexed</div></td>
+              <td style="font-size:12.5px;color:var(--ink-2)">Prescription Refills</td><td class="mono">PDF · 3 pp</td><td class="mono">Jul 18, 2026</td>
+              <td class="right"><button class="btn ghost sm" onclick="toast('cert_refill_v9.pdf downloaded — watermarked · logged')">Download</button></td>
+            </tr>
+            <tr>
+              <td><b style="font-weight:600">Regulatory coverage summary</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Obligation categories assessed per agent, grouped by regulation</div></td>
+              <td style="font-size:12.5px;color:var(--ink-2)">All agents</td><td class="mono">PDF · 6 pp</td><td class="mono">Jul 18, 2026</td>
+              <td class="right"><button class="btn ghost sm" onclick="toast('reg_coverage.pdf downloaded — watermarked · logged')">Download</button></td>
+            </tr>
+            <tr>
+              <td><b style="font-weight:600">Detailed obligation map</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Machine-readable — 47 obligations × scenarios × results (sanitised)</div></td>
+              <td style="font-size:12.5px;color:var(--ink-2)">Prescription Refills</td><td class="mono">XLSX</td><td class="mono">Jul 18, 2026</td>
+              <td class="right"><button class="btn ghost sm" onclick="toast('obligation_map_refill.xlsx downloaded — watermarked · logged')">Download</button></td>
+            </tr>
+            <tr>
+              <td><b style="font-weight:600">Security &amp; risk questionnaire responses</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">SIG-Lite format — pre-filled for procurement reviews</div></td>
+              <td style="font-size:12.5px;color:var(--ink-2)">Confido org</td><td class="mono">XLSX</td><td class="mono">Jul 10, 2026</td>
+              <td class="right"><button class="btn ghost sm" onclick="toast('sig_lite_confido.xlsx downloaded — watermarked · logged')">Download</button></td>
+            </tr>
+            <tr>
+              <td><b style="font-weight:600">Methodology overview</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">The evaluation pipeline, banding rules and judge-reliability statistics</div></td>
+              <td style="font-size:12.5px;color:var(--ink-2)">Reference</td><td class="mono">PDF · 5 pp</td><td class="mono">Jul 2, 2026</td>
+              <td class="right"><button class="btn ghost sm" onclick="toast('methodology_v1.8.pdf downloaded — watermarked · logged')">Download</button></td>
+            </tr>
+            <tr>
+              <td><b style="font-weight:600">Confidentiality &amp; sharing terms</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">The terms this portal is shared under</div></td>
+              <td style="font-size:12.5px;color:var(--ink-2)">Acme Health</td><td class="mono">PDF · 1 p</td><td class="mono">Jul 20, 2026</td>
+              <td class="right"><button class="btn ghost sm" onclick="toast('sharing_terms_acme.pdf downloaded — logged')">Download</button></td>
+            </tr>
+            <tr style="opacity:.55">
+              <td><b style="font-weight:600">Certificate of insurance</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Issued when coverage is bound — status: eligible for underwriting review</div></td>
+              <td style="font-size:12.5px;color:var(--ink-2)">Confido org</td><td class="mono">PDF</td><td class="mono">—</td>
+              <td class="right"><button class="btn ghost sm" disabled>Pending</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card card-pad" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+        <div>
+          <b style="font-size:14px;font-weight:600">Need the detailed assessment?</b>
+          <p style="font-size:12.5px;color:var(--muted);margin-top:3px">Full obligation-level results, control evidence and remediation history are available to security, compliance and legal teams under NDA.</p>
+        </div>
+        <button class="btn primary sm" onclick="toast('NDA-gated access requested — Confido will respond within 2 business days · ref Q-1043')">Request detailed assessment</button>
+      </div>
+    </main>
+  </div>
+
+<div class="toast" id="toast"><span class="ck-toast"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span id="toast-msg"></span></div>
+<script>
+let tt;
+function toast(msg){document.getElementById('toast-msg').textContent=msg;const el=document.getElementById('toast');el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2800);}
+</script>
+</body>
+</html>

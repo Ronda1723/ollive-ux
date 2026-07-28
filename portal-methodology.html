@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confido Agent Trust Centre — Methodology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+</head>
+<body>
+  <header class="p-top">
+    <span class="p-brand"><span class="cmark">C</span> Confido Agent Trust Centre <span class="by">Evaluated independently by Ollive</span></span>
+    <span class="p-meta">
+      <span><b style="font-weight:600;color:var(--ink-2)">Acme Health</b> · access expires Aug 30, 2026</span>
+      <button class="btn ghost sm" onclick="toast('Methodology overview downloaded — methodology_v1.8.pdf · watermarked · logged')">Download PDF</button>
+    </span>
+  </header>
+
+  <div class="p-wrap" style="display:flex;gap:36px;align-items:flex-start;max-width:1180px">
+    <nav class="p-nav">
+      <a href="portal.html">Overview</a>
+      <div class="grp">Agents</div>
+      <a href="portal-agent.html?a=scheduling">Scheduling Agent</a>
+      <a href="portal-agent.html?a=payments">Payments Agent</a>
+      <a href="portal-agent.html?a=refill">Prescription Refills</a>
+      <div class="grp">Reference</div>
+      <a class="on" href="portal-methodology.html">Methodology</a>
+      <a href="portal-documents.html">Documents</a>
+      <a href="portal-access.html">Access history</a>
+    </nav>
+
+    <main style="flex:1;min-width:0;max-width:760px">
+      <h1 style="font-size:22px;font-weight:600;letter-spacing:-.02em">How Ollive evaluates</h1>
+      <p style="font-size:13.5px;color:var(--ink-2);margin-top:8px;line-height:1.65">Enough detail to judge the rigour of the process — without disclosing adversarial techniques, prompts, or anything that would make the evaluation easier to game. Legal interpretation and methodology reviewed in consultation with Crowell &amp; Moring.</p>
+
+      <div class="blk" style="margin-top:24px">
+        <div class="blk-h"><b>The evaluation pipeline</b><span class="note">methodology v1.8 · packs versioned per run</span></div>
+        <div class="blk-b" style="padding:0">
+          <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
+            <span class="money" style="color:var(--green);flex-shrink:0;width:20px">1</span>
+            <div><b style="font-size:13.5px;font-weight:600">Obligation mapping</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Applicable laws and regulations, Confido's internal agent policies, and customer-facing commitments are decomposed into testable obligations. Applicability derives from the agent's workflows, tools, data access, and the jurisdictions it serves.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
+            <span class="money" style="color:var(--green);flex-shrink:0;width:20px">2</span>
+            <div><b style="font-size:13.5px;font-weight:600">Scenario generation</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Each obligation gets scenarios spanning cooperative, confused, frustrated, and adversarial callers — including personas research shows are under-tested (elderly speech, interruptions, ambiguity). Scenarios that fail ambiguously are refined and re-run in rounds.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
+            <span class="money" style="color:var(--green);flex-shrink:0;width:20px">3</span>
+            <div><b style="font-size:13.5px;font-weight:600">Simulation</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Multi-turn, voice-native interactions against the live agent build — audio conditions, interruptions and tool calls included. Every attempt records its persona, conditions, and seed so results are reproducible.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
+            <span class="money" style="color:var(--green);flex-shrink:0;width:20px">4</span>
+            <div><b style="font-size:13.5px;font-weight:600">Judging</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">A vendor-diverse panel of three model judges scores each interaction against the obligation's rubric, with a 2-of-3 consensus rule. Judges are calibrated against human expert labels; splits go to human adjudication rather than being forced.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
+            <span class="money" style="color:var(--green);flex-shrink:0;width:20px">5</span>
+            <div><b style="font-size:13.5px;font-weight:600">Banding &amp; certification</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Dimension results are reported as bands, not decimals — the precision shown never exceeds the precision the method supports. Certification is decided against published thresholds (below).</p></div>
+          </div>
+          <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
+            <span class="money" style="color:var(--green);flex-shrink:0;width:20px">6</span>
+            <div><b style="font-size:13.5px;font-weight:600">Remediation &amp; re-verification</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Findings go to Confido with root cause and suggested fix; fixes are re-verified by re-running the failing scenarios against the updated agent version before a finding is marked resolved.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;padding:16px 24px">
+            <span class="money" style="color:var(--green);flex-shrink:0;width:20px">7</span>
+            <div><b style="font-size:13.5px;font-weight:600">Monitoring</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">For certified agents in production, the same checks run against live conversations. Production failures the evaluation didn't predict become permanent regression scenarios, and the simulation-to-production gap is tracked.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="blk-h"><b>What the bands mean</b></div>
+        <table class="tbl">
+          <tbody>
+            <tr><td style="width:190px"><span class="band strong">Strong</span></td><td style="font-size:13px;color:var(--ink-2)">No failures in evaluated scenarios, including adversarial ones; controls held under pressure.</td></tr>
+            <tr><td><span class="band meets">Meets threshold</span></td><td style="font-size:13px;color:var(--ink-2)">Failures found were resolved and re-verified; residual behaviour within the certification threshold.</td></tr>
+            <tr><td><span class="band watch">Needs monitoring</span></td><td style="font-size:13px;color:var(--ink-2)">Within threshold, but variance or context-sensitivity warrants scheduled production sampling.</td></tr>
+            <tr><td><span class="band hard">Needs hardening</span></td><td style="font-size:13px;color:var(--ink-2)">A control exists but failed in edge conditions; a remediation plan is agreed and tracked.</td></tr>
+            <tr><td><span class="pill fail">Remediation required</span></td><td style="font-size:13px;color:var(--ink-2)">Blocks certification until fixed and re-verified. None open across Confido's evaluated agents.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="blk">
+        <div class="blk-h"><b>Certification levels</b></div>
+        <table class="tbl">
+          <tbody>
+            <tr><td style="width:230px"><span class="pill pass dot">Certified</span></td><td style="font-size:13px;color:var(--ink-2)">All dimensions at Meets threshold or above; no conditions. Annual re-evaluation.</td></tr>
+            <tr><td><span class="pill pass dot">Certified with monitoring</span></td><td style="font-size:13px;color:var(--ink-2)">Threshold met with a named monitoring condition (e.g. monthly billing-accuracy sampling). Bi-monthly review.</td></tr>
+            <tr><td><span class="pill ind dot">Conditionally certified</span></td><td style="font-size:13px;color:var(--ink-2)">Baseline met; one or more dimensions carry monitoring or hardening requirements. Quarterly review.</td></tr>
+            <tr><td><span class="pill fail dot">Not certified</span></td><td style="font-size:13px;color:var(--ink-2)">Threshold not met for the assessed use case. Not shown on this portal unless Confido chooses to share it.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="blk">
+        <div class="blk-h"><b>Judge reliability</b><span class="note">the evaluation's own credentials</span></div>
+        <div class="blk-b">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-soft);border:1px solid var(--border-soft);border-radius:var(--r-sm);overflow:hidden">
+            <div style="background:var(--surface);padding:14px;text-align:center"><b class="money" style="font-size:18px">3</b><div style="font-size:11px;color:var(--muted);margin-top:2px">judge panel · vendor-diverse</div></div>
+            <div style="background:var(--surface);padding:14px;text-align:center"><b class="money" style="font-size:18px">κ 0.81</b><div style="font-size:11px;color:var(--muted);margin-top:2px">agreement vs human experts</div></div>
+            <div style="background:var(--surface);padding:14px;text-align:center"><b class="money" style="font-size:18px">1,240</b><div style="font-size:11px;color:var(--muted);margin-top:2px">human calibration labels</div></div>
+            <div style="background:var(--surface);padding:14px;text-align:center"><b class="money" style="font-size:18px">100%</b><div style="font-size:11px;color:var(--muted);margin-top:2px">of judge splits human-adjudicated</div></div>
+          </div>
+          <p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6">Metrics whose judge-to-human agreement falls below κ 0.5 are excluded from scoring until recalibrated. Run-to-run comparisons use paired statistical tests; changes within the noise band are reported as such.</p>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="blk-h"><b>What is deliberately not disclosed</b></div>
+        <div class="blk-b">
+          <div class="excl"><ul>
+            <li>Adversarial techniques, payloads, and attack sequencing</li>
+            <li>Agent system prompts and internal instructions</li>
+            <li>Raw transcripts containing patient information</li>
+            <li>Unresolved vulnerability details</li>
+            <li>Judge prompts and rubric internals</li>
+          </ul></div>
+          <p style="font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6">These are available to Confido in the confidential technical report. Publishing them here would make the evaluation easier to game and weaker for everyone it protects.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+<div class="toast" id="toast"><span class="ck-toast"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span id="toast-msg"></span></div>
+<script>
+let tt;
+function toast(msg){document.getElementById('toast-msg').textContent=msg;const el=document.getElementById('toast');el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2800);}
+</script>
+</body>
+</html>
