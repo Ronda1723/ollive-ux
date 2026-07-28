@@ -33,38 +33,38 @@
 
     <main style="flex:1;min-width:0;max-width:760px">
       <h1 style="font-size:22px;font-weight:600;letter-spacing:-.02em">How Ollive evaluates</h1>
-      <p style="font-size:13.5px;color:var(--ink-2);margin-top:8px;line-height:1.65">Summary of the evaluation process; adversarial techniques and prompts are withheld. Legal interpretation and methodology reviewed in consultation with Crowell &amp; Moring.</p>
+      <p style="font-size:13px;color:var(--ink-2);margin-top:8px;line-height:1.65">Summary of the evaluation process; adversarial techniques and prompts are withheld. Legal interpretation and methodology reviewed in consultation with Crowell &amp; Moring.</p>
 
       <div class="blk" style="margin-top:24px">
         <div class="blk-h"><b>The evaluation pipeline</b><span class="note">methodology v1.8 · packs versioned per run</span></div>
         <div class="blk-b" style="padding:0">
           <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">1</span>
-            <div><b style="font-size:13.5px;font-weight:600">Obligation mapping</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Applicable laws and regulations, Confido's internal agent policies, and customer-facing commitments are decomposed into testable obligations. Applicability derives from the agent's workflows, tools, data access, and the jurisdictions it serves.</p></div>
+            <div><b style="font-size:13px;font-weight:600">Obligation mapping</b><p style="font-size:12px;color:var(--ink-2);margin-top:3px;line-height:1.55">Applicable laws and regulations, Confido's internal agent policies, and customer-facing commitments are decomposed into testable obligations. Applicability derives from the agent's workflows, tools, data access, and the jurisdictions it serves.</p></div>
           </div>
           <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">2</span>
-            <div><b style="font-size:13.5px;font-weight:600">Scenario generation</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Each obligation is tested with scenarios spanning cooperative, confused, frustrated, and adversarial callers, including elderly speech, interruptions, and ambiguous requests. Scenarios that fail ambiguously are refined and re-run.</p></div>
+            <div><b style="font-size:13px;font-weight:600">Scenario generation</b><p style="font-size:12px;color:var(--ink-2);margin-top:3px;line-height:1.55">Each obligation is tested with scenarios spanning cooperative, confused, frustrated, and adversarial callers, including elderly speech, interruptions, and ambiguous requests. Scenarios that fail ambiguously are refined and re-run.</p></div>
           </div>
           <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">3</span>
-            <div><b style="font-size:13.5px;font-weight:600">Simulation</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Multi-turn, voice-native interactions run against the live agent build, including audio conditions, interruptions and tool calls. Each attempt records its persona, conditions, and seed for reproducibility.</p></div>
+            <div><b style="font-size:13px;font-weight:600">Simulation</b><p style="font-size:12px;color:var(--ink-2);margin-top:3px;line-height:1.55">Multi-turn, voice-native interactions run against the live agent build, including audio conditions, interruptions and tool calls. Each attempt records its persona, conditions, and seed for reproducibility.</p></div>
           </div>
           <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">4</span>
-            <div><b style="font-size:13.5px;font-weight:600">Judging</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">A vendor-diverse panel of three model judges scores each interaction against the obligation's rubric, with a 2-of-3 consensus rule. Judges are calibrated against human expert labels; judge splits go to human adjudication.</p></div>
+            <div><b style="font-size:13px;font-weight:600">Judging</b><p style="font-size:12px;color:var(--ink-2);margin-top:3px;line-height:1.55">A vendor-diverse panel of three model judges scores each interaction against the obligation's rubric, with a 2-of-3 consensus rule. Judges are calibrated against human expert labels; judge splits go to human adjudication.</p></div>
           </div>
           <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">5</span>
-            <div><b style="font-size:13.5px;font-weight:600">Banding &amp; certification</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Dimension results are reported as bands, not decimals. Certification is decided against the published thresholds below.</p></div>
+            <div><b style="font-size:13px;font-weight:600">Banding &amp; certification</b><p style="font-size:12px;color:var(--ink-2);margin-top:3px;line-height:1.55">Dimension results are reported as bands, not decimals. Certification is decided against the published thresholds below.</p></div>
           </div>
           <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">6</span>
-            <div><b style="font-size:13.5px;font-weight:600">Remediation &amp; re-verification</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">Findings are reported to Confido with root cause and suggested fix. A finding is marked resolved only after the failing scenarios are re-run against the updated agent version.</p></div>
+            <div><b style="font-size:13px;font-weight:600">Remediation &amp; re-verification</b><p style="font-size:12px;color:var(--ink-2);margin-top:3px;line-height:1.55">Findings are reported to Confido with root cause and suggested fix. A finding is marked resolved only after the failing scenarios are re-run against the updated agent version.</p></div>
           </div>
           <div style="display:flex;gap:14px;padding:16px 24px">
             <span class="money" style="color:var(--green);flex-shrink:0;width:20px">7</span>
-            <div><b style="font-size:13.5px;font-weight:600">Monitoring</b><p style="font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.55">For certified agents in production, the same checks run against live conversations. Unpredicted production failures become permanent regression scenarios; the simulation-to-production gap is tracked.</p></div>
+            <div><b style="font-size:13px;font-weight:600">Monitoring</b><p style="font-size:12px;color:var(--ink-2);margin-top:3px;line-height:1.55">For certified agents in production, the same checks run against live conversations. Unpredicted production failures become permanent regression scenarios; the simulation-to-production gap is tracked.</p></div>
           </div>
         </div>
       </div>

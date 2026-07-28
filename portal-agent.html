@@ -43,8 +43,8 @@
       <div class="blk" style="margin-top:28px">
         <div class="blk-h"><b>Agent overview</b></div>
         <div class="blk-b">
-          <p style="font-size:13.5px;color:var(--ink-2);line-height:1.65;max-width:640px" id="o-purpose"></p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px 24px;margin-top:20px;font-size:12.5px" id="o-meta"></div>
+          <p style="font-size:13px;color:var(--ink-2);line-height:1.65;max-width:640px" id="o-purpose"></p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px 24px;margin-top:20px;font-size:12px" id="o-meta"></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px">
             <div>
               <div class="eyebrow">Supported workflows</div>
@@ -63,7 +63,7 @@
         <div class="blk-b" style="padding-bottom:8px">
           <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
             <span class="grade" id="t-grade">B</span>
-            <div><b style="font-size:15px;font-weight:600" id="t-head"></b><div style="font-size:12.5px;color:var(--muted);margin-top:2px" id="t-sub"></div></div>
+            <div><b style="font-size:14px;font-weight:600" id="t-head"></b><div style="font-size:12px;color:var(--muted);margin-top:2px" id="t-sub"></div></div>
           </div>
         </div>
         <table class="tbl"><tbody id="t-dims"></tbody></table>
@@ -111,14 +111,14 @@
         <div class="blk-b" style="border-top:1px solid var(--border-soft)">
           <div class="eyebrow">Examples of resolved findings</div>
           <ul class="ctrl" id="f-ex"></ul>
-          <p style="font-size:11.5px;color:var(--muted);margin-top:10px">Prompts, transcripts, and adversarial techniques are withheld from this profile. They are available to Confido in the confidential technical report.</p>
+          <p style="font-size:11px;color:var(--muted);margin-top:10px">Prompts, transcripts, and adversarial techniques are withheld from this profile. They are available to Confido in the confidential technical report.</p>
         </div>
       </div>
 
       <div class="blk">
         <div class="blk-h"><b>Ollive assessment</b></div>
         <div class="blk-b">
-          <p style="font-size:13.5px;color:var(--ink-2);line-height:1.7;border-left:3px solid var(--green);padding-left:16px" id="cert-text"></p>
+          <p style="font-size:13px;color:var(--ink-2);line-height:1.7;border-left:3px solid var(--green);padding-left:16px" id="cert-text"></p>
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px" id="cert-badges"></div>
         </div>
       </div>
@@ -163,7 +163,7 @@
             <span class="tag" style="padding:5px 11px">Enterprise procurement</span>
             <span class="tag" style="padding:5px 11px">Renewal and monitoring</span>
           </div>
-          <p style="font-size:11.5px;color:var(--muted);margin-top:14px">Insurance availability, terms, limits, exclusions, and pricing remain subject to underwriting and policy documentation.</p>
+          <p style="font-size:11px;color:var(--muted);margin-top:14px">Insurance availability, terms, limits, exclusions, and pricing remain subject to underwriting and policy documentation.</p>
         </div>
       </div>
 
@@ -196,7 +196,7 @@
     </main>
 
     <aside style="width:220px;flex-shrink:0;position:sticky;top:92px" class="p-nav">
-      <div class="card card-pad" style="font-size:12.5px;line-height:2">
+      <div class="card card-pad" style="font-size:12px;line-height:2">
         <div class="eyebrow" style="margin-bottom:6px">This evaluation</div>
         <span style="color:var(--muted)">Last updated</span><br/><b style="font-weight:600">Jul 18, 2026</b><br/>
         <span style="color:var(--muted)">Version evaluated</span><br/><b style="font-weight:600" class="money" id="rail-ver">—</b><br/>
@@ -213,7 +213,7 @@
 const AGENTS = {
   scheduling: {
     name: 'Confido Scheduling Agent', grade: 'a', letter: 'A',
-    status: '<span class="pill pass dot">Certified</span><span style="font-size:12.5px;color:var(--muted)">Administrative workflow · exceeds baseline deployment threshold</span>',
+    status: '<span class="pill pass dot">Certified</span><span style="font-size:12px;color:var(--muted)">Administrative workflow · exceeds baseline deployment threshold</span>',
     purpose: 'Handles appointment scheduling, rescheduling and cancellations. Confirms availability against the practice calendar and issues confirmations and reminders.',
     meta: [['Agent owner','Confido Patient Access'],['Deployment status','Production'],['Channels','Voice · Phone · Web'],['Version evaluated','v14'],['Evaluation date','Jul 18, 2026'],['Next review','Jan 18, 2027']],
     railNext: 'Jan 18, 2027', ver: 'v14',
@@ -241,7 +241,7 @@ const AGENTS = {
   },
   payments: {
     name: 'Confido Payments Agent', grade: 'a', letter: 'A',
-    status: '<span class="pill pass dot">Certified with monitoring</span><span style="font-size:12.5px;color:var(--muted)">Financial workflow · monitoring condition on billing accuracy</span>',
+    status: '<span class="pill pass dot">Certified with monitoring</span><span style="font-size:12px;color:var(--muted)">Financial workflow · monitoring condition on billing accuracy</span>',
     purpose: 'Collects payments, sets up payment plans and answers billing questions using verified account data from the practice-management system. Card capture is tokenised end-to-end.',
     meta: [['Agent owner','Confido Revenue Operations'],['Deployment status','Production — monitored'],['Channels','Voice · Phone'],['Version evaluated','v11'],['Evaluation date','Jul 18, 2026'],['Next review','Sep 18, 2026']],
     railNext: 'Sep 18, 2026', ver: 'v11',
@@ -269,7 +269,7 @@ const AGENTS = {
   },
   refill: {
     name: 'Confido Prescription Refill Agent', grade: 'b', letter: 'B',
-    status: '<span class="pill ind dot">Conditionally certified</span><span style="font-size:12.5px;color:var(--muted)">High-sensitivity clinical workflow · meets baseline deployment threshold</span>',
+    status: '<span class="pill ind dot">Conditionally certified</span><span style="font-size:12px;color:var(--muted)">High-sensitivity clinical workflow · meets baseline deployment threshold</span>',
     purpose: 'Supports prescription refill intake by collecting required information and routing requests to the appropriate clinical or administrative team.',
     meta: [['Agent owner','Confido Clinical Operations'],['Deployment status','Production — monitored'],['Channels','Voice · Phone · Web'],['Version evaluated','v9'],['Evaluation date','Jul 18, 2026'],['Next review','Oct 18, 2026']],
     railNext: 'Oct 18, 2026', ver: 'v9',
@@ -312,7 +312,7 @@ function render(key) {
   document.getElementById('t-head').textContent = a.tHead;
   document.getElementById('t-sub').textContent = a.tSub;
   document.getElementById('t-dims').innerHTML = a.dims.map(([n,b,l]) => `<tr><td style="font-weight:500">${n}</td><td style="text-align:right"><span class="band ${b}">${l}</span></td></tr>`).join('');
-  document.getElementById('e-metrics').innerHTML = a.metrics.map(([n,l]) => `<div style="background:var(--surface);padding:14px;text-align:center"><b class="money" style="font-size:19px">${n}</b><div style="font-size:11px;color:var(--muted);margin-top:2px">${l}</div></div>`).join('');
+  document.getElementById('e-metrics').innerHTML = a.metrics.map(([n,l]) => `<div style="background:var(--surface);padding:14px;text-align:center"><b class="money" style="font-size:18px">${n}</b><div style="font-size:11px;color:var(--muted);margin-top:2px">${l}</div></div>`).join('');
   document.getElementById('r-cats').innerHTML = a.regs.map(([t,items]) => `<div><div class="eyebrow">${t}</div><ul class="ctrl">${items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('');
   document.getElementById('c-list').innerHTML = a.controls.map(x=>`<li>${x}</li>`).join('');
   document.getElementById('s-cards').innerHTML = a.scenarios.map(sc => `<div class="scen"><div class="s-lbl">Scenario</div><p>${sc.s}</p><div class="s-lbl">Expected behaviour</div><p>${sc.e}</p><div class="s-lbl">Result</div><p><span class="band ${sc.b}">${sc.r}</span></p></div>`).join('');

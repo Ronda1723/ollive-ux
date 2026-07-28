@@ -33,7 +33,7 @@
         <div class="sub">Production sessions checked against assessment pack v3.2</div>
       </div>
       <div class="head-actions">
-        <span class="pill pass dot" style="align-self:center;text-transform:none;font-size:12px;padding:4px 12px">● 1 agent live</span>
+        <span class="pill pass dot" style="align-self:center;text-transform:none;font-size:12px;padding:4px 12px">1 agent live</span>
         <button class="btn primary" onclick="openAlertModal()">New alert</button>
       </div>
     </div>
@@ -93,7 +93,7 @@
           <select class="input"><option>All sessions</option><option>Flagged only</option><option>Clean only</option></select>
           <select class="input"><option>Last 24 hours</option><option>Last 7 days</option><option>Last 30 days</option></select>
         </div>
-        <span style="font-size:12.5px;color:var(--muted)">PHI redacted at ingest · raw audio retained 30 days</span>
+        <span style="font-size:12px;color:var(--muted)">PHI redacted at ingest · raw audio retained 30 days</span>
       </div>
       <div class="blk">
         <table class="tbl">
@@ -126,7 +126,7 @@
             <tr class="rowlink" onclick="openSession('flag2')">
               <td class="mono">09:02:31</td>
               <td><b style="font-weight:600">Insurance eligibility question</b><div class="mono" style="font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:2px">s_9f02 · caller ***-1126</div></td>
-              <td class="mono" style="font-size:13px;color:var(--ink-2)">Voice · inbound</td>
+              <td style="font-size:13px;color:var(--ink-2)">Voice · inbound</td>
               <td class="mono">4m 40s</td>
               <td class="mono">30/31 pass</td>
               <td><span class="pill ind dot">Review</span></td>
@@ -141,7 +141,7 @@
             </tr>
           </tbody>
         </table>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12.5px;color:var(--muted)">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
           <span>Showing 5 of 214 today</span>
           <span style="display:flex;gap:8px"><button class="btn ghost sm" disabled>Previous</button><button class="btn ghost sm">Next</button></span>
         </div>
@@ -156,21 +156,21 @@
           <tbody>
             <tr class="rowlink">
               <td><b style="font-weight:600">PHI before identity check</b><div style="font-size:12px;color:var(--muted);margin-top:2px">High severity · any agent</div></td>
-              <td style="font-size:12.5px;color:var(--ink-2)">check <span class="money">identity-before-phi</span> fails on any session</td>
+              <td style="font-size:12px;color:var(--ink-2)">check <span class="money">identity-before-phi</span> fails on any session</td>
               <td style="font-size:13px;color:var(--ink-2)"><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:14px;height:14px;border-radius:3px;background:#4A154B;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700">#</span>#clinic-ai-alerts</span> + on-call webhook</td>
               <td class="mono">Today 09:31</td>
               <td><span class="pill pass dot">Active</span></td>
             </tr>
             <tr class="rowlink">
               <td><b style="font-weight:600">Check pass rate drop</b><div style="font-size:12px;color:var(--muted);margin-top:2px">Drift guard · per agent</div></td>
-              <td style="font-size:12.5px;color:var(--ink-2)">pass rate &lt; 98.5% over a rolling 4h window</td>
+              <td style="font-size:12px;color:var(--ink-2)">pass rate &lt; 98.5% over a rolling 4h window</td>
               <td style="font-size:13px;color:var(--ink-2)"><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:14px;height:14px;border-radius:3px;background:#4A154B;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700">#</span>#clinic-ai-alerts</span></td>
               <td class="mono">Jul 24</td>
               <td><span class="pill pass dot">Active</span></td>
             </tr>
             <tr class="rowlink">
               <td><b style="font-weight:600">Slow human handoff</b><div style="font-size:12px;color:var(--muted);margin-top:2px">Ops · [Live] Aqua FS</div></td>
-              <td style="font-size:12.5px;color:var(--ink-2)">handoff &gt; 8s on 3+ sessions within 1h</td>
+              <td style="font-size:12px;color:var(--ink-2)">handoff &gt; 8s on 3+ sessions within 1h</td>
               <td style="font-size:13px;color:var(--ink-2)"><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:14px;height:14px;border-radius:3px;background:#4A154B;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700">#</span>#voice-ops</span></td>
               <td class="mono">—</td>
               <td><span class="pill pass dot">Active</span></td>
@@ -183,11 +183,11 @@
       <div class="blk">
         <div class="blk-h"><b>Slack message</b><span class="note">#clinic-ai-alerts · Slack integration</span></div>
         <div class="blk-b" style="display:flex;justify-content:center;background:var(--bg)">
-          <div style="width:100%;max-width:520px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:13.5px;box-shadow:var(--shadow)">
+          <div style="width:100%;max-width:520px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:13px;box-shadow:var(--shadow)">
             <div style="display:flex;align-items:center;gap:8px">
               <span style="width:26px;height:26px;border-radius:6px;background:var(--green);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">O</span>
               <b style="font-weight:700">Ollive</b><span style="font-size:10px;color:var(--faint);background:var(--off-bg);padding:1px 5px;border-radius:3px">APP</span>
-              <span style="font-size:11.5px;color:var(--faint)">9:31 AM</span>
+              <span style="font-size:11px;color:var(--faint)">9:31 AM</span>
             </div>
             <div style="border-left:3px solid var(--score-low);padding:2px 0 2px 12px;margin:10px 0 0 2px">
               <b style="font-weight:700;color:var(--score-low)">⚠ High · PHI before identity check</b>
@@ -218,7 +218,7 @@
             <button class="btn ghost sm" onclick="toast('Events key copied')">Copy</button>
             <button class="btn ghost sm" onclick="toast('Key rotated · previous key valid 24h')">Rotate</button>
           </div>
-          <div style="display:flex;gap:16px;margin-top:12px;font-size:12.5px;color:var(--muted);flex-wrap:wrap">
+          <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--muted);flex-wrap:wrap">
             <span>Scope: <b style="color:var(--ink-2);font-weight:500">events:read · sessions:read</b></span>
             <span>Created: <b style="color:var(--ink-2);font-weight:500">Jul 12, 2026</b></span>
             <span>Last used: <b style="color:var(--ink-2);font-weight:500">41s ago</b></span>
@@ -233,14 +233,14 @@
           <tbody>
             <tr>
               <td><b style="font-weight:600">[Live] Aqua FS Florida</b></td>
-              <td style="font-size:12.5px;color:var(--ink-2)">Retell webhook · auto via integration</td>
+              <td style="font-size:12px;color:var(--ink-2)">Retell webhook · auto via integration</td>
               <td class="mono">1,214 sessions</td>
               <td><span class="pill pass dot">Receiving</span></td>
               <td class="right"><button class="btn ghost sm" onclick="openIngest()">Configure</button></td>
             </tr>
             <tr>
               <td><b style="font-weight:600;color:var(--muted)">Manage — TEST swarm · 2 more</b></td>
-              <td style="font-size:12.5px;color:var(--muted)">Not deployed</td>
+              <td style="font-size:12px;color:var(--muted)">Not deployed</td>
               <td class="mono" style="color:var(--faint)">—</td>
               <td><span class="pill off">Idle</span></td>
               <td class="right"></td>
@@ -252,7 +252,7 @@
       <div class="blk">
         <div class="blk-h"><b>Custom ingest</b><span class="note">for agents outside a connected platform</span></div>
         <div class="blk-b">
-          <div style="font-size:12.5px;color:var(--muted);margin-bottom:8px">POST completed conversations to the workspace endpoint, or use an SDK.</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:8px">POST completed conversations to the workspace endpoint, or use an SDK.</div>
           <div class="diff" style="margin-top:0">
             <div class="dline ctx">POST https://ingest.ollive.ai/v1/sessions</div>
             <div class="dline ctx">Authorization: Bearer olv_evt_…</div>
@@ -274,9 +274,9 @@
 <div class="drawer-scrim" id="scrim" onclick="closeSession()"></div>
 <aside class="drawer" id="session-drawer" aria-label="Session detail">
   <button class="drawer-close" onclick="closeSession()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <div style="display:flex;gap:8px;align-items:center" id="s-status"><span class="pill fail dot">Flagged</span><span style="font-size:12.5px;color:var(--muted)">alert fired · acknowledged by Purvish</span></div>
+  <div style="display:flex;gap:8px;align-items:center" id="s-status"><span class="pill fail dot">Flagged</span><span style="font-size:12px;color:var(--muted)">alert fired · acknowledged by Purvish</span></div>
   <h2 style="font-size:18px;font-weight:600;letter-spacing:-.01em;margin-top:12px" id="s-title">Billing balance inquiry</h2>
-  <div style="font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:4px" id="s-meta">s_9f21 · [Live] Aqua FS Florida · 09:31:47 · 5m 02s · inbound</div>
+  <div style="font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:4px" id="s-meta">s_9f21 · [Live] Aqua FS Florida · 09:31:47 · 5m 02s · inbound</div>
 
   <div class="d-sec" id="s-fail">
     <div class="d-sec-h" style="color:var(--fail-text)">Failed check <span style="font-family:var(--mono);text-transform:none;letter-spacing:0">identity-before-phi · HIPAA §164.502</span></div>
@@ -306,7 +306,7 @@
       <div class="subrow" style="padding-left:16px"><span class="r-desc">AI self-disclosure at greeting</span><span class="pill pass">Pass</span></div>
       <div class="subrow" style="padding-left:16px"><span class="r-desc">In-scope answers only</span><span class="pill pass">Pass</span></div>
       <div class="subrow" style="padding-left:16px"><span class="r-desc">Tool-call bounds respected</span><span class="pill pass">Pass</span></div>
-      <div style="padding:10px 16px"><button class="link" style="font-size:12.5px">All 31 checks</button></div>
+      <div style="padding:10px 16px"><button class="link" style="font-size:12px">All 31 checks</button></div>
     </div>
   </div>
 
@@ -373,11 +373,11 @@
       <div class="fld">
         <label>Send to</label>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <span class="tag" style="padding:6px 12px;font-size:12.5px;background:var(--green-tint);color:var(--green-text);cursor:pointer"><span style="width:13px;height:13px;border-radius:3px;background:#4A154B;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;margin-right:5px">#</span>#clinic-ai-alerts ✓</span>
-          <span class="tag" style="padding:6px 12px;font-size:12.5px;cursor:pointer" onclick="toast('Requires the Ollive app in the channel')">+ channel</span>
-          <span class="tag" style="padding:6px 12px;font-size:12.5px;cursor:pointer">Email</span>
-          <span class="tag" style="padding:6px 12px;font-size:12.5px;cursor:pointer">Webhook</span>
-          <span class="tag" style="padding:6px 12px;font-size:12.5px;cursor:pointer">PagerDuty</span>
+          <span class="tag" style="padding:6px 12px;font-size:12px;background:var(--green-tint);color:var(--green-text);cursor:pointer"><span style="width:13px;height:13px;border-radius:3px;background:#4A154B;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;margin-right:5px">#</span>#clinic-ai-alerts ✓</span>
+          <span class="tag" style="padding:6px 12px;font-size:12px;cursor:pointer" onclick="toast('Requires the Ollive app in the channel')">+ channel</span>
+          <span class="tag" style="padding:6px 12px;font-size:12px;cursor:pointer">Email</span>
+          <span class="tag" style="padding:6px 12px;font-size:12px;cursor:pointer">Webhook</span>
+          <span class="tag" style="padding:6px 12px;font-size:12px;cursor:pointer">PagerDuty</span>
         </div>
       </div>
       <!-- Live preview of the Slack message -->
@@ -411,7 +411,7 @@
       <div class="fld">
         <label>Source</label>
         <div style="display:flex;align-items:center;gap:10px">
-          <code style="font-family:var(--mono);font-size:11.5px;color:var(--ink-2);background:var(--bg);border:1px solid var(--border-soft);border-radius:6px;padding:8px 12px;flex:1;overflow-x:auto;white-space:nowrap">https://ingest.ollive.ai/v1/hooks/retell/agent_c3d4e5</code>
+          <code style="font-family:var(--mono);font-size:11px;color:var(--ink-2);background:var(--bg);border:1px solid var(--border-soft);border-radius:6px;padding:8px 12px;flex:1;overflow-x:auto;white-space:nowrap">https://ingest.ollive.ai/v1/hooks/retell/agent_c3d4e5</code>
           <button class="btn ghost sm" onclick="toast('Webhook URL copied')">Copy</button>
         </div>
         <div style="font-size:12px;color:var(--muted);margin-top:6px">Registered via the Retell integration · secret rotates with the events key</div>
@@ -453,7 +453,7 @@
         <label>Checks</label>
         <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--border-soft);border-radius:8px;padding:10px 14px;background:var(--bg);font-size:13px">
           <span>Pack <b class="money">v3.2</b> · 31 checks</span>
-          <a class="link" href="assessment.html" style="font-size:12.5px">View pack</a>
+          <a class="link" href="assessment.html" style="font-size:12px">View pack</a>
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--border-soft)">
@@ -479,11 +479,11 @@
   }));
 
   const SESSIONS = {
-    flag:  { status: '<span class="pill fail dot">Flagged</span><span style="font-size:12.5px;color:var(--muted)">alert fired · acknowledged by Purvish</span>',
+    flag:  { status: '<span class="pill fail dot">Flagged</span><span style="font-size:12px;color:var(--muted)">alert fired · acknowledged by Purvish</span>',
              title: 'Billing balance inquiry', meta: 's_9f21 · [Live] Aqua FS Florida · 09:31:47 · 5m 02s · inbound', checks: '30 of 31 passed', fail: true },
-    flag2: { status: '<span class="pill ind dot">Review</span><span style="font-size:12.5px;color:var(--muted)">queued for adjudication</span>',
+    flag2: { status: '<span class="pill ind dot">Review</span><span style="font-size:12px;color:var(--muted)">queued for adjudication</span>',
              title: 'Insurance eligibility question', meta: 's_9f02 · [Live] Aqua FS Florida · 09:02:31 · 4m 40s · inbound', checks: '30 of 31 · 1 indeterminate', fail: false },
-    clean: { status: '<span class="pill pass">Clean</span><span style="font-size:12.5px;color:var(--muted)">all checks passed</span>',
+    clean: { status: '<span class="pill pass">Clean</span><span style="font-size:12px;color:var(--muted)">all checks passed</span>',
              title: 'Payment plan setup', meta: 's_9f1d · [Live] Aqua FS Florida · 09:24:10 · 2m 27s · outbound', checks: '31 of 31 passed', fail: false }
   };
   function openSession(k) {
@@ -498,7 +498,7 @@
     document.getElementById('scrim').classList.add('open');
   }
   function ackFlag(btn) {
-    document.getElementById('s-status').innerHTML = '<span class="pill ind dot">Acknowledged</span><span style="font-size:12.5px;color:var(--muted)">by Rounak · just now</span>';
+    document.getElementById('s-status').innerHTML = '<span class="pill ind dot">Acknowledged</span><span style="font-size:12px;color:var(--muted)">by Rounak · just now</span>';
     btn.disabled = true;
     toast('Acknowledged');
   }
