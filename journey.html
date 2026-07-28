@@ -97,12 +97,12 @@
     <div class="flow">
       <div class="fstep"><div class="fn">1 · Connect</div><b>Import agents</b><p>Connect the voice platform, import the fleet. Unimported agents stay visibly unmeasured.</p><div class="fs">integrations · agents</div></div>
       <div class="fstep"><div class="fn">2 · Declare</div><b>Disclosure profile</b><p>Industry, states, PHI access, call direction, patient ages. Derives which frameworks and regulations apply.</p><div class="fs">disclosures</div></div>
-      <div class="fstep"><div class="fn">3 · Scope</div><b>Framework breakdown</b><p>Each applicable framework decomposes into org and agent directives with a per-directive verification method.</p><div class="fs">frameworks — new</div></div>
-      <div class="fstep" style="border-color:rgba(154,106,27,.4)"><div class="fn">4 · Evidence loop</div><b>Verify org directives</b><p>Evidence requests per directive. Upload → review → verified, with expiry. Missing evidence caps the framework score.</p><div class="fs">documents → evidence — upgraded</div></div>
+      <div class="fstep"><div class="fn">3 · Scope</div><b>Framework breakdown</b><p>Each applicable framework decomposes into org and agent directives with a per-directive verification method.</p><div class="fs">frameworks</div></div>
+      <div class="fstep" style="border-color:rgba(154,106,27,.4)"><div class="fn">4 · Evidence loop</div><b>Verify org directives</b><p>Evidence requests per directive. Upload → review → verified, with expiry. Missing evidence caps the framework score.</p><div class="fs">evidence</div></div>
       <div class="fstep" style="border-color:rgba(154,106,27,.4)"><div class="fn">5 · Test loop</div><b>Assess agent directives</b><p>Directives compile to pro/anti scenarios. Run → issues → fix → verify fix → re-score. Indeterminates go to adjudication.</p><div class="fs">assessment · adjudicate</div></div>
       <div class="fstep"><div class="fn">6 · Score</div><b>Framework completion</b><p>Org evidence × agent tests roll up per framework, at org and per-agent level. Every number expands to its evidence.</p><div class="fs">dashboard · risk &amp; compliance</div></div>
       <div class="fstep"><div class="fn">7 · Maintain</div><b>Continuous governance</b><p>Sessions checked in production; documents expire and re-request; agent version drift triggers re-assessment.</p><div class="fs">monitor</div></div>
-      <div class="fstep"><div class="fn">8 · Prove</div><b>Audit report &amp; portal</b><p>Claims split by layer, each traceable to a verified document or a replayable test attempt. Versioned methodology.</p><div class="fs">report — new · trust portal</div></div>
+      <div class="fstep"><div class="fn">8 · Prove</div><b>Audit report &amp; portal</b><p>Claims split by layer, each traceable to a verified document or a replayable test attempt. Versioned methodology.</p><div class="fs">report · trust portal</div></div>
       <div class="fstep" style="border-style:dashed;opacity:.6"><div class="fn">later</div><b>Assurance</b><p>Underwriting angle parked until the classification is validated — you can't price what you haven't defined.</p><div class="fs">—</div></div>
     </div>
   </div>
@@ -194,11 +194,11 @@
       <tbody>
         <tr><td><b style="font-weight:600">Integrations · Disclosures · Agents</b></td><td><span class="pill pass">Reuse</span></td><td style="color:var(--ink-2)">Connect and declare — unchanged mechanics, now feeding framework derivation</td></tr>
         <tr><td><b style="font-weight:600">Assessment · Adjudicate · Monitor</b></td><td><span class="pill pass">Reuse</span></td><td style="color:var(--ink-2)">The agent-directive test loop — issues, fix-and-verify, adjudication, production checks</td></tr>
-        <tr><td><b style="font-weight:600">Documents → Evidence</b></td><td><span class="pill ind">Upgrade</span></td><td style="color:var(--ink-2)">From upload buckets to evidence requests: per-directive asks, review states, reviewer, expiry, rejection reasons</td></tr>
+        <tr><td><b style="font-weight:600">Documents → Evidence</b></td><td><span class="pill pass">Built</span></td><td style="color:var(--ink-2)"><a class="link" href="evidence.html">evidence</a> — per-directive requests: per-directive asks, review states, reviewer, expiry, rejection reasons</td></tr>
         <tr><td><b style="font-weight:600">Risk &amp; compliance · Dashboard</b></td><td><span class="pill ind">Upgrade</span></td><td style="color:var(--ink-2)">Add framework completion (org × agent) beside regulation status; keep drill-to-evidence</td></tr>
-        <tr><td><b style="font-weight:600">Frameworks</b></td><td><span class="pill fail">New</span></td><td style="color:var(--ink-2)">Per-framework directive breakdown: org/agent split, verification method, state, what caps the score</td></tr>
-        <tr><td><b style="font-weight:600">Directive detail</b></td><td><span class="pill fail">New</span></td><td style="color:var(--ink-2)">One directive: source clause, verification method, evidence or test results, history — the drawer pattern extended</td></tr>
-        <tr><td><b style="font-weight:600">Audit report</b></td><td><span class="pill fail">New</span></td><td style="color:var(--ink-2)">Versioned, claim-level provenance, layer labels on every claim; the portal's NDA tier renders it</td></tr>
+        <tr><td><b style="font-weight:600">Frameworks</b></td><td><span class="pill pass">Built</span></td><td style="color:var(--ink-2)"><a class="link" href="frameworks.html">frameworks</a> — per-framework directive breakdown: org/agent split, verification method, state, what caps the score</td></tr>
+        <tr><td><b style="font-weight:600">Directive detail</b></td><td><span class="pill pass">Built</span></td><td style="color:var(--ink-2)">Drawer on <a class="link" href="frameworks.html">frameworks</a> — one directive: source clause, verification method, evidence or test results, history — the drawer pattern extended</td></tr>
+        <tr><td><b style="font-weight:600">Audit report</b></td><td><span class="pill pass">Built</span></td><td style="color:var(--ink-2)"><a class="link" href="report.html">report</a> — versioned, claim-level provenance, layer labels on every claim; the portal's NDA tier renders it</td></tr>
       </tbody>
     </table>
   </div>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ollive — Audit report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+  <style>
+    .lay { display: inline-flex; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .04em; padding: 2px 7px; border-radius: 5px; flex-shrink: 0; }
+    .lay.org { background: #EEF1F5; color: #40506B; }
+    .lay.agt { background: var(--green-tint); color: var(--green-text); }
+    .claim { display: flex; gap: 14px; padding: 14px 24px; border-bottom: 1px solid var(--border-soft); font-size: 13px; align-items: flex-start; cursor: pointer; transition: background .12s; }
+    .claim:hover { background: var(--bg); }
+    .claim:last-child { border-bottom: none; }
+    .claim .c-body { flex: 1; min-width: 0; }
+    .claim .c-prov { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .claim .c-state { flex-shrink: 0; }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <a class="brand" href="dashboard.html"><span class="mark">O</span> Ollive</a>
+    <a class="navitem" href="dashboard.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a class="navitem" href="agents.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg> Agents</a>
+    <a class="navitem" href="monitor.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg> Monitor</a>
+    <a class="navitem on" href="frameworks.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13.5l9 5 9-5"/></svg> Frameworks</a>
+    <a class="navitem" href="risk.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg> Risk &amp; compliance</a>
+    <div class="navgroup">Settings</div>
+    <a class="navitem" href="disclosures.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg> Disclosures</a>
+    <a class="navitem" href="evidence.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h8l3 3v12a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M10 12h6M10 16h6"/></svg> Evidence</a>
+    <a class="navitem" href="integrations.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v5M15 3v5"/><path d="M7 8h10v3a5 5 0 01-10 0z"/><path d="M12 16v5"/></svg> Integrations</a>
+    <a class="navitem" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M17 8h5M19.5 5.5v5"/></svg> Invite team</a>
+    <div class="side-spacer"></div>
+    <div class="user"><span class="ava">R</span> Rounak <a class="signout" href="#">Sign out</a></div>
+  </aside>
+
+  <main class="content"><div class="page">
+    <div class="crumb"><a href="frameworks.html">Frameworks</a><span>/</span><span>Audit report</span></div>
+    <div class="page-head">
+      <div>
+        <div class="h1">Audit report v4</div>
+        <div class="sub">Generated Jul 29, 2026 · taxonomy v2.1 · every claim carries a layer label and provenance</div>
+      </div>
+      <div class="head-actions">
+        <button class="btn ghost" onclick="toast('audit_report_v4.pdf exported · watermarked')">Export PDF</button>
+        <button class="btn primary" onclick="toast('Published to trust portal · NDA tier · portal notified')">Publish to portal</button>
+      </div>
+    </div>
+
+    <!-- Scope -->
+    <div class="blk">
+      <div class="blk-h"><b>Scope &amp; exclusions</b><span class="note">read this first — exclusions are stated, not discovered</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="padding:16px 24px;border-right:1px solid var(--border-soft)">
+          <div class="eyebrow" style="margin-bottom:10px">In scope</div>
+          <div style="font-size:13px;color:var(--ink-2);line-height:1.9">
+            3 assessed agents — Manage · TEST swarm, [Live] Aqua FS Florida, Lakeside Ped Rx Refill<br>
+            4 frameworks — HIPAA, EU AI Act, NIST AI RMF, ISO/IEC 42001<br>
+            Assessment runs 1–23 · production monitoring since Jul 3
+          </div>
+        </div>
+        <div style="padding:16px 24px">
+          <div class="eyebrow" style="margin-bottom:10px">Excluded</div>
+          <div style="font-size:13px;color:var(--ink-2);line-height:1.9">
+            Lakeside Ped Wells Rx — never assessed; no claims made<br>
+            36 unimported workspace agents — unmeasured<br>
+            California CIPA — not tested this period
+          </div>
+        </div>
+      </div>
+      <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
+        Method: taxonomy v2.1 · scenario pack v3.2 · judge panel v1.8 (κ 0.81 vs 1,240 human labels) · evidence reviewed by named Ollive reviewers · <a class="link" href="compliance.html">penalty reference</a>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="blk">
+      <div class="blk-h"><b>Completion by framework</b><span class="note">org evidence × agent tests</span></div>
+      <table class="tbl">
+        <thead><tr><th>Framework</th><th class="right">Org directives</th><th class="right">Agent directives</th><th class="right">Completion</th><th>Capped by</th></tr></thead>
+        <tbody>
+          <tr class="rowlink" onclick="location.href='frameworks.html'"><td><b style="font-weight:600">HIPAA</b></td><td class="right mono">9 / 12 verified</td><td class="right mono">14 / 16 passing</td><td class="right"><span class="score mid" style="font-size:15px">79%</span></td><td style="font-size:12px;color:var(--muted)">3 evidence items · 1 cross-layer conflict</td></tr>
+          <tr class="rowlink" onclick="location.href='frameworks.html'"><td><b style="font-weight:600">NIST AI RMF</b></td><td class="right mono">11 / 18 verified</td><td class="right mono">12 / 15 passing</td><td class="right"><span class="score mid" style="font-size:15px">70%</span></td><td style="font-size:12px;color:var(--muted)">5 evidence items · 1 failing directive</td></tr>
+          <tr class="rowlink" onclick="location.href='frameworks.html'"><td><b style="font-weight:600">EU AI Act</b></td><td class="right mono">14 / 23 verified</td><td class="right mono">21 / 28 passing</td><td class="right"><span class="score mid" style="font-size:15px">61%</span></td><td style="font-size:12px;color:var(--muted)">9 evidence items</td></tr>
+          <tr class="rowlink" onclick="location.href='frameworks.html'"><td><b style="font-weight:600">ISO/IEC 42001</b></td><td class="right mono">6 / 21 verified</td><td class="right mono">9 / 12 passing</td><td class="right"><span class="score low" style="font-size:15px">45%</span></td><td style="font-size:12px;color:var(--muted)">15 evidence items</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Claims -->
+    <div class="blk">
+      <div class="blk-h"><b>Claims</b><span class="note">select a claim to trace its provenance · 8 of 94 shown</span></div>
+      <div id="claims"></div>
+      <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
+        A claim labelled AGT asserts tested agent behavior only. A claim labelled ORG asserts reviewed evidence of organizational practice only. Neither is presented as the other. <a class="link" href="#" onclick="toast('claims_register_v4.csv exported');return false">Export all 94</a>
+      </div>
+    </div>
+
+    <!-- Findings -->
+    <div class="blk">
+      <div class="blk-h"><b>Open findings in this report</b><span class="note">stated, not hidden — with state and owner</span></div>
+      <table class="tbl">
+        <thead><tr><th style="width:38%">Finding</th><th>Layer</th><th>State</th><th class="right">Exposure</th></tr></thead>
+        <tbody>
+          <tr><td><b style="font-weight:600">Identity verification before PHI disclosure fails in 5 of 31 attempts</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">AGT-021 · HIPAA §164.502(b)</div></td><td><span class="lay agt">AGT</span></td><td><span class="pill ind">Fixing · Purvish</span></td><td class="right money">$54k</td></tr>
+          <tr><td><b style="font-weight:600">Retention policy contradicts agent statements to callers</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">ORG-052 ↔ AGT-121 · cross-layer conflict</div></td><td><span class="lay org">ORG</span> <span class="lay agt">AGT</span></td><td><span class="pill fail dot">Open</span></td><td class="right money">—</td></tr>
+          <tr><td><b style="font-weight:600">Contingency plan rejected — no recovery time objectives</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">ORG-018 · HIPAA §164.308(a)(7)</div></td><td><span class="lay org">ORG</span></td><td><span class="pill fail">Rejected · re-upload requested</span></td><td class="right money">—</td></tr>
+          <tr><td><b style="font-weight:600">Out-of-distribution inputs produce confident wrong answers</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">AGT-142 · NIST MEASURE 2.5</div></td><td><span class="lay agt">AGT</span></td><td><span class="pill fail dot">Open</span></td><td class="right money">$14k</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div></main>
+</div>
+
+<div class="drawer-scrim" id="c-scrim" onclick="closeClaim()"></div>
+<aside class="drawer" id="c-drawer" aria-label="Claim provenance">
+  <button class="drawer-close" onclick="closeClaim()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div id="c-body"></div>
+</aside>
+
+<div class="toast" id="toast"><span class="ck-toast"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span id="toast-msg"></span></div>
+
+<script>
+const CLAIMS = [
+  { lay:'org', pill:['pass','Verified'], text:'Recordings and transcripts are encrypted at rest and in transit.',
+    prov:'ORG-012 · encryption_policy_v3.pdf · e7a3…9f2c · R. Alvarez · Feb 15, 2026 · expires Aug 15, 2026',
+    chain:{ src:'HIPAA §164.312(a)(2)(iv)', how:'Policy PDF + platform config export, reviewed by a named Ollive reviewer.',
+      items:[['Document','encryption_policy_v3.pdf · 14 pp'],['Hash','e7a3…9f2c'],['Reviewer','R. Alvarez (Ollive)'],['Reviewed','Feb 15, 2026'],['Expires','Aug 15, 2026 · renewal requested']],
+      note:'This claim asserts reviewed evidence of organizational practice. It does not assert agent behavior.' } },
+  { lay:'agt', pill:['pass','Passing'], text:'Agents disclose AI identity when asked, in adversarial phrasing variants.',
+    prov:'AGT-104 · 6 scenarios · 18 attempts · 17 pass · 1 in adjudication · pack v3.2 · run 7',
+    chain:{ src:'EU AI Act Art. 13(1) · FL AI disclosure · Utah HB 452', how:'Pro/anti behavior tests, replayable by seed.',
+      items:[['Test cases','6 scenarios · pro 4 / anti 2'],['Attempts','18 · 17 pass · 1 indeterminate'],['Run','run 7 · Jul 25 · pack v3.2 pinned'],['Replay','ollive run --agent agent_a1b2c3 --scenario DIS.0021 --seed 4127'],['Judge','panel of 3 · κ 0.81 vs human labels']],
+      note:'This claim asserts tested behavior on the assessed version (v12). Deployed version drift is flagged on the assessment.' } },
+  { lay:'org', pill:['pass','Verified'], text:'Every production session is logged with traceable identifiers and retained per schedule.',
+    prov:'ORG-038 · ollive_ingest_config.json + log sample · 2d9c…a04f · R. Alvarez · Jul 8, 2026',
+    chain:{ src:'EU AI Act Art. 12 · NIST MAP', how:'System evidence — configuration export plus a 30-day log sample. Evidence types expand; buckets don\'t.',
+      items:[['Files','ollive_ingest_config.json · log_sample_jun.zip'],['Hash','2d9c…a04f'],['Reviewer','R. Alvarez (Ollive)'],['Reviewed','Jul 8, 2026'],['Expires','Jul 2027']],
+      note:'Platform-capability directive verified with system evidence rather than a policy PDF.' } },
+  { lay:'agt', pill:['pass','Passing'], text:'Agents escalate to a human on defined oversight triggers.',
+    prov:'AGT-117 · 7 scenarios · 21/21 pass · linked to ORG-044 (under review)',
+    chain:{ src:'EU AI Act Art. 14', how:'Split directive: behavior tested here; the humans it escalates to are verified separately under ORG-044.',
+      items:[['Test cases','7 scenarios · pro 5 / anti 2'],['Attempts','21 · 21 pass'],['Run','run 7 · Jul 25 · pack v3.2'],['Linked','ORG-044 · oversight owners · under review']],
+      note:'The paired ORG half is not yet verified — this report claims the behavior, not the full Art. 14 requirement.' } },
+  { lay:'agt', pill:['pass','Within threshold'], text:'Task accuracy 94% ±3 against a declared ≥90% threshold.',
+    prov:'AGT-130 · 42-task sampled suite · 95% CI · clustered by task type',
+    chain:{ src:'EU AI Act Art. 15', how:'Statistical directive — reported with interval and threshold, never collapsed to a checkmark.',
+      items:[['Suite','42 tasks · sampled'],['Result','94% ±3 (95% CI)'],['Threshold','≥90% · declared in scope'],['Rule','estimate inside the threshold\'s noise band → inconclusive, not passing']],
+      note:'A point estimate is an estimate. The interval ships with the claim.' } },
+  { lay:'org', pill:['ind','Partial'], text:'Incident response: documented tier verified; operating tier partial.',
+    prov:'ORG-061 · incident_response_v2.pdf verified · alert route live for 1 of 3 agents',
+    chain:{ src:'HIPAA §164.308(a)(6) · NIST MANAGE', how:'Evidence tiers — a plan PDF proves the process exists; the wired alert route proves it operates.',
+      items:[['Documented','incident_response_v2.pdf · verified Jun 18'],['Operating','Slack route active: [Live] Aqua FS Florida only'],['Gap','2 live agents route to no destination']],
+      note:'The report shows which tier was verified. "Documented" is never presented as "operating".' } },
+  { lay:'agt', pill:['fail','Failing'], text:'Identity verification before PHI disclosure — failing, fix in progress.',
+    prov:'AGT-021 · 31 attempts · 5 fail · issue open (Purvish) · $54k modelled exposure',
+    chain:{ src:'HIPAA §164.502(b)', how:'Failing directives appear in the report with state and owner — omitting them would be the credibility gap.',
+      items:[['Attempts','31 · 24 pass · 5 fail · 2 indeterminate'],['Issue','Sensitive Data Leakage in Outputs · Fixing'],['Owner','Purvish · since Jul 25'],['Exposure','$54k modelled']],
+      note:'Openly stated. The fix-and-verify record will attach here when it lands.' } },
+  { lay:'org', pill:['fail','Conflict'], text:'Retention: verified 30-day policy contradicts agent statements to callers.',
+    prov:'ORG-052 ↔ AGT-121 · cross-layer consistency check · both flagged',
+    chain:{ src:'HIPAA §164.530(j) · FTC Act §5', how:'Linked directives must agree. Verified-in-isolation is not verified.',
+      items:[['Policy','retention_schedule_2026.pdf · 30 days · verified May 9'],['Agent says','"deleted right after this call" · 12/12 attempts'],['Status','both directives flagged until reconciled']],
+      note:'The conflict is the finding. Resolving either side clears the pair.' } },
+];
+document.getElementById('claims').innerHTML = CLAIMS.map((c, i) => `
+  <div class="claim" onclick="openClaim(${i})">
+    <span class="lay ${c.lay}">${c.lay.toUpperCase()}</span>
+    <div class="c-body">
+      <span style="font-weight:500">${c.text}</span>
+      <div class="c-prov">${c.prov}</div>
+    </div>
+    <span class="c-state"><span class="pill ${c.pill[0]}">${c.pill[1]}</span></span>
+  </div>`).join('');
+function openClaim(i) {
+  const c = CLAIMS[i];
+  document.getElementById('c-body').innerHTML = `
+    <div style="display:flex;gap:8px;align-items:center"><span class="lay ${c.lay}">${c.lay.toUpperCase()}</span><span class="pill ${c.pill[0]}">${c.pill[1]}</span></div>
+    <h2 style="font-size:17px;font-weight:600;letter-spacing:-.01em;margin-top:12px;line-height:1.4">${c.text}</h2>
+    <div style="font-size:12px;color:var(--muted);margin-top:8px">${c.chain.src}</div>
+    <div class="d-sec"><div class="d-sec-h">How this was verified</div><div class="d-sec-b" style="font-size:12px">${c.chain.how}</div></div>
+    <div class="d-sec"><div class="d-sec-h">Provenance</div><div class="d-sec-b" style="padding:0">
+      ${c.chain.items.map(([k, v]) => `<div style="display:grid;grid-template-columns:110px 1fr;gap:16px;padding:10px 16px;border-bottom:1px solid var(--border-soft);font-size:12px"><span style="color:var(--muted)">${k}</span><span class="mono" style="font-size:11px;word-break:break-all">${v}</span></div>`).join('')}
+    </div></div>
+    <div class="d-sec" style="background:var(--bg)"><div class="d-sec-b" style="font-size:12px;color:var(--ink-2)">${c.chain.note}</div></div>`;
+  document.getElementById('c-drawer').classList.add('open');
+  document.getElementById('c-scrim').classList.add('open');
+}
+function closeClaim() {
+  document.getElementById('c-drawer').classList.remove('open');
+  document.getElementById('c-scrim').classList.remove('open');
+}
+let tt;
+function toast(msg) {
+  document.getElementById('toast-msg').textContent = msg;
+  const el = document.getElementById('toast');
+  el.classList.add('show');
+  clearTimeout(tt); tt = setTimeout(() => el.classList.remove('show'), 2800);
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeClaim(); });
+</script>
+</body>
+</html>

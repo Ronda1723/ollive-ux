@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ollive — Frameworks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+  <style>
+    .fwgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    .fwcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); box-shadow: var(--shadow); padding: 18px; cursor: pointer; transition: border-color .15s; text-align: left; }
+    .fwcard:hover { border-color: var(--faint); }
+    .fwcard.on { border-color: var(--green); box-shadow: 0 0 0 1px var(--green); }
+    .fwcard b { font-size: 13px; font-weight: 600; display: block; }
+    .fwcard .pct { font-family: var(--mono); font-size: 24px; font-weight: 600; margin-top: 10px; }
+    .fwcard .split { font-size: 11px; color: var(--muted); margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
+    .fwcard .split .row { display: flex; align-items: center; gap: 8px; }
+    .fwcard .split .row span:first-child { width: 38px; font-family: var(--mono); font-size: 10px; color: var(--faint); text-transform: uppercase; }
+    .fwcard .split .bar { flex: 1; }
+    .fwcard .cap { font-size: 11px; margin-top: 10px; color: var(--score-mid); }
+    .lay { display: inline-flex; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .04em; padding: 2px 7px; border-radius: 5px; }
+    .lay.org { background: #EEF1F5; color: #40506B; }
+    .lay.agt { background: var(--green-tint); color: var(--green-text); }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <a class="brand" href="dashboard.html"><span class="mark">O</span> Ollive</a>
+    <a class="navitem" href="dashboard.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a class="navitem" href="agents.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg> Agents</a>
+    <a class="navitem" href="monitor.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg> Monitor</a>
+    <a class="navitem on" href="frameworks.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13.5l9 5 9-5"/></svg> Frameworks</a>
+    <a class="navitem" href="risk.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg> Risk &amp; compliance</a>
+    <div class="navgroup">Settings</div>
+    <a class="navitem" href="disclosures.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg> Disclosures</a>
+    <a class="navitem" href="evidence.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h8l3 3v12a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M10 12h6M10 16h6"/></svg> Evidence</a>
+    <a class="navitem" href="integrations.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v5M15 3v5"/><path d="M7 8h10v3a5 5 0 01-10 0z"/><path d="M12 16v5"/></svg> Integrations</a>
+    <a class="navitem" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M17 8h5M19.5 5.5v5"/></svg> Invite team</a>
+    <div class="side-spacer"></div>
+    <div class="user"><span class="ava">R</span> Rounak <a class="signout" href="#">Sign out</a></div>
+  </aside>
+
+  <main class="content"><div class="page">
+    <div class="page-head">
+      <div>
+        <div class="h1">Frameworks</div>
+        <div class="sub">Applicable frameworks decomposed into org and agent directives · taxonomy v2.1</div>
+      </div>
+      <div class="head-actions">
+        <button class="btn ghost" onclick="toast('Scope re-derived from disclosure profile · no changes')">Re-derive scope</button>
+        <a class="btn primary" href="report.html">View audit report</a>
+      </div>
+    </div>
+
+    <div class="fwgrid" id="fwgrid"></div>
+
+    <div class="blk">
+      <div class="blk-h">
+        <b id="dir-title">EU AI Act — directives</b>
+        <span class="seg" id="lay-seg" style="font-size:12px">
+          <button class="on" onclick="setLayer(this,'all')">All</button>
+          <button onclick="setLayer(this,'org')">Org</button>
+          <button onclick="setLayer(this,'agt')">Agent</button>
+          <button onclick="setLayer(this,'open')">Needs action</button>
+        </span>
+        <span class="note" id="dir-note"></span>
+      </div>
+      <table class="tbl">
+        <thead><tr><th style="width:34%">Directive</th><th>Layer</th><th>Verification</th><th>Status</th><th class="right"></th></tr></thead>
+        <tbody id="dir-body"></tbody>
+      </table>
+      <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)" id="dir-foot"></div>
+    </div>
+  </div></main>
+</div>
+
+<div class="drawer-scrim" id="d-scrim" onclick="closeDir()"></div>
+<aside class="drawer" id="d-drawer" aria-label="Directive detail">
+  <button class="drawer-close" onclick="closeDir()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div id="d-body"></div>
+</aside>
+
+<div class="toast" id="toast"><span class="ck-toast"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span id="toast-msg"></span></div>
+
+<script>
+// status → pill class + label
+const ST = {
+  verified:  ['pass',  'Verified'],
+  passing:   ['pass',  'Passing'],
+  awaiting:  ['ind',   'Awaiting evidence'],
+  review:    ['ind',   'Under review'],
+  failing:   ['fail',  'Failing'],
+  rejected:  ['fail',  'Rejected'],
+  expiring:  ['ind',   'Expiring'],
+  conflict:  ['fail',  'Conflict'],
+};
+const OPEN = ['awaiting','failing','rejected','expiring','conflict','review'];
+
+const FW = {
+  hipaa: { name:'HIPAA', pct:79, org:[9,12], agt:[14,16], cap:'capped by 3 missing evidence items',
+    note:'28 directives · derived from PHI access in disclosure profile',
+    foot:'Showing 8 of 28 directives · <a class="link" href="#" onclick="toast(\'Exported hipaa_directives.csv\');return false">Export breakdown</a>',
+    dirs:[
+      { id:'ORG-012', name:'Encryption at rest and in transit', src:'§164.312(a)(2)(iv)', layer:'org', ver:'Policy PDF + config export', status:'expiring',
+        meta:'encryption_policy_v3.pdf · verified Feb 15 · expires Aug 15, 2026', act:['Re-request','evidence.html'],
+        detail:{ ev:{doc:'encryption_policy_v3.pdf', hash:'e7a3…9f2c', reviewer:'R. Alvarez (Ollive)', date:'Feb 15, 2026', exp:'Aug 15, 2026'},
+                 hist:['Feb 15 — verified (annual)','Feb 11 — uploaded','Feb 4 — requested'] } },
+      { id:'ORG-015', name:'Access control and audit logging', src:'§164.312(b)', layer:'org', ver:'System evidence — log sample + config', status:'verified',
+        meta:'retell_audit_config.json · verified Jul 2 · expires Jul 2027', act:['View evidence','evidence.html'],
+        detail:{ ev:{doc:'retell_audit_config.json', hash:'b1c8…44ae', reviewer:'R. Alvarez (Ollive)', date:'Jul 2, 2026', exp:'Jul 2, 2027'},
+                 hist:['Jul 2 — verified','Jun 30 — uploaded'] } },
+      { id:'ORG-018', name:'Contingency and disaster recovery plan', src:'§164.308(a)(7)', layer:'org', ver:'Policy PDF', status:'rejected',
+        meta:'rejected Jul 24 — plan lacks recovery time objectives', act:['Re-upload','evidence.html'],
+        detail:{ ev:{doc:'contingency_plan_v1.pdf', hash:'99ef…02d1', reviewer:'M. Chen (Ollive)', date:'Jul 24, 2026', exp:'—', rej:'Plan lacks recovery time objectives and does not name a responsible owner. Re-upload requested.'},
+                 hist:['Jul 24 — rejected with reason','Jul 21 — uploaded','Jul 14 — requested'] } },
+      { id:'ORG-061', name:'Security incident response procedures', src:'§164.308(a)(6)', layer:'org', ver:'Policy PDF + operating check', status:'verified',
+        meta:'documented tier verified · operating tier: alert route wired for 1 of 3 live agents', act:['Open monitor','monitor.html'],
+        detail:{ ev:{doc:'incident_response_v2.pdf', hash:'c4d2…8b7e', reviewer:'M. Chen (Ollive)', date:'Jun 18, 2026', exp:'Jun 2027'},
+                 tier:'Documented — verified. Operating — partial: Slack alert route active for [Live] Aqua FS Florida only.',
+                 hist:['Jun 18 — documented tier verified','Jun 12 — uploaded'] } },
+      { id:'AGT-021', name:'Identity verification before PHI disclosure', src:'§164.502(b)', layer:'agt', ver:'Pro/anti tests — 9 scenarios', status:'failing',
+        meta:'2 open issues · $54k exposure · fix in progress (Purvish)', act:['Open assessment','assessment.html'],
+        detail:{ test:{sc:'9 scenarios · pro 5 / anti 4', att:'31 attempts · 24 pass · 5 fail · 2 indeterminate', run:'run 7 · Jul 25 · pack v3.2', issue:'Sensitive Data Leakage in Outputs — Fixing (Purvish)'},
+                 hist:['Jul 25 — failing (5 fail)','Jul 18 — failing (7 fail)','Jul 11 — first tested'] } },
+      { id:'AGT-024', name:'Minimum necessary disclosure in responses', src:'§164.502(b)(1)', layer:'agt', ver:'Pro/anti tests — 6 scenarios', status:'passing',
+        meta:'18/18 attempts pass · run 7 · Jul 25', act:['Open assessment','assessment.html'],
+        detail:{ test:{sc:'6 scenarios · pro 4 / anti 2', att:'18 attempts · 18 pass', run:'run 7 · Jul 25 · pack v3.2'},
+                 hist:['Jul 25 — passing','Jul 11 — passing'] } },
+      { id:'ORG-052', name:'Recording retention — 30-day policy', src:'§164.530(j) · GDPR Art. 17', layer:'org', ver:'Policy PDF', status:'conflict',
+        meta:'verified policy contradicts agent behavior — see AGT-121', act:['Open pair','#'],
+        detail:{ ev:{doc:'retention_schedule_2026.pdf', hash:'7a1f…d3e0', reviewer:'R. Alvarez (Ollive)', date:'May 9, 2026', exp:'May 2027'},
+                 conflict:{pair:'AGT-121', text:'Policy: recordings retained 30 days. Agent tells callers "your recording is deleted right after this call." Both directives flag until reconciled.'},
+                 hist:['Jul 25 — conflict flagged by cross-layer check','May 9 — verified'] } },
+      { id:'AGT-121', name:'Accurate retention statements to callers', src:'§164.530 · FTC Act §5', layer:'agt', ver:'Pro/anti tests — 4 scenarios', status:'conflict',
+        meta:'passing in isolation · contradicts ORG-052 · cross-layer flag', act:['Open pair','#'],
+        detail:{ test:{sc:'4 scenarios · pro 2 / anti 2', att:'12 attempts · 12 pass', run:'run 7 · Jul 25 · pack v3.2'},
+                 conflict:{pair:'ORG-052', text:'Agent statement "deleted right after this call" contradicts the verified 30-day retention policy. Fix the prompt or the policy — the pair clears together.'},
+                 hist:['Jul 25 — conflict flagged','Jul 11 — passing'] } },
+    ]},
+  euai: { name:'EU AI Act', pct:61, org:[14,23], agt:[21,28], cap:'capped by 9 missing evidence items',
+    note:'51 directives · high-risk classification per Annex III triage',
+    foot:'Showing 7 of 51 directives · <a class="link" href="#" onclick="toast(\'Exported euai_directives.csv\');return false">Export breakdown</a>',
+    dirs:[
+      { id:'ORG-031', name:'Data governance and management policy', src:'Art. 10', layer:'org', ver:'Policy PDF', status:'awaiting',
+        meta:'requested Jul 14 · caps framework completion until verified', act:['Upload evidence','evidence.html'],
+        detail:{ ev:{doc:'—', hash:'—', reviewer:'—', date:'requested Jul 14, 2026', exp:'—'},
+                 hist:['Jul 14 — evidence requested'] } },
+      { id:'AGT-104', name:'Agent discloses AI on ask', src:'Art. 13(1)', layer:'agt', ver:'Pro/anti tests — 6 scenarios', status:'passing',
+        meta:'17/18 pass · 1 indeterminate in adjudication', act:['Open assessment','assessment.html'],
+        detail:{ test:{sc:'6 scenarios · pro 4 / anti 2', att:'18 attempts · 17 pass · 1 indeterminate → adjudication', run:'run 7 · Jul 25 · pack v3.2'},
+                 hist:['Jul 25 — passing (1 pending)','Jul 11 — failing (greeting patch shipped)'] } },
+      { id:'ORG-044', name:'Human oversight — named owners with intervention authority', src:'Art. 14', layer:'org', ver:'Policy PDF + org chart', status:'review',
+        meta:'uploaded Jul 26 · linked to AGT-117', act:['View evidence','evidence.html'],
+        detail:{ ev:{doc:'oversight_assignment_jul2026.pdf', hash:'f08b…6c11', reviewer:'in review (M. Chen)', date:'uploaded Jul 26, 2026', exp:'—'},
+                 link:{pair:'AGT-117', text:'Split directive: this ORG half names the humans; AGT-117 tests that the agent actually escalates to them.'},
+                 hist:['Jul 26 — uploaded','Jul 14 — requested'] } },
+      { id:'AGT-117', name:'Agent escalates to human on oversight triggers', src:'Art. 14', layer:'agt', ver:'Pro/anti tests — 7 scenarios', status:'passing',
+        meta:'21/21 attempts pass · linked to ORG-044', act:['Open assessment','assessment.html'],
+        detail:{ test:{sc:'7 scenarios · pro 5 / anti 2', att:'21 attempts · 21 pass', run:'run 7 · Jul 25 · pack v3.2'},
+                 link:{pair:'ORG-044', text:'Split directive: escalation behavior passes; the ORG half must verify the humans it escalates to exist and hold authority.'},
+                 hist:['Jul 25 — passing'] } },
+      { id:'ORG-038', name:'Logging and traceability of agent sessions', src:'Art. 12', layer:'org', ver:'System evidence — config export + log sample', status:'verified',
+        meta:'ingest config + 30-day log sample · verified Jul 8', act:['View evidence','evidence.html'],
+        detail:{ ev:{doc:'ollive_ingest_config.json + log_sample_jun.zip', hash:'2d9c…a04f', reviewer:'R. Alvarez (Ollive)', date:'Jul 8, 2026', exp:'Jul 2027'},
+                 hist:['Jul 8 — verified','Jul 1 — uploaded'] } },
+      { id:'AGT-130', name:'Task accuracy at or above declared threshold', src:'Art. 15', layer:'agt', ver:'Statistical — sampled task suite', status:'passing',
+        meta:'94% ±3 vs threshold ≥90% · reported with interval, never a checkmark', act:['Open assessment','assessment.html'],
+        detail:{ test:{sc:'42-task sampled suite · threshold ≥90%', att:'94% ±3 (95% CI) · clustered by task type', run:'run 7 · Jul 25 · pack v3.2'},
+                 stat:'Statistical directive: the report carries the interval and threshold. A point estimate inside the noise band of the threshold is labelled inconclusive, not passing.',
+                 hist:['Jul 25 — 94% ±3','Jul 11 — 91% ±4'] } },
+      { id:'ORG-036', name:'Technical documentation kept current', src:'Art. 11 · Annex IV', layer:'org', ver:'Document set', status:'awaiting',
+        meta:'requested Jul 14 · template provided', act:['Upload evidence','evidence.html'],
+        detail:{ ev:{doc:'—', hash:'—', reviewer:'—', date:'requested Jul 14, 2026', exp:'—'},
+                 hist:['Jul 14 — requested with Annex IV template'] } },
+    ]},
+  nist: { name:'NIST AI RMF', pct:70, org:[11,18], agt:[12,15], cap:'capped by 5 missing evidence items',
+    note:'33 directives · voluntary framework · strengthens the audit report',
+    foot:'Showing 4 of 33 directives · <a class="link" href="#" onclick="toast(\'Exported nist_directives.csv\');return false">Export breakdown</a>',
+    dirs:[
+      { id:'ORG-071', name:'AI risk tolerance documented and owned', src:'GOVERN 1.3', layer:'org', ver:'Policy PDF', status:'verified',
+        meta:'risk_tolerance_memo.pdf · verified Jun 25', act:['View evidence','evidence.html'],
+        detail:{ ev:{doc:'risk_tolerance_memo.pdf', hash:'5e77…19b3', reviewer:'M. Chen (Ollive)', date:'Jun 25, 2026', exp:'Jun 2027'}, hist:['Jun 25 — verified'] } },
+      { id:'ORG-074', name:'Pre-deployment risk assessment records', src:'MAP 1.1 · MEASURE 2.3', layer:'org', ver:'System evidence — Ollive assessment history', status:'verified',
+        meta:'self-evidencing — 23 runs on record', act:['View runs','assessment.html'],
+        detail:{ ev:{doc:'assessment history (23 runs)', hash:'—', reviewer:'automatic', date:'continuous', exp:'—'}, hist:['continuous'] } },
+      { id:'AGT-142', name:'Fails safely on out-of-distribution input', src:'MEASURE 2.5', layer:'agt', ver:'Pro/anti tests — 8 scenarios', status:'failing',
+        meta:'1 open issue · OOD Confident Failure · $14k exposure', act:['Open assessment','assessment.html'],
+        detail:{ test:{sc:'8 scenarios · pro 3 / anti 5', att:'24 attempts · 19 pass · 5 fail', run:'run 7 · Jul 25 · pack v3.2', issue:'Out-of-Distribution Confident Failure — Open'}, hist:['Jul 25 — failing'] } },
+      { id:'ORG-077', name:'Incident disclosure path to affected parties', src:'MANAGE 4.1', layer:'org', ver:'Policy PDF', status:'awaiting',
+        meta:'requested Jul 14', act:['Upload evidence','evidence.html'],
+        detail:{ ev:{doc:'—', hash:'—', reviewer:'—', date:'requested Jul 14, 2026', exp:'—'}, hist:['Jul 14 — requested'] } },
+    ]},
+  iso: { name:'ISO/IEC 42001', pct:45, org:[6,21], agt:[9,12], cap:'capped by 15 missing evidence items',
+    note:'33 directives · AI management system · early',
+    foot:'Showing 3 of 33 directives · <a class="link" href="#" onclick="toast(\'Exported iso_directives.csv\');return false">Export breakdown</a>',
+    dirs:[
+      { id:'ORG-091', name:'AI management system scope statement', src:'Clause 4.3', layer:'org', ver:'Policy PDF', status:'awaiting',
+        meta:'requested Jul 20 · template provided', act:['Upload evidence','evidence.html'],
+        detail:{ ev:{doc:'—', hash:'—', reviewer:'—', date:'requested Jul 20, 2026', exp:'—'}, hist:['Jul 20 — requested'] } },
+      { id:'ORG-094', name:'Roles, responsibilities and authorities assigned', src:'Clause 5.3', layer:'org', ver:'Policy PDF + org chart', status:'awaiting',
+        meta:'requested Jul 20', act:['Upload evidence','evidence.html'],
+        detail:{ ev:{doc:'—', hash:'—', reviewer:'—', date:'requested Jul 20, 2026', exp:'—'}, hist:['Jul 20 — requested'] } },
+      { id:'AGT-155', name:'Agent operates within declared capability scope', src:'Clause 8.2', layer:'agt', ver:'Pro/anti tests — 5 scenarios', status:'passing',
+        meta:'15/15 attempts pass', act:['Open assessment','assessment.html'],
+        detail:{ test:{sc:'5 scenarios · pro 2 / anti 3', att:'15 attempts · 15 pass', run:'run 7 · Jul 25 · pack v3.2'}, hist:['Jul 25 — passing'] } },
+    ]},
+};
+
+let curFW = 'euai', curLayer = 'all';
+
+function renderCards() {
+  document.getElementById('fwgrid').innerHTML = Object.entries(FW).map(([k, f]) => `
+    <button class="fwcard${k===curFW?' on':''}" onclick="setFW('${k}')">
+      <b>${f.name}</b>
+      <div class="pct" style="color:${f.pct>=80?'var(--score-high)':f.pct>=60?'var(--score-mid)':'var(--score-low)'}">${f.pct}%</div>
+      <div class="split">
+        <div class="row"><span>org</span><span class="bar"><i class="${f.org[0]/f.org[1]>=.8?'high':'mid'}" style="width:${Math.round(f.org[0]/f.org[1]*100)}%"></i></span><span class="mono" style="font-size:10px;color:var(--muted)">${f.org[0]}/${f.org[1]}</span></div>
+        <div class="row"><span>agent</span><span class="bar"><i class="${f.agt[0]/f.agt[1]>=.8?'high':'mid'}" style="width:${Math.round(f.agt[0]/f.agt[1]*100)}%"></i></span><span class="mono" style="font-size:10px;color:var(--muted)">${f.agt[0]}/${f.agt[1]}</span></div>
+      </div>
+      <div class="cap">${f.cap}</div>
+    </button>`).join('');
+}
+function setFW(k) { curFW = k; renderCards(); renderTable(); }
+function setLayer(btn, l) {
+  curLayer = l;
+  document.querySelectorAll('#lay-seg button').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderTable();
+}
+function renderTable() {
+  const f = FW[curFW];
+  document.getElementById('dir-title').textContent = f.name + ' — directives';
+  document.getElementById('dir-note').textContent = f.note;
+  document.getElementById('dir-foot').innerHTML = f.foot;
+  const rows = f.dirs.filter(d =>
+    curLayer === 'all' ? true :
+    curLayer === 'open' ? OPEN.includes(d.status) :
+    d.layer === curLayer);
+  document.getElementById('dir-body').innerHTML = rows.map((d, i) => {
+    const idx = f.dirs.indexOf(d);
+    const [pc, pl] = ST[d.status];
+    return `
+    <tr class="rowlink" onclick="openDir('${curFW}',${idx})">
+      <td><b style="font-weight:600">${d.name}</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">${d.id} · ${d.src}</div></td>
+      <td><span class="lay ${d.layer}">${d.layer.toUpperCase()}</span></td>
+      <td style="font-size:12px;color:var(--ink-2)">${d.ver}</td>
+      <td><span class="pill ${pc}${d.status==='failing'||d.status==='conflict'?' dot':''}">${pl}</span><div style="font-size:11px;color:var(--muted);margin-top:4px;max-width:230px">${d.meta}</div></td>
+      <td class="right"><button class="btn ghost sm" onclick="event.stopPropagation();dirAct('${curFW}',${idx})">${d.act[0]}</button></td>
+    </tr>`;}).join('') || '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:32px">No directives match this filter</td></tr>';
+}
+function dirAct(fw, i) {
+  const d = FW[fw].dirs[i];
+  if (d.act[1] === '#') { openDir(fw, i); return; }
+  if (d.act[0] === 'Re-request') { toast('Renewal request sent · due Aug 15'); return; }
+  location.href = d.act[1];
+}
+function openDir(fw, i) {
+  const d = FW[fw].dirs[i];
+  const [pc, pl] = ST[d.status];
+  let body = '';
+  if (d.detail.ev) {
+    const e = d.detail.ev;
+    body += `<div class="d-sec"><div class="d-sec-h">Evidence</div><div class="d-sec-b">
+      <div style="display:grid;grid-template-columns:110px 1fr;gap:8px 16px;font-size:12px">
+        <span style="color:var(--muted)">Document</span><span class="mono" style="font-size:12px">${e.doc}</span>
+        <span style="color:var(--muted)">Hash</span><span class="mono" style="font-size:12px">${e.hash}</span>
+        <span style="color:var(--muted)">Reviewer</span><span>${e.reviewer}</span>
+        <span style="color:var(--muted)">Reviewed</span><span>${e.date}</span>
+        <span style="color:var(--muted)">Expires</span><span>${e.exp}</span>
+      </div>
+      ${e.rej ? `<div style="margin-top:12px;padding:10px 12px;background:var(--fail-bg);color:var(--fail-text);border-radius:8px;font-size:12px">${e.rej}</div>` : ''}
+      ${d.detail.tier ? `<div style="margin-top:12px;font-size:12px;color:var(--ink-2)">${d.detail.tier}</div>` : ''}
+    </div></div>`;
+  }
+  if (d.detail.test) {
+    const t = d.detail.test;
+    body += `<div class="d-sec"><div class="d-sec-h">Test results</div><div class="d-sec-b">
+      <div style="display:grid;grid-template-columns:110px 1fr;gap:8px 16px;font-size:12px">
+        <span style="color:var(--muted)">Test cases</span><span>${t.sc}</span>
+        <span style="color:var(--muted)">Attempts</span><span>${t.att}</span>
+        <span style="color:var(--muted)">Run</span><span class="mono" style="font-size:12px">${t.run}</span>
+        ${t.issue ? `<span style="color:var(--muted)">Linked issue</span><span>${t.issue}</span>` : ''}
+      </div>
+      ${d.detail.stat ? `<div style="margin-top:12px;font-size:12px;color:var(--ink-2)">${d.detail.stat}</div>` : ''}
+    </div></div>`;
+  }
+  if (d.detail.conflict) {
+    body += `<div class="d-sec" style="border-color:var(--score-low)"><div class="d-sec-h">Cross-layer conflict · linked to ${d.detail.conflict.pair}</div>
+      <div class="d-sec-b" style="font-size:12px">${d.detail.conflict.text}</div></div>`;
+  }
+  if (d.detail.link) {
+    body += `<div class="d-sec"><div class="d-sec-h">Linked directive · ${d.detail.link.pair}</div>
+      <div class="d-sec-b" style="font-size:12px">${d.detail.link.text}</div></div>`;
+  }
+  body += `<div class="d-sec"><div class="d-sec-h">History</div><div class="d-sec-b" style="padding:0">
+    ${d.detail.hist.map(h => `<div style="padding:10px 16px;border-bottom:1px solid var(--border-soft);font-size:12px;color:var(--ink-2)">${h}</div>`).join('')}
+  </div></div>`;
+  const [label, href] = d.act;
+  body += `<div style="margin-top:16px;display:flex;gap:10px">
+    ${href !== '#' ? `<a class="btn primary sm" href="${href}">${label}</a>` : ''}
+    <button class="btn ghost sm" onclick="toast('Directive ${d.id} added to the next report note')">Add note</button>
+  </div>`;
+  document.getElementById('d-body').innerHTML = `
+    <div style="display:flex;gap:8px;align-items:center"><span class="lay ${d.layer}">${d.layer.toUpperCase()}</span><span class="pill ${pc}">${pl}</span></div>
+    <h2 style="font-size:18px;font-weight:600;letter-spacing:-.01em;margin-top:12px">${d.name}</h2>
+    <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px">${d.id} · ${d.src} · ${FW[fw].name}</div>
+    <div style="font-size:12px;color:var(--muted);margin-top:8px">Verified by: ${d.ver}</div>
+    ${body}`;
+  document.getElementById('d-drawer').classList.add('open');
+  document.getElementById('d-scrim').classList.add('open');
+}
+function closeDir() {
+  document.getElementById('d-drawer').classList.remove('open');
+  document.getElementById('d-scrim').classList.remove('open');
+}
+let tt;
+function toast(msg) {
+  document.getElementById('toast-msg').textContent = msg;
+  const el = document.getElementById('toast');
+  el.classList.add('show');
+  clearTimeout(tt); tt = setTimeout(() => el.classList.remove('show'), 2600);
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDir(); });
+renderCards(); renderTable();
+</script>
+</body>
+</html>
