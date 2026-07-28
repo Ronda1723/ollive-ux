@@ -55,6 +55,16 @@
       </div>
     </div>
 
+    <!-- ── Always-on governance ── -->
+    <div class="card" style="display:flex;align-items:center;gap:12px;padding:13px 20px;margin-bottom:20px;flex-wrap:wrap">
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px var(--green-tint);flex-shrink:0"></span>
+      <span style="font-size:12.5px;color:var(--ink-2);line-height:1.6"><b style="font-weight:600">Governance is always on.</b> Every obligation below is re-checked on each assessment run and each monitored production session — status shown is compliant as of <b style="font-weight:600;font-family:var(--mono);font-size:12px">Jul 28, 06:04</b>.</span>
+      <span style="margin-left:auto;display:flex;align-items:center;gap:12px;flex-shrink:0">
+        <span style="font-size:12px;color:var(--muted)">Next full scan tonight, 02:00</span>
+        <button class="btn ghost sm" onclick="toast('Governance scan started — 12 obligations × 4 agents · ~3 min')">Re-scan now</button>
+      </span>
+    </div>
+
     <!-- ── Agent filter ── -->
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap">
       <span style="font-size:12.5px;color:var(--muted)">Showing</span>
@@ -99,102 +109,111 @@
 
     <!-- ── Applicable regulations — the compliance view ── -->
     <div class="blk">
-      <div class="blk-h"><b>Applicable regulations</b><span class="note" id="reg-note">12 apply to this fleet, derived from your disclosure profile · 4 violated · 7 clear · 1 not tested</span></div>
+      <div class="blk-h" style="flex-wrap:wrap;gap:12px">
+        <b>Applicable regulations</b>
+        <span class="seg" id="reg-seg" style="font-size:12px">
+          <button class="on" onclick="setStatus(this,'all')">All <span class="mono" data-c="all" style="font-size:11.5px">12</span></button>
+          <button onclick="setStatus(this,'v')">Violated <span class="mono" data-c="v" style="font-size:11.5px;color:var(--score-low)">4</span></button>
+          <button onclick="setStatus(this,'c')">Compliant <span class="mono" data-c="c" style="font-size:11.5px;color:var(--score-high)">7</span></button>
+          <button onclick="setStatus(this,'nt')">Not tested <span class="mono" data-c="nt" style="font-size:11.5px">1</span></button>
+        </span>
+        <span class="note" id="reg-note">derived from your disclosure profile</span>
+      </div>
       <table class="tbl law">
         <thead><tr><th style="width:24%">Regulation</th><th style="width:22%">Why it applies to you</th><th>Status</th><th>Violations</th><th>Agents</th><th class="right">Liability</th></tr></thead>
         <tbody id="reg-body">
-          <tr class="rowlink" data-a="swarm,aqua,refill" onclick="location.href='assessment.html'">
+          <tr class="rowlink" data-s="v" data-a="swarm,aqua,refill" onclick="location.href='assessment.html'">
             <td><b style="font-weight:600">HIPAA §164.502</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Minimum necessary · identity before PHI</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Healthcare · agents access PHI</td>
-            <td><span class="pill fail dot">Violated</span></td>
+            <td><span class="pill fail dot">Violated</span><div style="font-size:11px;color:var(--faint);margin-top:4px">re-checked Jul 28, 06:04</div></td>
             <td class="mono" data-v="swarm:3,aqua:2,refill:1">6</td>
             <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('hipaa')">3 of 4 →</button></td>
             <td class="right money" data-m="swarm:$48k,aqua:$26k,refill:$18k">$92k</td>
           </tr>
-          <tr class="rowlink" data-a="swarm" onclick="location.href='assessment.html'">
+          <tr class="rowlink" data-s="v" data-a="swarm" onclick="location.href='assessment.html'">
             <td><b style="font-weight:600">FL AI disclosure</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Caller must know it's AI</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">You operate in Florida</td>
-            <td><span class="pill fail dot">Violated</span></td>
+            <td><span class="pill fail dot">Violated</span><div style="font-size:11px;color:var(--faint);margin-top:4px">re-checked Jul 28, 06:04</div></td>
             <td class="mono">3</td>
             <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('fl')">1 of 4 →</button></td>
             <td class="right money">$34k</td>
           </tr>
-          <tr class="rowlink" data-a="aqua" onclick="location.href='assessment.html'">
+          <tr class="rowlink" data-s="v" data-a="aqua" onclick="location.href='assessment.html'">
             <td><b style="font-weight:600">TCPA §227(b)</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Consent for AI-voice calls</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Outbound calling enabled</td>
-            <td><span class="pill fail dot">Violated</span></td>
+            <td><span class="pill fail dot">Violated</span><div style="font-size:11px;color:var(--faint);margin-top:4px">re-checked Jul 28, 06:04</div></td>
             <td class="mono">2</td>
             <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('tcpa')">1 of 4 →</button></td>
             <td class="right money">$28k</td>
           </tr>
-          <tr class="rowlink" data-a="swarm" onclick="location.href='assessment.html'">
+          <tr class="rowlink" data-s="v" data-a="swarm" onclick="location.href='assessment.html'">
             <td><b style="font-weight:600">Utah HB 452</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Ask-if-AI disclosure triggers</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Utah users · health-adjacent</td>
-            <td><span class="pill fail dot">Violated</span></td>
+            <td><span class="pill fail dot">Violated</span><div style="font-size:11px;color:var(--faint);margin-top:4px">re-checked Jul 28, 06:04</div></td>
             <td class="mono">4</td>
             <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('utah')">1 of 4 →</button></td>
             <td class="right money">$18k</td>
           </tr>
-          <tr data-a="swarm,aqua,refill">
+          <tr data-s="c" data-a="swarm,aqua,refill">
             <td><b style="font-weight:600">HIPAA §164.312</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Security · access &amp; audit controls</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Healthcare · PHI storage</td>
-            <td><span class="pill pass">Clear</span></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">3 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
           </tr>
-          <tr data-a="aqua">
+          <tr data-s="c" data-a="aqua">
             <td><b style="font-weight:600">TCPA opt-out &amp; revocation</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">64.1200(b)(3) · 2024 revocation rule</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Outbound calling enabled</td>
-            <td><span class="pill pass">Clear</span></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">1 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
           </tr>
-          <tr data-a="aqua">
+          <tr data-s="c" data-a="aqua">
             <td><b style="font-weight:600">TSR / Do-Not-Call</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">16 CFR 310.4</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Outbound calling enabled</td>
-            <td><span class="pill pass">Clear</span></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">1 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
           </tr>
-          <tr data-a="swarm,aqua,refill">
+          <tr data-s="c" data-a="swarm,aqua,refill">
             <td><b style="font-weight:600">FTC Act §5</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Deception · denies being AI</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">All consumer-facing agents</td>
-            <td><span class="pill pass">Clear</span></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">3 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
           </tr>
-          <tr data-a="refill">
+          <tr data-s="c" data-a="refill">
             <td><b style="font-weight:600">COPPA</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Children's info on calls</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Pediatric clinic workflows</td>
-            <td><span class="pill pass">Clear</span></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">1 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
           </tr>
-          <tr data-a="refill">
+          <tr data-s="c" data-a="refill">
             <td><b style="font-weight:600">Illinois WOPR Act</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">No AI-delivered therapy</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Illinois patients served</td>
-            <td><span class="pill pass">Clear</span></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">1 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
           </tr>
-          <tr data-a="swarm">
+          <tr data-s="c" data-a="swarm">
             <td><b style="font-weight:600">Utah AI Policy Act</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">Disclose on ask · regulated occupations</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Utah users</td>
-            <td><span class="pill pass">Clear</span></td>
+            <td><span class="pill pass">Clear</span><div style="font-size:11px;color:var(--faint);margin-top:4px">verified Jul 28, 06:04</div></td>
             <td class="mono" style="color:var(--score-high)">0</td>
             <td style="font-size:12.5px;color:var(--muted)">1 tested</td>
             <td class="right money" style="color:var(--muted)">$0</td>
           </tr>
-          <tr data-a="swarm,aqua,refill">
+          <tr data-s="nt" data-a="swarm,aqua,refill">
             <td><b style="font-weight:600">California CIPA</b><div style="font-size:11.5px;color:var(--muted);margin-top:2px">All-party consent to record</div></td>
             <td style="font-size:12.5px;color:var(--ink-2)">Calls recorded · CA callers possible</td>
-            <td><span class="pill off">Not tested</span></td>
+            <td><span class="pill off">Not tested</span><div style="font-size:11px;color:var(--faint);margin-top:4px">never scanned</div></td>
             <td class="mono" style="color:var(--faint)">—</td>
             <td style="font-size:12.5px;color:var(--muted)">—</td>
             <td class="right"><button class="btn ghost sm" onclick="event.stopPropagation();toast('CIPA consent-notice pack queued for next run')">Generate pack</button></td>
@@ -217,7 +236,7 @@
             <td class="right mono">7</td>
             <td class="right mono">2,140</td>
             <td class="right"><b class="money" style="color:var(--score-low)">14</b></td>
-            <td><div style="display:flex;gap:5px;flex-wrap:wrap"><span class="tag">HIPAA</span><span class="tag">FL AI disclosure</span><span class="tag">Utah HB 452</span></div></td>
+            <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center"><span class="tag">HIPAA</span><span class="tag">FL AI disclosure</span><span class="tag">Utah HB 452</span><span style="font-size:11.5px;color:var(--score-high)">+4 clear</span><span style="font-size:11.5px;color:var(--faint)">· 1 untested</span></div></td>
             <td class="right money">$114k</td>
           </tr>
           <tr class="rowlink" data-a="aqua" onclick="location.href='assessment.html'">
@@ -225,7 +244,7 @@
             <td class="right mono">9</td>
             <td class="right mono">1,872</td>
             <td class="right"><b class="money" style="color:var(--score-low)">8</b></td>
-            <td><div style="display:flex;gap:5px;flex-wrap:wrap"><span class="tag">HIPAA</span><span class="tag">TCPA</span></div></td>
+            <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center"><span class="tag">HIPAA</span><span class="tag">TCPA</span><span style="font-size:11.5px;color:var(--score-high)">+4 clear</span><span style="font-size:11.5px;color:var(--faint)">· 1 untested</span></div></td>
             <td class="right money">$63k</td>
           </tr>
           <tr class="rowlink" data-a="refill" onclick="location.href='assessment.html'">
@@ -233,7 +252,7 @@
             <td class="right mono">5</td>
             <td class="right mono">812</td>
             <td class="right"><b class="money" style="color:var(--score-mid)">4</b></td>
-            <td><div style="display:flex;gap:5px;flex-wrap:wrap"><span class="tag">HIPAA</span></div></td>
+            <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center"><span class="tag">HIPAA</span><span style="font-size:11.5px;color:var(--score-high)">+4 clear</span><span style="font-size:11.5px;color:var(--faint)">· 1 untested</span></div></td>
             <td class="right money">$27k</td>
           </tr>
           <tr data-a="wells">
@@ -339,23 +358,42 @@
   const STATS = {
     all:    { open:'$204k', openM:'26 open violations · <span class="delta down">▲ +$12k this week</span>', reg:'4<span class="of">/12</span>', regM:'HIPAA leads · $92k',
               worst:'$250k', worstM:'Bayside MSA §4.2 indemnity · one incident', clear:'2 days', clearM:'top 3 fixes retire $156k · 76% of open',
-              note:'12 apply to this fleet, derived from your disclosure profile · 4 violated · 7 clear · 1 not tested' },
+              note:'derived from your disclosure profile' },
     swarm:  { open:'$114k', openM:'14 open violations', reg:'3<span class="of">/8</span>', regM:'HIPAA leads · $48k',
               worst:'$250k', worstM:'Bayside MSA §4.2 indemnity · one incident', clear:'1.6 days', clearM:'3 fixes retire $96k · 84% of open',
-              note:'8 apply to this agent · 3 violated · 4 clear · 1 not tested' },
+              note:'derived from your disclosure profile' },
     aqua:   { open:'$63k', openM:'8 open violations · live in prod', reg:'2<span class="of">/7</span>', regM:'HIPAA leads · $26k',
               worst:'$150k', worstM:'TCPA class exposure · per-call stacking', clear:'0.1 days', clearM:'1 fix retires $28k · 44% of open',
-              note:'7 apply to this agent · 2 violated · 4 clear · 1 not tested' },
+              note:'derived from your disclosure profile' },
     refill: { open:'$27k', openM:'4 open violations', reg:'1<span class="of">/6</span>', regM:'HIPAA only · $18k',
               worst:'$100k', worstM:'Lakeside BAA breach-notification cap', clear:'0.5 days', clearM:'1 fix retires $18k · 67% of open',
-              note:'6 apply to this agent · 1 violated · 4 clear · 1 not tested' },
+              note:'derived from your disclosure profile' },
     wells:  { open:'—', openM:'never assessed', reg:'—', regM:'unknown until assessed',
               worst:'—', worstM:'unmeasured — not zero', clear:'—', clearM:'run first assessment',
-              note:'Applicability known from profile — violations unknown until first assessment' }
+              note:'applicability known from profile — violations unknown until first assessment' }
   };
+  let curAgent = 'all', curStatus = 'all';
+  function applyRegFilters() {
+    const counts = { all:0, v:0, c:0, nt:0 };
+    document.querySelectorAll('#reg-body tr[data-s]').forEach(tr => {
+      const agentOk = curAgent === 'all' || tr.dataset.a.split(',').includes(curAgent);
+      if (agentOk) { counts.all++; counts[tr.dataset.s]++; }
+      tr.hidden = !agentOk || (curStatus !== 'all' && tr.dataset.s !== curStatus);
+    });
+    ['all','v','c','nt'].forEach(k => { document.querySelector('[data-c="'+k+'"]').textContent = counts[k]; });
+  }
+  function setStatus(btn, key) {
+    curStatus = key;
+    document.querySelectorAll('#reg-seg button').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    applyRegFilters();
+  }
   function setAgent(btn, key) {
+    curAgent = key;
     document.querySelectorAll('.seg button').forEach(b => b.classList.remove('on'));
     btn.classList.add('on');
+    document.querySelector('#reg-seg button').classList.add('on');
+    curStatus = 'all';
     const s = STATS[key];
     document.getElementById('st-open').textContent = s.open;
     document.getElementById('st-open-m').innerHTML = s.openM;
@@ -382,6 +420,7 @@
       const hit = td.dataset.m.split(',').find(p => p.startsWith(key+':'));
       if (hit) td.textContent = hit.split(':')[1];
     });
+    applyRegFilters();
   }
   let tt;
   function toast(msg) {
