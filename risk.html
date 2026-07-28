@@ -108,7 +108,7 @@
             <td style="font-size:12.5px;color:var(--ink-2)">Healthcare · agents access PHI</td>
             <td><span class="pill fail dot">Violated</span></td>
             <td class="mono" data-v="swarm:3,aqua:2,refill:1">6</td>
-            <td style="font-size:12.5px;color:var(--ink-2)">3 of 4</td>
+            <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('hipaa')">3 of 4 →</button></td>
             <td class="right money" data-m="swarm:$48k,aqua:$26k,refill:$18k">$92k</td>
           </tr>
           <tr class="rowlink" data-a="swarm" onclick="location.href='assessment.html'">
@@ -116,7 +116,7 @@
             <td style="font-size:12.5px;color:var(--ink-2)">You operate in Florida</td>
             <td><span class="pill fail dot">Violated</span></td>
             <td class="mono">3</td>
-            <td style="font-size:12.5px;color:var(--ink-2)">1 of 4</td>
+            <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('fl')">1 of 4 →</button></td>
             <td class="right money">$34k</td>
           </tr>
           <tr class="rowlink" data-a="aqua" onclick="location.href='assessment.html'">
@@ -124,7 +124,7 @@
             <td style="font-size:12.5px;color:var(--ink-2)">Outbound calling enabled</td>
             <td><span class="pill fail dot">Violated</span></td>
             <td class="mono">2</td>
-            <td style="font-size:12.5px;color:var(--ink-2)">1 of 4</td>
+            <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('tcpa')">1 of 4 →</button></td>
             <td class="right money">$28k</td>
           </tr>
           <tr class="rowlink" data-a="swarm" onclick="location.href='assessment.html'">
@@ -132,7 +132,7 @@
             <td style="font-size:12.5px;color:var(--ink-2)">Utah users · health-adjacent</td>
             <td><span class="pill fail dot">Violated</span></td>
             <td class="mono">4</td>
-            <td style="font-size:12.5px;color:var(--ink-2)">1 of 4</td>
+            <td><button class="link" style="font-size:12.5px" onclick="event.stopPropagation();openReg('utah')">1 of 4 →</button></td>
             <td class="right money">$18k</td>
           </tr>
           <tr data-a="swarm,aqua,refill">
@@ -325,6 +325,14 @@
   </div></main>
 </div>
 
+
+<!-- ── Regulation → agents drawer ── -->
+<div class="drawer-scrim" id="reg-scrim" onclick="closeReg()"></div>
+<aside class="drawer" id="reg-drawer" aria-label="Regulation detail">
+  <button class="drawer-close" onclick="closeReg()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div id="reg-drawer-body"></div>
+</aside>
+
 <div class="toast" id="toast"><span class="ck-toast"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span id="toast-msg"></span></div>
 
 <script>
@@ -376,6 +384,98 @@
     el.classList.add('show');
     clearTimeout(tt); tt = setTimeout(() => el.classList.remove('show'), 2600);
   }
+
+  // ── Regulation drawer: level 1 = affected agents · level 2 = agent detail ──
+  const REGS = {
+    hipaa: { name:'HIPAA §164.502', sub:'Minimum necessary · identity before PHI', total:'6 violations · $92k open liability',
+      agents: [
+        { k:'swarm', name:'Manage — TEST swarm', score:'50 ±4', v:3, money:'$48k',
+          items:[['Reference / Citation Fabrication','2 cases','fail','Open · prompt patch ready','$34k'],
+                 ['Sensitive Data Leakage in Outputs','1 case','ind','Fixing · Purvish','$14k']] },
+        { k:'aqua', name:'[Live] Aqua FS Florida', score:'71 ±5', v:2, money:'$26k',
+          items:[['PHI before identity check','1 case · from production monitoring','fail','Open · linked session s_9f21','$18k'],
+                 ['Transcript retention beyond policy','1 case','ind','Fixing · config change','$8k']] },
+        { k:'refill', name:'2. Lakeside Ped Rx Refill', score:'89 ±3', v:1, money:'$18k',
+          items:[['Third-party caller authorisation','1 case','pass','Verify · re-run queued','$18k']] }
+      ]},
+    fl: { name:'FL AI disclosure', sub:'Caller must know it\'s AI', total:'3 violations · $34k open liability',
+      agents: [
+        { k:'swarm', name:'Manage — TEST swarm', score:'50 ±4', v:3, money:'$34k',
+          items:[['AI self-disclosure missing from greeting','3 cases','fail','Open · one-line greeting patch · ~0.1 day','$34k']] }
+      ]},
+    tcpa: { name:'TCPA §227(b)', sub:'Consent & abandonment on AI-voice calls', total:'2 violations · $28k open liability',
+      agents: [
+        { k:'aqua', name:'[Live] Aqua FS Florida', score:'71 ±5', v:2, money:'$28k',
+          items:[['Dead-air abandonment on outbound calls','2 calls · agent_detection_timeout_ms','fail','Open · restore timeout to 300000','$28k']] }
+      ]},
+    utah: { name:'Utah HB 452', sub:'Ask-if-AI disclosure triggers', total:'4 violations · $18k open liability',
+      agents: [
+        { k:'swarm', name:'Manage — TEST swarm', score:'50 ±4', v:4, money:'$18k',
+          items:[['Missed "am I talking to AI?" disclosure trigger','4 cases','fail','Open · response rule patch ready','$18k']] }
+      ]}
+  };
+  function openReg(key) {
+    renderRegList(key);
+    document.getElementById('reg-drawer').classList.add('open');
+    document.getElementById('reg-scrim').classList.add('open');
+  }
+  function closeReg() {
+    document.getElementById('reg-drawer').classList.remove('open');
+    document.getElementById('reg-scrim').classList.remove('open');
+  }
+  function renderRegList(key) {
+    const r = REGS[key];
+    document.getElementById('reg-drawer-body').innerHTML = `
+      <div style="display:flex;gap:8px;align-items:center"><span class="pill fail dot">Violated</span><span style="font-size:12.5px;color:var(--muted)">${r.total}</span></div>
+      <h2 style="font-size:18px;font-weight:600;letter-spacing:-.01em;margin-top:12px">${r.name}</h2>
+      <div style="font-size:12.5px;color:var(--muted);margin-top:4px">${r.sub}</div>
+      <div class="d-sec">
+        <div class="d-sec-h">Affected agents <span style="font-family:var(--mono);text-transform:none;letter-spacing:0">${r.agents.length} of 4 · select one</span></div>
+        <div class="d-sec-b" style="padding:0">
+          ${r.agents.map((a,i) => `
+            <div class="subrow" style="padding:14px 16px" onclick="renderRegAgent('${key}',${i})">
+              <div style="flex:1;min-width:0">
+                <b style="font-size:13.5px;font-weight:600">${a.name}</b>
+                <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">score ${a.score} · ${a.v} violation${a.v>1?'s':''} of this regulation</div>
+              </div>
+              <span class="money" style="font-size:13px;flex-shrink:0">${a.money}</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="2" style="flex-shrink:0"><path d="M9 6l6 6-6 6"/></svg>
+            </div>`).join('')}
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6">Liability shown is this regulation's share for each agent. The fourth agent (Lakeside Ped Wells Rx) has never been assessed — its status under ${r.name} is unknown.</p>`;
+  }
+  function renderRegAgent(key, i) {
+    const r = REGS[key], a = r.agents[i];
+    document.getElementById('reg-drawer-body').innerHTML = `
+      <button class="link" style="font-size:12.5px" onclick="renderRegList('${key}')">← All affected agents</button>
+      <h2 style="font-size:18px;font-weight:600;letter-spacing:-.01em;margin-top:14px">${a.name}</h2>
+      <div style="font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:4px">score ${a.score} · ${r.name} · ${a.money} open</div>
+      <div class="d-sec">
+        <div class="d-sec-h">Violations of ${r.name}</div>
+        <div class="d-sec-b" style="padding:0">
+          ${a.items.map(([t,c,pill,st,m]) => `
+            <div style="padding:14px 16px;border-bottom:1px solid var(--border-soft)">
+              <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+                <b style="font-size:13.5px;font-weight:600">${t}</b>
+                <span class="money" style="font-size:12.5px;flex-shrink:0">${m}</span>
+              </div>
+              <div style="font-size:12px;color:var(--muted);margin-top:3px">${c}</div>
+              <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+                <span class="pill ${pill}">${st.split(' · ')[0]}</span>
+                <span style="font-size:12px;color:var(--muted)">${st.split(' · ').slice(1).join(' · ')}</span>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div class="d-sec" style="border-color:var(--green);background:var(--green-tint)">
+        <div class="d-sec-b" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <span style="font-size:13px;color:var(--green-text)">Full evidence, traces and suggested fixes live in the assessment.</span>
+          <a class="btn primary sm" style="flex-shrink:0" href="assessment.html">Open assessment →</a>
+        </div>
+      </div>`;
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReg(); });
 </script>
 </body>
 </html>
