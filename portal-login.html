@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confido Agent Trust Centre — Access</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+</head>
+<body style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 20px">
+  <main style="width:100%;max-width:420px;text-align:center">
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:36px">
+      <span style="display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:16px"><span class="cmark" style="width:28px;height:28px;border-radius:9px;background:#1C3A5E;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">C</span> Confido</span>
+      <span style="color:var(--faint);font-size:13px">×</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:16px"><span style="width:28px;height:28px;border-radius:9px;background:var(--green);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">O</span> Ollive</span>
+    </div>
+
+    <h1 style="font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.2">Confido Agent Trust Centre</h1>
+    <p style="font-size:14.5px;color:var(--ink-2);margin-top:12px;line-height:1.6">Independent evaluations of Confido's AI agents across regulatory, safety, privacy, operational, and liability risks.</p>
+
+    <div class="card card-pad" style="margin-top:32px;text-align:left">
+      <label style="display:block;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:8px">Access code</label>
+      <input class="input" type="password" id="code" placeholder="Provided by your Confido contact" onkeydown="if(event.key==='Enter')enter()" />
+      <button class="btn primary" style="width:100%;margin-top:14px" onclick="enter()">Enter trust centre</button>
+      <p style="font-size:11.5px;color:var(--muted);margin-top:14px;line-height:1.6">This portal contains confidential evaluation material shared under your agreement with Confido. Access is logged. Do not redistribute without written permission.</p>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--muted);margin-top:28px">Evaluation performed independently by <b style="font-weight:600;color:var(--ink-2)">Ollive</b></p>
+    <p style="font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:8px">ollive.confido.health · portal last updated Jul 18, 2026</p>
+  </main>
+<script>
+  function enter(){ location.href = 'portal.html'; }
+</script>
+</body>
+</html>

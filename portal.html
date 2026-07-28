@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confido Agent Trust Centre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+</head>
+<body>
+  <header class="p-top">
+    <span class="p-brand"><span class="cmark">C</span> Confido Agent Trust Centre <span class="by">Evaluated independently by Ollive</span></span>
+    <span class="p-meta">
+      <span><b style="font-weight:600;color:var(--ink-2)">Acme Health</b> · access expires Aug 30, 2026</span>
+      <button class="btn ghost sm">Download summary</button>
+      <button class="btn ghost sm">Request information</button>
+    </span>
+  </header>
+
+  <main class="p-wrap">
+    <h1 style="font-size:24px;font-weight:600;letter-spacing:-.02em">Independent agent evaluations</h1>
+    <p style="font-size:14px;color:var(--muted);margin-top:6px;max-width:640px">Review the independent risk evaluations, controls, and certification status of Confido's production AI agents.</p>
+
+    <!-- Portfolio summary -->
+    <div class="card card-pad" style="margin-top:28px;display:flex;gap:36px;align-items:center;flex-wrap:wrap">
+      <div>
+        <div class="eyebrow" style="margin-bottom:6px">Confido AI agent portfolio</div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap">
+          <span style="font-size:13.5px"><b class="money" style="font-size:17px">3</b> agents evaluated</span>
+          <span style="font-size:13.5px"><b class="money" style="font-size:17px;color:var(--score-high)">2</b> certified</span>
+          <span style="font-size:13.5px"><b class="money" style="font-size:17px;color:var(--score-mid)">1</b> conditionally certified</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;font-size:12.5px;color:var(--muted);line-height:1.7;text-align:right">
+        Last assessment: <b style="font-weight:600;color:var(--ink-2)">Jul 18, 2026</b><br/>
+        Independent evaluator: <b style="font-weight:600;color:var(--ink-2)">Ollive</b><br/>
+        Legal interpretation and methodology reviewed in consultation with Crowell &amp; Moring
+      </div>
+    </div>
+
+    <!-- Agent cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px" class="grid-3">
+      <a class="card card-pad" href="portal-agent.html" style="display:flex;flex-direction:column;gap:14px;transition:box-shadow .15s" onmouseover="this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.boxShadow='var(--shadow)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <span class="grade a">A</span>
+          <span class="pill pass dot">Certified</span>
+        </div>
+        <div>
+          <b style="font-size:16px;font-weight:600;letter-spacing:-.01em">Scheduling Agent</b>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:3px">Administrative workflow · last evaluated Jul 18, 2026</div>
+        </div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted)">42 obligations · 186 scenarios</div>
+        <ul style="list-style:none;font-size:12.5px;color:var(--ink-2);line-height:1.9;flex:1">
+          <li>· Appointment scheduling and rescheduling</li>
+          <li>· Patient identity and privacy controls</li>
+          <li>· Consent and communication handling</li>
+          <li>· Escalation and unsupported-commitment checks</li>
+        </ul>
+        <span class="link" style="font-size:13px">View evaluation →</span>
+      </a>
+
+      <a class="card card-pad" href="portal-agent.html" style="display:flex;flex-direction:column;gap:14px;transition:box-shadow .15s" onmouseover="this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.boxShadow='var(--shadow)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <span class="grade a">A</span>
+          <span class="pill pass dot">Certified with monitoring</span>
+        </div>
+        <div>
+          <b style="font-size:16px;font-weight:600;letter-spacing:-.01em">Payments Agent</b>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:3px">Financial workflow · last evaluated Jul 18, 2026</div>
+        </div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted)">39 obligations · 164 scenarios</div>
+        <ul style="list-style:none;font-size:12.5px;color:var(--ink-2);line-height:1.9;flex:1">
+          <li>· Payment authorisation</li>
+          <li>· Billing accuracy</li>
+          <li>· Refund and charge commitments</li>
+          <li>· Sensitive payment-data handling</li>
+        </ul>
+        <span class="link" style="font-size:13px">View evaluation →</span>
+      </a>
+
+      <a class="card card-pad" href="portal-agent.html" style="display:flex;flex-direction:column;gap:14px;transition:box-shadow .15s" onmouseover="this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.boxShadow='var(--shadow)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <span class="grade b">B</span>
+          <span class="pill ind dot">Conditionally certified</span>
+        </div>
+        <div>
+          <b style="font-size:16px;font-weight:600;letter-spacing:-.01em">Prescription Refill Agent</b>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:3px">High-sensitivity clinical workflow · last evaluated Jul 18, 2026</div>
+        </div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted)">47 obligations · 218 scenarios</div>
+        <ul style="list-style:none;font-size:12.5px;color:var(--ink-2);line-height:1.9;flex:1">
+          <li>· Caller authorisation</li>
+          <li>· Clinical-boundary controls</li>
+          <li>· Refill-status accuracy</li>
+          <li>· Patient-safety escalation</li>
+          <li>· Controlled-substance handling</li>
+        </ul>
+        <span class="link" style="font-size:13px">View evaluation →</span>
+      </a>
+    </div>
+
+    <p style="font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:40px;text-align:center">
+      Confidential — shared with Acme Health under agreement · downloads watermarked · access logged · ollive.confido.health
+    </p>
+  </main>
+</body>
+</html>
