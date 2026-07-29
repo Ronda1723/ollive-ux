@@ -36,6 +36,19 @@
       <p style="font-size:13px;color:var(--ink-2);margin-top:8px;line-height:1.65">Summary of the evaluation process; adversarial techniques and prompts are withheld. Legal interpretation and methodology reviewed in consultation with Crowell &amp; Moring.</p>
 
       <div class="blk" style="margin-top:24px">
+        <div class="blk-h"><b>Assessment phases</b><span class="note">assessment v1.2 · Q2 2026</span></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0">
+          <div style="padding:16px 20px;border-right:1px solid var(--border-soft)"><div class="eyebrow" style="margin-bottom:8px">1 · Find applicable risks</div><div style="font-size:12px;color:var(--ink-2);line-height:1.9">Governance review<br/>Threat modelling<br/>Obligation mapping</div></div>
+          <div style="padding:16px 20px;border-right:1px solid var(--border-soft)"><div class="eyebrow" style="margin-bottom:8px">2 · Test risks</div><div style="font-size:12px;color:var(--ink-2);line-height:1.9">Simulation generation<br/>Adversarial red-teaming<br/>Behaviour evaluation</div></div>
+          <div style="padding:16px 20px;border-right:1px solid var(--border-soft)"><div class="eyebrow" style="margin-bottom:8px">3 · Analyse results</div><div style="font-size:12px;color:var(--ink-2);line-height:1.9">Residual-risk assessment<br/>Manual review with lawyers<br/>Risk scoring</div></div>
+          <div style="padding:16px 20px"><div class="eyebrow" style="margin-bottom:8px">4 · Assurance &amp; insurance</div><div style="font-size:12px;color:var(--ink-2);line-height:1.9">Remediate and fix issues<br/>Appropriate AI insurance cover<br/>Continuous governance</div></div>
+        </div>
+        <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--ink-2)">
+          <b style="font-weight:600">Ollive does not rely on benchmark accuracy alone.</b> Every simulation reflects realistic healthcare workflows and liability-producing scenarios.
+        </div>
+      </div>
+
+      <div class="blk">
         <div class="blk-h"><b>The evaluation pipeline</b><span class="note">methodology v1.8 · packs versioned per run</span></div>
         <div class="blk-b" style="padding:0">
           <div style="display:flex;gap:14px;padding:16px 24px;border-bottom:1px solid var(--border-soft)">
@@ -88,7 +101,7 @@
           <tbody>
             <tr><td style="width:230px"><span class="pill pass dot">Certified</span></td><td style="font-size:13px;color:var(--ink-2)">All dimensions at Meets threshold or above; no conditions. Annual re-evaluation.</td></tr>
             <tr><td><span class="pill pass dot">Certified with monitoring</span></td><td style="font-size:13px;color:var(--ink-2)">Threshold met with a named monitoring condition (e.g. monthly billing-accuracy sampling). Bi-monthly review.</td></tr>
-            <tr><td><span class="pill ind dot">Conditionally certified</span></td><td style="font-size:13px;color:var(--ink-2)">Baseline met; one or more dimensions carry monitoring or hardening requirements. Quarterly review.</td></tr>
+            <tr><td><span class="pill ind dot">Certification pending</span></td><td style="font-size:13px;color:var(--ink-2)">Assessment complete and fixes defined; certification follows a verified remediation re-run of the failing scenarios.</td></tr>
             <tr><td><span class="pill fail dot">Not certified</span></td><td style="font-size:13px;color:var(--ink-2)">Threshold not met for the assessed use case. Not shown on this portal unless Confido chooses to share it.</td></tr>
           </tbody>
         </table>
