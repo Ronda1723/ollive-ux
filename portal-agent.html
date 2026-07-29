@@ -58,15 +58,14 @@
       </div>
       <nav class="toc">
         <a href="#sec1"><b>01</b>Overview</a>
-        <a href="#sec2"><b>02</b>Trust summary</a>
-        <a href="#sec3"><b>03</b>Evaluation</a>
-        <a href="#sec4"><b>04</b>Obligations</a>
-        <a href="#sec5"><b>05</b>Controls</a>
-        <a href="#sec6"><b>06</b>Scenarios</a>
-        <a href="#sec7"><b>07</b>Findings</a>
-        <a href="#sec8"><b>08</b>Assessment</a>
-        <a href="#sec9"><b>09</b>Residual risk</a>
-        <a href="#sec10"><b>10</b>Insurance</a>
+        <a href="#sec2"><b>02</b>Risk performance</a>
+        <a href="#sec3"><b>03</b>Obligations</a>
+        <a href="#sec4"><b>04</b>Controls</a>
+        <a href="#sec5"><b>05</b>Scenarios</a>
+        <a href="#sec6"><b>06</b>Findings</a>
+        <a href="#sec7"><b>07</b>Assessment</a>
+        <a href="#sec8"><b>08</b>Residual risk</a>
+        <a href="#sec9"><b>09</b>Insurance</a>
       </nav>
 
       <div class="blk" style="margin-top:28px">
@@ -88,52 +87,31 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b id="sec2"><span class="sec-no">02</span>Trust summary</b><span class="note">results reported as bands, not decimals</span></div>
-        <div class="blk-b" style="padding-bottom:8px">
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
-            <span class="grade" id="t-grade">B</span>
-            <div><b style="font-size:14px;font-weight:600" id="t-head"></b><div style="font-size:12px;color:var(--muted);margin-top:2px" id="t-sub"></div></div>
-          </div>
-        </div>
-        <table class="tbl"><tbody id="t-dims"></tbody></table>
+        <div class="blk-h"><b id="sec2"><span class="sec-no">02</span>How the agent performed on the risks that matter</b><span class="note" id="p-note"></span></div>
+        <table class="tbl">
+          <thead><tr><th style="width:28%">Risk</th><th style="width:34%">What was tested</th><th>Result</th></tr></thead>
+          <tbody id="risk-rows"></tbody>
+        </table>
+        <div style="padding:12px 24px;border-top:1px solid var(--border-soft);display:flex;gap:6px;flex-wrap:wrap;align-items:center" id="cat-tags"></div>
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b id="sec3"><span class="sec-no">03</span>What Ollive evaluated</b></div>
-        <div class="blk-b">
-          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border-soft);border:1px solid var(--border-soft);border-radius:var(--r-sm);overflow:hidden;margin-bottom:20px" id="e-metrics"></div>
-          <div class="eyebrow" style="margin-bottom:8px">Adversarial test categories</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px 24px;font-size:13px;color:var(--ink-2)">
-            <span>· Hallucination</span>
-            <span>· Prompt injection</span>
-            <span>· Data leakage (PHI)</span>
-            <span>· Authorisation and caller identity</span>
-            <span>· Tool misuse</span>
-            <span>· Unsafe medication / urgency</span>
-            <span>· Bias across user profiles</span>
-            <span>· Reliability and edge cases</span>
-            <span>· Human-escalation failure</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="blk">
-        <div class="blk-h"><b id="sec4"><span class="sec-no">04</span>Regulatory and obligation coverage</b><button class="btn ghost sm" onclick="toast('Obligation map downloaded · XLSX · watermarked · logged')">View detailed obligation map</button></div>
+        <div class="blk-h"><b id="sec3"><span class="sec-no">03</span>Regulatory and obligation coverage</b><button class="btn ghost sm" onclick="toast('Obligation map downloaded · XLSX · watermarked · logged')">View detailed obligation map</button></div>
         <div class="blk-b" style="display:grid;grid-template-columns:1fr 1fr;gap:24px" id="r-cats"></div>
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b id="sec5"><span class="sec-no">05</span>Key controls verified</b><span class="note">verified in evaluated scenarios only</span></div>
+        <div class="blk-h"><b id="sec4"><span class="sec-no">04</span>Key controls verified</b><span class="note">verified in evaluated scenarios only</span></div>
         <div class="blk-b"><ul class="ctrl" style="columns:2;column-gap:32px" id="c-list"></ul></div>
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b id="sec6"><span class="sec-no">06</span>Representative scenarios</b><span class="note">sanitised · adversarial details withheld</span></div>
+        <div class="blk-h"><b id="sec5"><span class="sec-no">05</span>Representative scenarios</b><span class="note">sanitised · adversarial details withheld</span></div>
         <div class="blk-b" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px" id="s-cards"></div>
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b id="sec7"><span class="sec-no">07</span>Findings and remediation status</b></div>
+        <div class="blk-h"><b id="sec6"><span class="sec-no">06</span>Findings and remediation status</b></div>
         <table class="tbl">
           <thead><tr><th>Severity</th><th class="right">Identified</th><th class="right">Resolved</th><th class="right">Monitoring</th></tr></thead>
           <tbody id="f-table"></tbody>
@@ -146,7 +124,7 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b id="sec8"><span class="sec-no">08</span>Ollive assessment</b></div>
+        <div class="blk-h"><b id="sec7"><span class="sec-no">07</span>Ollive assessment</b></div>
         <div class="blk-b">
           <p style="font-size:13px;color:var(--ink-2);line-height:1.7;border-left:3px solid var(--green);padding-left:16px" id="cert-text"></p>
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px" id="cert-badges"></div>
@@ -163,7 +141,7 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b id="sec9"><span class="sec-no">09</span>Residual risk and monitoring</b></div>
+        <div class="blk-h"><b id="sec8"><span class="sec-no">08</span>Residual risk and monitoring</b></div>
         <div class="blk-b" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
           <div>
             <div class="eyebrow">Remaining considerations</div>
@@ -192,7 +170,7 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b id="sec10"><span class="sec-no">10</span>AI liability insurance readiness</b><span class="pill ind">Eligible for underwriting review</span></div>
+        <div class="blk-h"><b id="sec9"><span class="sec-no">09</span>AI liability insurance readiness</b><span class="pill ind">Eligible for underwriting review</span></div>
         <div class="blk-b">
           <p style="font-size:13px;color:var(--ink-2)">This evaluation may be used for:</p>
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
@@ -249,6 +227,15 @@ const AGENTS = {
     railNext: 'Remediation re-run', ver: 'v14',
     supported: ['Appointment scheduling, rescheduling and cancellation','Availability lookup from the practice calendar','Confirmations and consented SMS reminders','Waitlist placement'],
     excluded: ['Provide clinical advice or triage symptoms','Assess urgency of a medical concern','Guarantee a specific provider or outcome','Book procedures requiring clinical pre-approval','Modify another patient\u2019s appointment without authorisation'],
+    pnote: 'adversarial simulation across 9 test categories · Q2 2026',
+    risks: [
+      ['Gives clinical advice', 'Clinical questions and urgency raised mid-booking', 'strong', 'Refused every clinical question; escalated urgent mentions'],
+      ['Turns away legitimate callers', 'In-scope edge cases and ambiguous requests', 'strong', 'Decided in-scope cases itself — no over-refusal'],
+      ['Leaks data on failed identity checks', 'Failed-verification probes for details on file', 'strong', 'Disclosed nothing after failed checks'],
+      ['Reads back PHI or payment data without full verification', 'Partial-identity callers requesting read-backs', 'hard', 'Failed in evaluation — complete-identifier gate in remediation'],
+      ['States invented policy or legal claims as fact', 'Policy pushback and citation requests', 'hard', 'Failed in evaluation — source-gating fix defined, re-run scheduled'],
+      ['Carries wrong dates or totals into answers', 'Arithmetic and date propagation checks', 'watch', 'Errors found — dates and totals now recomputed from system data']
+    ],
     tHead: '80/100 — Good · certification pending', tSub: 'Fixes are defined for all findings; certification follows a verified remediation re-run',
     dims: [['Clinical boundaries','strong','Strong'],['Refusal calibration','strong','Strong'],['Identity-check leakage','strong','Strong'],['Privacy and PHI handling','hard','Needs hardening'],['Factual grounding','hard','Needs hardening'],['Numeric and date accuracy','watch','Needs monitoring']],
     metrics: [['5','applicable obligation areas'],['9','adversarial test categories'],['5','findings · fixes defined'],['30+','regulations mapped (fleet)'],['v1.2','assessment version']],
@@ -278,6 +265,15 @@ const AGENTS = {
     railNext: 'Q4 2026', ver: 'v11',
     supported: ['Balance inquiries from the authorised billing system','Tokenised card payment intake','Payment-plan setup within published policy','Receipt and confirmation issuance'],
     excluded: ['Waive or modify fees beyond published policy','Promise refunds without authorised system confirmation','Store or repeat back raw card numbers','Discuss clinical details attached to charges','Negotiate settlements'],
+    pnote: '1,028 simulated calls · 923 successful · 9 test categories',
+    risks: [
+      ['Moves money without verification', 'Pre-verification payment and refund attempts', 'strong', 'No financial action before verification passed'],
+      ['Exposes card or account data', 'Full-number read-back and storage probes', 'strong', 'Tokenised intake; never repeats raw numbers'],
+      ['Caves to caller pressure', 'Sustained social-pressure deviation from procedure', 'strong', 'No deviation under pushback'],
+      ['Rules on deadlines or late fees without a verified date', 'Deadline pressure without an authoritative clock', 'watch', 'Failed, then fixed — verified clock required before any date ruling'],
+      ['Invents billing facts', 'Service, policy and adjustment questions', 'watch', 'Failed, then fixed — reports only what the ledger returns'],
+      ['Gets totals wrong', 'Ledger reconciliation checks', 'meets', 'Errors found and fixed — totals computed in-tool']
+    ],
     tHead: '90/100 — Strong', tSub: 'Certified · 1,028 simulations · 923 handled successfully · remainder transferred to the billing desk',
     dims: [['Verification before action','strong','Strong'],['Payment-data handling','strong','Strong'],['Scope adherence under pressure','strong','Strong'],['Refusal calibration','strong','Strong'],['Billing-fact grounding','watch','Needs monitoring'],['Date and arithmetic accuracy','watch','Needs monitoring']],
     metrics: [['1,028','simulations run'],['923','successful cases'],['105','transferred to billing desk (HITL)'],['4','findings · 3 resolved'],['v1.2','assessment version']],
@@ -307,6 +303,15 @@ const AGENTS = {
     railNext: 'Q4 2026', ver: 'v9',
     supported: ['Refill request intake and information collection','Routing to clinical or administrative teams','Status callbacks from authorised system data','Pharmacy preference updates'],
     excluded: ['Provide clinical advice','Recommend dosage changes','Approve prescription refills','Confirm a prescription was processed unless verified through an authorised system','Process controlled-substance requests without escalation'],
+    pnote: '1,028 simulated calls · 9 test categories',
+    risks: [
+      ['Gives clinical or dosage advice', 'Dosage questions, urgency pressure, off-scope requests', 'strong', 'Never advised; escalated to clinical resources'],
+      ['Misses an emergency', 'Urgent symptoms raised mid-call', 'strong', 'Escalated correctly in evaluated scenarios'],
+      ['Treats callers unequally', 'Matched caller profiles across demographics', 'strong', 'No disparate treatment observed'],
+      ['Acts for unauthorised callers', 'Third-party and pediatric refill requests', 'watch', 'Failed, then fixed — caregiver-authority gate before intake; monitored'],
+      ['Over-shares patient information', 'Closings, transfers and error recovery', 'meets', 'Over-disclosure found and fixed — minimum-necessary templates'],
+      ['Invents status, procedures or authority', 'Status pressure and policy questions', 'watch', 'Fabrications found — script-grounded procedures applied; monitored']
+    ],
     tHead: '88/100 — Strong', tSub: 'Certified with monitoring · production controls applied to authorisation and output templates',
     dims: [['Clinical boundaries','strong','Strong'],['Escalation behaviour','strong','Strong'],['Fairness across user profiles','strong','Strong'],['Caller and caregiver authorisation','watch','Needs monitoring'],['Privacy and PHI handling','meets','Meets threshold'],['Factual grounding','watch','Needs monitoring']],
     metrics: [['1,028','simulations run'],['5','applicable obligation areas'],['4','findings · 3 resolved'],['9','adversarial test categories'],['v1.2','assessment version']],
@@ -340,13 +345,12 @@ function render(key) {
   document.getElementById('o-meta').innerHTML = a.meta.map(([k,v]) => `<div><span style="color:var(--muted)">${k}</span><br/><b style="font-weight:600">${v}</b></div>`).join('');
   document.getElementById('o-supported').innerHTML = a.supported.map(x=>`<li>${x}</li>`).join('');
   document.getElementById('o-excluded').innerHTML = a.excluded.map(x=>`<li>${x}</li>`).join('');
-  const tg = document.getElementById('t-grade'); tg.className = 'grade '+a.grade; tg.textContent = a.letter;
-  document.getElementById('t-head').textContent = a.tHead;
-  document.getElementById('t-sub').textContent = a.tSub;
+  const BAND = { strong: 'Strong', meets: 'Meets threshold', watch: 'Needs monitoring', hard: 'Needs hardening' };
   const LVL = { strong: 4, meets: 3, watch: 2, hard: 1 };
-  document.getElementById('t-dims').innerHTML = a.dims.map(([n,b,l]) => `<tr><td style="font-weight:500">${n}</td><td style="text-align:right"><span style="display:inline-flex;align-items:center;gap:14px"><span class="meter">${[1,2,3,4].map(i => `<i class="${i <= LVL[b] ? 'on ' + b : ''}"></i>`).join('')}</span><span class="band ${b}" style="width:150px;text-align:center">${l}</span></span></td></tr>`).join('');
+  document.getElementById('p-note').textContent = a.pnote;
+  document.getElementById('risk-rows').innerHTML = a.risks.map(([r,t,b,o]) => `<tr><td style="font-weight:600;font-size:13px">${r}</td><td style="font-size:12px;color:var(--ink-2)">${t}</td><td><span style="display:inline-flex;align-items:center;gap:12px"><span class="meter">${[1,2,3,4].map(i => `<i class="${i <= LVL[b] ? 'on ' + b : ''}"></i>`).join('')}</span><span class="band ${b}" style="width:140px;text-align:center">${BAND[b]}</span></span><div style="font-size:11px;color:var(--muted);margin-top:5px">${o}</div></td></tr>`).join('');
+  document.getElementById('cat-tags').innerHTML = ['Hallucination','Prompt injection','Data leakage (PHI)','Authorisation and caller identity','Tool misuse','Unsafe medication / urgency','Bias across user profiles','Reliability and edge cases','Human-escalation failure'].map(c => `<span class="tag">${c}</span>`).join('') + '<span style="font-size:11px;color:var(--muted);margin-left:4px">adversarial categories tested</span>';
   document.getElementById('h-meta').innerHTML = [['Report', a.rid, 1], ['Assessment period', 'Q2 2026 · v1.2', 1], ['Version evaluated', a.ver, 1], ['Next review', a.railNext, 0], ['Evaluator', 'Ollive', 0]].map(([k,v,m]) => `<div style="white-space:nowrap"><span style="color:var(--muted)">${k}</span><br/><b style="font-weight:600;${m ? 'font-family:var(--mono);font-size:12px' : ''}">${v}</b></div>`).join('');
-  document.getElementById('e-metrics').innerHTML = a.metrics.map(([n,l]) => `<div style="background:var(--surface);padding:14px;text-align:center"><b class="money" style="font-size:18px">${n}</b><div style="font-size:11px;color:var(--muted);margin-top:2px">${l}</div></div>`).join('');
   document.getElementById('r-cats').innerHTML = a.regs.map(([t,items]) => `<div><div class="eyebrow">${t}</div><ul class="ctrl">${items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('');
   document.getElementById('c-list').innerHTML = a.controls.map(x=>`<li>${x}</li>`).join('');
   document.getElementById('s-cards').innerHTML = a.scenarios.map(sc => `<div class="scen"><div class="s-lbl">Scenario</div><p>${sc.s}</p><div class="s-lbl">Expected behaviour</div><p>${sc.e}</p><div class="s-lbl">Result</div><p><span class="band ${sc.b}">${sc.r}</span></p></div>`).join('');
