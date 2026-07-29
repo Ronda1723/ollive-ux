@@ -8,6 +8,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
   <link rel="stylesheet" href="ollive.css" />
+  <style>
+    .sec-no { font-family: var(--mono); font-size: 11px; color: var(--green); margin-right: 10px; font-weight: 500; }
+    .toc { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 14px 2px 0; font-family: var(--mono); font-size: 11px; }
+    .toc a { color: var(--muted); }
+    .toc a:hover { color: var(--green); }
+    .toc a b { color: var(--green); font-weight: 500; margin-right: 5px; }
+    .meter { display: inline-flex; gap: 3px; vertical-align: middle; }
+    .meter i { width: 16px; height: 5px; border-radius: 3px; background: var(--border); }
+    .meter i.on.strong { background: var(--score-high); }
+    .meter i.on.meets { background: var(--green); }
+    .meter i.on.watch { background: var(--score-mid); }
+    .meter i.on.hard { background: var(--score-low); }
+  </style>
 </head>
 <body>
   <header class="p-top">
@@ -32,16 +45,32 @@
     </nav>
 
     <main style="flex:1;min-width:0">
-      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
-        <span class="grade" id="h-grade" style="width:60px;height:60px;font-size:30px">B</span>
-        <div>
-          <h1 style="font-size:22px;font-weight:600;letter-spacing:-.02em" id="h-name">—</h1>
-          <div style="display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap" id="h-status"></div>
+      <div class="card" style="padding:24px 28px">
+        <div class="eyebrow" style="margin-bottom:14px">Independent agent assessment · performed by Ollive</div>
+        <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+          <span class="grade" id="h-grade" style="width:64px;height:64px;font-size:28px">—</span>
+          <div style="flex:1;min-width:240px">
+            <h1 style="font-size:22px;font-weight:600;letter-spacing:-.02em" id="h-name">—</h1>
+            <div style="display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap" id="h-status"></div>
+          </div>
         </div>
+        <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--border-soft);font-size:12px" id="h-meta"></div>
       </div>
+      <nav class="toc">
+        <a href="#sec1"><b>01</b>Overview</a>
+        <a href="#sec2"><b>02</b>Trust summary</a>
+        <a href="#sec3"><b>03</b>Evaluation</a>
+        <a href="#sec4"><b>04</b>Obligations</a>
+        <a href="#sec5"><b>05</b>Controls</a>
+        <a href="#sec6"><b>06</b>Scenarios</a>
+        <a href="#sec7"><b>07</b>Findings</a>
+        <a href="#sec8"><b>08</b>Assessment</a>
+        <a href="#sec9"><b>09</b>Residual risk</a>
+        <a href="#sec10"><b>10</b>Insurance</a>
+      </nav>
 
       <div class="blk" style="margin-top:28px">
-        <div class="blk-h"><b>Agent overview</b></div>
+        <div class="blk-h"><b id="sec1"><span class="sec-no">01</span>Agent overview</b></div>
         <div class="blk-b">
           <p style="font-size:13px;color:var(--ink-2);line-height:1.65;max-width:640px" id="o-purpose"></p>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px 24px;margin-top:20px;font-size:12px" id="o-meta"></div>
@@ -59,7 +88,7 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>Trust summary</b><span class="note">results reported as bands</span></div>
+        <div class="blk-h"><b id="sec2"><span class="sec-no">02</span>Trust summary</b><span class="note">results reported as bands, not decimals</span></div>
         <div class="blk-b" style="padding-bottom:8px">
           <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
             <span class="grade" id="t-grade">B</span>
@@ -70,7 +99,7 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>What Ollive evaluated</b></div>
+        <div class="blk-h"><b id="sec3"><span class="sec-no">03</span>What Ollive evaluated</b></div>
         <div class="blk-b">
           <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border-soft);border:1px solid var(--border-soft);border-radius:var(--r-sm);overflow:hidden;margin-bottom:20px" id="e-metrics"></div>
           <div class="eyebrow" style="margin-bottom:8px">Adversarial test categories</div>
@@ -89,22 +118,22 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>Regulatory and obligation coverage</b><button class="btn ghost sm" onclick="toast('Obligation map downloaded · XLSX · watermarked · logged')">View detailed obligation map</button></div>
+        <div class="blk-h"><b id="sec4"><span class="sec-no">04</span>Regulatory and obligation coverage</b><button class="btn ghost sm" onclick="toast('Obligation map downloaded · XLSX · watermarked · logged')">View detailed obligation map</button></div>
         <div class="blk-b" style="display:grid;grid-template-columns:1fr 1fr;gap:24px" id="r-cats"></div>
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>Key controls verified</b><span class="note">verified in evaluated scenarios only</span></div>
+        <div class="blk-h"><b id="sec5"><span class="sec-no">05</span>Key controls verified</b><span class="note">verified in evaluated scenarios only</span></div>
         <div class="blk-b"><ul class="ctrl" style="columns:2;column-gap:32px" id="c-list"></ul></div>
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>Representative scenarios</b><span class="note">sanitised · adversarial details withheld</span></div>
+        <div class="blk-h"><b id="sec6"><span class="sec-no">06</span>Representative scenarios</b><span class="note">sanitised · adversarial details withheld</span></div>
         <div class="blk-b" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px" id="s-cards"></div>
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>Findings and remediation status</b></div>
+        <div class="blk-h"><b id="sec7"><span class="sec-no">07</span>Findings and remediation status</b></div>
         <table class="tbl">
           <thead><tr><th>Severity</th><th class="right">Identified</th><th class="right">Resolved</th><th class="right">Monitoring</th></tr></thead>
           <tbody id="f-table"></tbody>
@@ -117,7 +146,7 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>Ollive assessment</b></div>
+        <div class="blk-h"><b id="sec8"><span class="sec-no">08</span>Ollive assessment</b></div>
         <div class="blk-b">
           <p style="font-size:13px;color:var(--ink-2);line-height:1.7;border-left:3px solid var(--green);padding-left:16px" id="cert-text"></p>
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px" id="cert-badges"></div>
@@ -125,7 +154,7 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>Residual risk and monitoring</b></div>
+        <div class="blk-h"><b id="sec9"><span class="sec-no">09</span>Residual risk and monitoring</b></div>
         <div class="blk-b" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
           <div>
             <div class="eyebrow">Remaining considerations</div>
@@ -154,7 +183,7 @@
       </div>
 
       <div class="blk">
-        <div class="blk-h"><b>AI liability insurance readiness</b><span class="pill ind">Eligible for underwriting review</span></div>
+        <div class="blk-h"><b id="sec10"><span class="sec-no">10</span>AI liability insurance readiness</b><span class="pill ind">Eligible for underwriting review</span></div>
         <div class="blk-b">
           <p style="font-size:13px;color:var(--ink-2)">This evaluation may be used for:</p>
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
@@ -213,6 +242,7 @@
 <script>
 const AGENTS = {
   scheduling: {
+    rid: 'OLV-CNF-2026-014',
     name: 'Confido Scheduling Agent', grade: 'b', letter: '80',
     status: '<span class="pill ind dot">Certification pending</span><span style="font-size:12px;color:var(--muted)">Administrative workflow · resilience 80/100 · Good · remediation verification scheduled</span>',
     purpose: 'Handles appointment scheduling, rescheduling and cancellations. Confirms availability against the practice calendar and issues confirmations and reminders. Evaluated against privacy, communication, and patient-access obligations.',
@@ -241,6 +271,7 @@ const AGENTS = {
     badges: [['watch','Certification pending remediation'],['meets','Eligible for insurability review'],['watch','Targeted re-run scheduled']]
   },
   payments: {
+    rid: 'OLV-CNF-2026-015',
     name: 'Confido Payments Agent', grade: 'a', letter: '90',
     status: '<span class="pill pass dot">Certified</span><span style="font-size:12px;color:var(--muted)">Financial workflow · resilience 90/100 · Strong</span>',
     purpose: 'Collects payments, sets up payment plans and answers billing questions using verified account data from the practice-management system. Card capture is tokenised end-to-end.',
@@ -269,6 +300,7 @@ const AGENTS = {
     badges: [['meets','Certified for evaluated workflow'],['meets','Eligible for insurability review'],['meets','Runtime monitoring recommended']]
   },
   refill: {
+    rid: 'OLV-CNF-2026-016',
     name: 'Confido Prescription Refill Agent', grade: 'a', letter: '88',
     status: '<span class="pill pass dot">Certified with monitoring</span><span style="font-size:12px;color:var(--muted)">High-sensitivity clinical workflow · resilience 88/100 · Strong</span>',
     purpose: 'Supports prescription refill intake by collecting required information and routing requests to the appropriate clinical or administrative team. Evaluated against HIPAA, prescribing, controlled-substance, and patient-safety obligations.',
@@ -312,7 +344,9 @@ function render(key) {
   const tg = document.getElementById('t-grade'); tg.className = 'grade '+a.grade; tg.textContent = a.letter;
   document.getElementById('t-head').textContent = a.tHead;
   document.getElementById('t-sub').textContent = a.tSub;
-  document.getElementById('t-dims').innerHTML = a.dims.map(([n,b,l]) => `<tr><td style="font-weight:500">${n}</td><td style="text-align:right"><span class="band ${b}">${l}</span></td></tr>`).join('');
+  const LVL = { strong: 4, meets: 3, watch: 2, hard: 1 };
+  document.getElementById('t-dims').innerHTML = a.dims.map(([n,b,l]) => `<tr><td style="font-weight:500">${n}</td><td><span class="meter">${[1,2,3,4].map(i => `<i class="${i <= LVL[b] ? 'on ' + b : ''}"></i>`).join('')}</span></td><td style="text-align:right"><span class="band ${b}">${l}</span></td></tr>`).join('');
+  document.getElementById('h-meta').innerHTML = [['Report', a.rid, 1], ['Assessment period', 'Q2 2026 · v1.2', 1], ['Version evaluated', a.ver, 1], ['Next review', a.railNext, 0], ['Evaluator', 'Ollive', 0]].map(([k,v,m]) => `<div style="white-space:nowrap"><span style="color:var(--muted)">${k}</span><br/><b style="font-weight:600;${m ? 'font-family:var(--mono);font-size:12px' : ''}">${v}</b></div>`).join('');
   document.getElementById('e-metrics').innerHTML = a.metrics.map(([n,l]) => `<div style="background:var(--surface);padding:14px;text-align:center"><b class="money" style="font-size:18px">${n}</b><div style="font-size:11px;color:var(--muted);margin-top:2px">${l}</div></div>`).join('');
   document.getElementById('r-cats').innerHTML = a.regs.map(([t,items]) => `<div><div class="eyebrow">${t}</div><ul class="ctrl">${items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('');
   document.getElementById('c-list').innerHTML = a.controls.map(x=>`<li>${x}</li>`).join('');
