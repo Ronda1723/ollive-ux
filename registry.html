@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ollive — Agent registry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+  <style>
+    .lifec { display: flex; align-items: center; gap: 0; padding: 16px 24px; overflow-x: auto; }
+    .lifec .st { display: flex; align-items: center; gap: 0; flex-shrink: 0; }
+    .lifec .nm { font-size: 12px; color: var(--muted); padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; white-space: nowrap; }
+    .lifec .nm.on { background: var(--green-tint); color: var(--green-text); border-color: transparent; font-weight: 500; }
+    .lifec .ar { width: 18px; height: 1px; background: var(--border); margin: 0 2px; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <a class="brand" href="dashboard.html"><span class="mark">O</span> Ollive</a>
+    <a class="navitem" href="dashboard.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a class="navitem on" href="registry.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5.5" rx="8" ry="2.5"/><path d="M4 5.5v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-6"/><path d="M4 11.5v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-6"/></svg> Registry</a>
+    <a class="navitem" href="monitor.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg> Monitor</a>
+    <a class="navitem" href="governance.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h10M18 6h2M4 12h2M10 12h10M4 18h13M20 18h.5"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="19" cy="18" r="2"/></svg> Governance</a>
+    <a class="navitem" href="frameworks.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13.5l9 5 9-5"/></svg> Frameworks</a>
+    <a class="navitem" href="risk.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg> Risk &amp; compliance</a>
+    <div class="navgroup">Settings</div>
+    <a class="navitem" href="disclosures.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg> Disclosures</a>
+    <a class="navitem" href="evidence.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h8l3 3v12a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M10 12h6M10 16h6"/></svg> Evidence</a>
+    <a class="navitem" href="integrations.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v5M15 3v5"/><path d="M7 8h10v3a5 5 0 01-10 0z"/><path d="M12 16v5"/></svg> Integrations</a>
+    <div class="side-spacer"></div>
+    <div class="user"><span class="ava">R</span> Rounak <a class="signout" href="#">Sign out</a></div>
+  </aside>
+
+  <main class="content"><div class="page">
+    <div class="page-head">
+      <div>
+        <div class="h1">Agent registry</div>
+        <div class="sub">System of record for every AI agent · EU AI Act Art. 26 · ISO/IEC 42001 A.4.2 · NIST AI RMF GOVERN 1.6</div>
+      </div>
+      <div class="head-actions">
+        <button class="btn ghost" onclick="toast('Exported registry.csv · includes AI-BOM per agent')">Export register</button>
+        <button class="btn primary" onclick="toast('Intake started · risk triage routes by tier')">Register agent</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="lbl">Registered</div>
+        <div class="num">4</div>
+        <div class="meta">of 40 detected in workspace</div>
+      </div>
+      <div class="stat">
+        <div class="lbl">Unregistered</div>
+        <div class="num" style="color:var(--score-low)">36</div>
+        <div class="meta">detected · cannot be governed</div>
+      </div>
+      <div class="stat">
+        <div class="lbl">Under governance</div>
+        <div class="num" style="color:var(--score-high)">2</div>
+        <div class="meta">enforcing · 1 observing · 1 ungoverned</div>
+      </div>
+      <div class="stat">
+        <div class="lbl">Reviews due</div>
+        <div class="num" style="color:var(--score-mid)">2</div>
+        <div class="meta">Q4 2026 · drift triggers 1 early</div>
+      </div>
+    </div>
+
+    <!-- ── Lifecycle ── -->
+    <div class="blk">
+      <div class="blk-h"><b>Lifecycle</b><span class="note">every agent holds exactly one state · transitions are signed</span></div>
+      <div class="lifec">
+        <span class="st"><span class="nm">Proposed</span><span class="ar"></span></span>
+        <span class="st"><span class="nm">Risk triage</span><span class="ar"></span></span>
+        <span class="st"><span class="nm">Assessment</span><span class="ar"></span></span>
+        <span class="st"><span class="nm">Approved</span><span class="ar"></span></span>
+        <span class="st"><span class="nm on">Production · 2</span><span class="ar"></span></span>
+        <span class="st"><span class="nm on">Remediation · 1</span><span class="ar"></span></span>
+        <span class="st"><span class="nm">Periodic review</span><span class="ar"></span></span>
+        <span class="st"><span class="nm">Retired</span></span>
+      </div>
+      <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
+        High-risk tier routes through full assessment; low-risk fast-tracks to approval. 1 agent is unassessed and holds no state.
+      </div>
+    </div>
+
+    <!-- ── Register ── -->
+    <div class="blk">
+      <div class="blk-h"><b>Register</b><span class="note">select an agent for its full record</span></div>
+      <table class="tbl">
+        <thead><tr><th style="width:24%">Agent</th><th>Owner</th><th>Risk tier</th><th>State</th><th>Versions</th><th>Governance</th><th class="right">Next review</th></tr></thead>
+        <tbody>
+          <tr class="rowlink" onclick="openReg('aqua')">
+            <td><b style="font-weight:600">[Live] Aqua FS Florida</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">agt_c3d4e5 · voice · Retell</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Revenue Ops · K. Osei</td>
+            <td><span class="pill fail">High</span></td>
+            <td><span class="pill pass dot">Production</span></td>
+            <td class="mono" style="font-size:12px">v13 <span style="color:var(--score-mid)">≠ v12 assessed</span></td>
+            <td style="font-size:12px;color:var(--ink-2)">Enforcing · 6 policies</td>
+            <td class="right mono">Q4 2026</td>
+          </tr>
+          <tr class="rowlink" onclick="openReg('refill')">
+            <td><b style="font-weight:600">Lakeside Ped Rx Refill</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">agt_88af21 · voice · Retell</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Clinical Ops · T. Nguyen</td>
+            <td><span class="pill fail">High</span></td>
+            <td><span class="pill pass dot">Production</span></td>
+            <td class="mono" style="font-size:12px">v9 = v9 assessed</td>
+            <td style="font-size:12px;color:var(--ink-2)">Enforcing · 5 policies</td>
+            <td class="right mono">Q4 2026</td>
+          </tr>
+          <tr class="rowlink" onclick="openReg('swarm')">
+            <td><b style="font-weight:600">Manage — TEST swarm</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">agt_a1b2c3 · voice · Retell · swarm of 3</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Platform · Purvish</td>
+            <td><span class="pill fail">High</span></td>
+            <td><span class="pill ind dot">Remediation</span></td>
+            <td class="mono" style="font-size:12px">v12 · not deployed</td>
+            <td style="font-size:12px;color:var(--ink-2)">Observing · 3 policies</td>
+            <td class="right mono">gate pass</td>
+          </tr>
+          <tr class="rowlink" onclick="openReg('wells')">
+            <td><b style="font-weight:600;color:var(--muted)">Lakeside Ped Wells Rx</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">agt_39cc02 · voice · Retell</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Clinical Ops · unassigned</td>
+            <td><span class="pill off">Untriaged</span></td>
+            <td><span class="pill fail dot">Unassessed</span></td>
+            <td class="mono" style="font-size:12px">v4 deployed</td>
+            <td style="font-size:12px;color:var(--score-low)">Ungoverned</td>
+            <td class="right mono">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── Unregistered ── -->
+    <div class="blk">
+      <div class="blk-h"><b>Detected, not registered</b><span class="note">discovered via platform connections · shadow agents</span></div>
+      <div style="display:flex;gap:28px;align-items:center;padding:18px 24px;flex-wrap:wrap">
+        <div style="flex-shrink:0">
+          <div style="font-family:var(--mono);font-size:28px;font-weight:600;line-height:1"><span style="color:var(--score-low)">36</span></div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">in connected Retell workspace</div>
+        </div>
+        <p style="flex:1;min-width:280px;font-size:12px;color:var(--ink-2);line-height:1.6">Unregistered agents hold no owner, no risk tier, no assessment, and no runtime policies. They are invisible to governance and to the audit report — the report's exclusions section names them. Registration assigns an owner and routes each agent through risk triage.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;flex-shrink:0">
+          <button class="btn primary sm" onclick="toast('36 agents queued for intake · owners requested by email')">Register all 36</button>
+          <button class="btn ghost sm" onclick="toast('Detected agent list exported')">Review list</button>
+        </div>
+      </div>
+    </div>
+  </div></main>
+</div>
+
+<!-- Registry entry drawer -->
+<div class="drawer-scrim" id="r-scrim" onclick="closeReg()"></div>
+<aside class="drawer" id="r-drawer" aria-label="Registry entry">
+  <button class="drawer-close" onclick="closeReg()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div id="r-body"></div>
+</aside>
+
+<div class="toast" id="toast"><span class="ck-toast"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span id="toast-msg"></span></div>
+
+<script>
+const REG = {
+  aqua: {
+    name: '[Live] Aqua FS Florida', id: 'agt_c3d4e5 · urn:ollive:agent:aqua-fs-fl',
+    state: ['pass', 'Production'], risk: 'High — patient-facing, PHI and payment data',
+    rows: [
+      ['Business owner', 'Revenue Operations · K. Osei'],
+      ['Human overseer', 'J. Park · intervention authority · trained Jun 2026'],
+      ['Purpose', 'Billing balance, payment intake, payment plans'],
+      ['Deployed / assessed', 'v13 / v12 — drift open, re-assessment queued'],
+      ['Jurisdictions', 'FL · caller states incl. CA, TX, UT'],
+      ['Data', 'PHI (billing) · card data (tokenised) · consent records'],
+      ['Log retention', '12 months · exceeds EU Art. 26 six-month floor'],
+      ['Last assessment', 'run 9 · Jul 24 · score 71 ±5 · certified w/ monitoring'],
+      ['Runtime governance', 'Enforcing · 6 policies · 29 actions this week'],
+      ['Next review', 'Q4 2026 · early trigger: version drift'],
+    ],
+    bom: [['STT', 'Deepgram Nova-3 · BAA signed · in-stream redaction on'],
+          ['Model', 'GPT-4o (Azure) · BAA signed · zero-retention tier'],
+          ['TTS', 'ElevenLabs · BAA signed'],
+          ['Platform', 'Retell · BAA signed · prod API key scoped read-only']]
+  },
+  refill: {
+    name: 'Lakeside Ped Rx Refill', id: 'agt_88af21 · urn:ollive:agent:lakeside-rx',
+    state: ['pass', 'Production'], risk: 'High — pediatric clinical workflow, controlled substances',
+    rows: [
+      ['Business owner', 'Clinical Operations · T. Nguyen'],
+      ['Human overseer', 'Dr. R. Alvarez · escalation target · licensed IL/TX'],
+      ['Purpose', 'Refill intake and routing · no clinical decisions'],
+      ['Deployed / assessed', 'v9 / v9 — no drift'],
+      ['Jurisdictions', 'IL · TX · pediatric callers'],
+      ['Data', 'PHI · caregiver authority records · pharmacy preferences'],
+      ['Log retention', '12 months'],
+      ['Last assessment', 'run 5 · Jul 22 · score 89 ±3 · certified w/ monitoring'],
+      ['Runtime governance', 'Enforcing · 5 policies · 12 actions this week'],
+      ['Next review', 'Q4 2026'],
+    ],
+    bom: [['STT', 'Deepgram Nova-3 · BAA signed · in-stream redaction on'],
+          ['Model', 'Claude (Bedrock) · BAA signed'],
+          ['TTS', 'Cartesia · BAA signed'],
+          ['Platform', 'Retell · BAA signed']]
+  },
+  swarm: {
+    name: 'Manage — TEST swarm', id: 'agt_a1b2c3 · urn:ollive:agent:manage-swarm',
+    state: ['ind', 'Remediation'], risk: 'High — patient-facing scheduling, PHI',
+    rows: [
+      ['Business owner', 'Platform · Purvish'],
+      ['Human overseer', 'unassigned — required before production'],
+      ['Purpose', 'Scheduling and rescheduling · swarm of 3'],
+      ['Deployed / assessed', 'not deployed / v12'],
+      ['Jurisdictions', 'FL · UT planned'],
+      ['Data', 'PHI · calendar data'],
+      ['Log retention', '12 months'],
+      ['Last assessment', 'run 7 · Jul 25 · score 50 ±4 · failing deploy gate'],
+      ['Runtime governance', 'Observing · 3 policies · deploy blocked by gate'],
+      ['Next review', 'on gate pass'],
+    ],
+    bom: [['STT', 'Deepgram Nova-3 · BAA signed'],
+          ['Model', 'GPT-4o (Azure) · BAA signed'],
+          ['TTS', 'ElevenLabs · BAA signed'],
+          ['Platform', 'Retell · BAA signed']]
+  },
+  wells: {
+    name: 'Lakeside Ped Wells Rx', id: 'agt_39cc02 · urn:ollive:agent:wells-rx',
+    state: ['fail', 'Unassessed'], risk: 'Untriaged — pediatric workflow presumed high',
+    rows: [
+      ['Business owner', 'Clinical Operations · unassigned'],
+      ['Human overseer', 'unassigned'],
+      ['Purpose', 'Refill intake (declared) · unverified'],
+      ['Deployed / assessed', 'v4 deployed / never assessed'],
+      ['Jurisdictions', 'unknown'],
+      ['Data', 'presumed PHI · unverified'],
+      ['Log retention', 'unknown'],
+      ['Last assessment', 'none'],
+      ['Runtime governance', 'Ungoverned — no policies apply'],
+      ['Next review', '—'],
+    ],
+    bom: [['STT', 'unknown'], ['Model', 'unknown'], ['TTS', 'unknown'], ['Platform', 'Retell · detected']]
+  }
+};
+function openReg(k) {
+  const r = REG[k];
+  document.getElementById('r-body').innerHTML = `
+    <div style="display:flex;gap:8px;align-items:center"><span class="pill ${r.state[0]} dot">${r.state[1]}</span></div>
+    <h2 style="font-size:18px;font-weight:600;letter-spacing:-.01em;margin-top:12px">${r.name}</h2>
+    <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px">${r.id}</div>
+    <div style="font-size:12px;color:var(--ink-2);margin-top:8px">${r.risk}</div>
+    <div class="d-sec"><div class="d-sec-h">Registry record</div><div class="d-sec-b" style="padding:0">
+      ${r.rows.map(([k2, v]) => `<div style="display:grid;grid-template-columns:130px 1fr;gap:14px;padding:9px 16px;border-bottom:1px solid var(--border-soft);font-size:12px"><span style="color:var(--muted)">${k2}</span><span>${v}</span></div>`).join('')}
+    </div></div>
+    <div class="d-sec"><div class="d-sec-h">Composition · per-hop BAA</div><div class="d-sec-b" style="padding:0">
+      ${r.bom.map(([k2, v]) => `<div style="display:grid;grid-template-columns:70px 1fr;gap:14px;padding:9px 16px;border-bottom:1px solid var(--border-soft);font-size:12px"><span style="color:var(--muted)">${k2}</span><span class="mono" style="font-size:11px">${v}</span></div>`).join('')}
+    </div></div>
+    <div style="margin-top:16px;display:flex;gap:10px">
+      <a class="btn primary sm" href="governance.html">Governance</a>
+      <a class="btn ghost sm" href="assessment.html">Assessment</a>
+      <button class="btn ghost sm" onclick="toast('Registry record exported · signed')">Export record</button>
+    </div>`;
+  document.getElementById('r-drawer').classList.add('open');
+  document.getElementById('r-scrim').classList.add('open');
+}
+function closeReg() {
+  document.getElementById('r-drawer').classList.remove('open');
+  document.getElementById('r-scrim').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReg(); });
+let tt;
+function toast(msg) {
+  document.getElementById('toast-msg').textContent = msg;
+  const el = document.getElementById('toast');
+  el.classList.add('show');
+  clearTimeout(tt); tt = setTimeout(() => el.classList.remove('show'), 2800);
+}
+</script>
+</body>
+</html>

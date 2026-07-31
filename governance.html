@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ollive — Runtime governance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="ollive.css" />
+  <style>
+    .pipe { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .pipe > div { padding: 16px 20px; border-right: 1px solid var(--border-soft); }
+    .pipe > div:last-child { border-right: none; }
+    .pipe .pt { font-size: 13px; font-weight: 600; }
+    .pipe .pl { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .pipe .pd { font-size: 12px; color: var(--ink-2); margin-top: 8px; line-height: 1.55; }
+    .act { display: inline-flex; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .04em; padding: 2px 7px; border-radius: 5px; }
+    .act.redact { background: #EEF1F5; color: #40506B; }
+    .act.block { background: var(--fail-bg); color: var(--fail-text); }
+    .act.update { background: var(--ind-bg); color: var(--ind-text); }
+    .act.route { background: var(--green-tint); color: var(--green-text); }
+    .act.observe { background: var(--off-bg); color: var(--off-text); }
+    .clock { height: 6px; border-radius: 999px; background: var(--border-soft); overflow: hidden; width: 130px; }
+    .clock i { display: block; height: 100%; border-radius: 999px; }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <a class="brand" href="dashboard.html"><span class="mark">O</span> Ollive</a>
+    <a class="navitem" href="dashboard.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a class="navitem" href="registry.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5.5" rx="8" ry="2.5"/><path d="M4 5.5v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-6"/><path d="M4 11.5v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-6"/></svg> Registry</a>
+    <a class="navitem" href="monitor.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg> Monitor</a>
+    <a class="navitem on" href="governance.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h10M18 6h2M4 12h2M10 12h10M4 18h13M20 18h.5"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="19" cy="18" r="2"/></svg> Governance</a>
+    <a class="navitem" href="frameworks.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13.5l9 5 9-5"/></svg> Frameworks</a>
+    <a class="navitem" href="risk.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg> Risk &amp; compliance</a>
+    <div class="navgroup">Settings</div>
+    <a class="navitem" href="disclosures.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg> Disclosures</a>
+    <a class="navitem" href="evidence.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h8l3 3v12a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M10 12h6M10 16h6"/></svg> Evidence</a>
+    <a class="navitem" href="integrations.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v5M15 3v5"/><path d="M7 8h10v3a5 5 0 01-10 0z"/><path d="M12 16v5"/></svg> Integrations</a>
+    <div class="side-spacer"></div>
+    <div class="user"><span class="ava">R</span> Rounak <a class="signout" href="#">Sign out</a></div>
+  </aside>
+
+  <main class="content"><div class="page">
+    <div class="page-head">
+      <div>
+        <div class="h1">Runtime governance</div>
+        <div class="sub">Certified directives enforced as runtime policies on every production session</div>
+      </div>
+      <div class="head-actions">
+        <button class="btn ghost" onclick="toast('Exported governance_evidence_jul.zip · logged')">Export evidence</button>
+        <button class="btn primary" onclick="toast('Policy created from directive picker')">New policy</button>
+      </div>
+    </div>
+
+    <!-- status line -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+      <span style="width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px var(--green-tint);flex-shrink:0"></span>
+      <span style="font-size:12px;color:var(--ink-2)">Enforcing on 2 agents · observing on 1 · policies bound to pack v3.2 · every action logged as audit evidence</span>
+      <a class="link" style="font-size:12px;margin-left:auto" href="registry.html">3 of 4 registered agents under governance</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="lbl">Sessions governed · 7d</div>
+        <div class="num">1,214</div>
+        <div class="meta">31 checks per session · pack v3.2</div>
+      </div>
+      <div class="stat">
+        <div class="lbl">Enforcement actions · 7d</div>
+        <div class="num money">41</div>
+        <div class="meta">38 redactions · 2 blocks · 1 handoff</div>
+      </div>
+      <div class="stat">
+        <div class="lbl">Violations reaching callers</div>
+        <div class="num" style="color:var(--score-mid)">3</div>
+        <div class="meta">all in observe-mode policies · <a class="link" href="#incidents">1 incident open</a></div>
+      </div>
+      <div class="stat">
+        <div class="lbl">Evidence freshness</div>
+        <div class="num" style="color:var(--score-high)">6h</div>
+        <div class="meta">report claims re-verified continuously</div>
+      </div>
+    </div>
+
+    <!-- ── Enforcement points ── -->
+    <div class="blk">
+      <div class="blk-h"><b>Enforcement points</b><span class="note">where policies act in the call pipeline · voice budget &lt;500ms per turn</span></div>
+      <div class="pipe">
+        <div>
+          <div class="pt">STT stream</div>
+          <div class="pl">in-band · ~0ms added</div>
+          <div class="pd">PHI and card data redacted in the transcript stream before it reaches the model or logs. <span class="act redact">REDACT</span></div>
+        </div>
+        <div>
+          <div class="pt">Pre-model</div>
+          <div class="pl">&lt;60ms · parallel to prefill</div>
+          <div class="pd">Intent checks: consent on file, caller authority, controlled-substance triggers. <span class="act route">ROUTE</span></div>
+        </div>
+        <div>
+          <div class="pt">Pre-voice</div>
+          <div class="pl">100–200ms budget</div>
+          <div class="pd">The agent's reply is checked before it is spoken — the only point where output can be stopped or corrected. <span class="act block">BLOCK</span> <span class="act update">UPDATE</span></div>
+        </div>
+        <div>
+          <div class="pt">Post-call</div>
+          <div class="pl">unbounded</div>
+          <div class="pd">Full-session judging, audio redaction, evidence generation, regression-pack growth. <span class="act observe">AUDIT</span></div>
+        </div>
+      </div>
+      <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
+        Buffered output checking only — streaming replies to the caller before checks complete would speak the violation. Redaction applies to transcripts, model context and logs; caller audio is redacted post-call.
+      </div>
+    </div>
+
+    <!-- ── Policies ── -->
+    <div class="blk">
+      <div class="blk-h">
+        <b>Runtime policies</b>
+        <span class="seg" style="font-size:12px">
+          <button class="on" onclick="setP(this,'all')">All 8</button>
+          <button onclick="setP(this,'enforce')">Enforcing 6</button>
+          <button onclick="setP(this,'observe')">Observing 2</button>
+        </span>
+        <span class="note">each policy derives from a certified directive</span>
+      </div>
+      <table class="tbl">
+        <thead><tr><th style="width:30%">Policy</th><th>Point</th><th>Action</th><th>Mode</th><th class="right">Fired · 7d</th><th class="right"></th></tr></thead>
+        <tbody>
+          <tr data-p="enforce">
+            <td><b style="font-weight:600">PHI redaction in transcripts and logs</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">AGT-021 · HIPAA §164.502 · §164.514</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">STT stream</td>
+            <td><span class="act redact">REDACT</span></td>
+            <td><span class="pill pass">Enforce</span></td>
+            <td class="right mono">38</td>
+            <td class="right"><button class="btn ghost sm" onclick="toast('38 redaction events · all logged as evidence')">Events</button></td>
+          </tr>
+          <tr data-p="enforce">
+            <td><b style="font-weight:600">Identity verified before PHI disclosure</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">AGT-021 · HIPAA §164.514(h) · verification per call</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Pre-voice</td>
+            <td><span class="act block">BLOCK</span> <span class="act route">ROUTE</span></td>
+            <td><span class="pill pass">Enforce</span></td>
+            <td class="right mono">2</td>
+            <td class="right"><button class="btn ghost sm" onclick="toast('2 blocked utterances · caller routed to staff')">Events</button></td>
+          </tr>
+          <tr data-p="enforce">
+            <td><b style="font-weight:600">AI disclosure on ask, truthful always</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">AGT-104 · EU AI Act Art. 50 · Utah AIPA · FL</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Pre-voice</td>
+            <td><span class="act update">UPDATE</span></td>
+            <td><span class="pill pass">Enforce</span></td>
+            <td class="right mono">3</td>
+            <td class="right"><button class="btn ghost sm" onclick="toast('3 replies corrected to include disclosure')">Events</button></td>
+          </tr>
+          <tr data-p="enforce">
+            <td><b style="font-weight:600">Clinical and therapy boundary</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">AGT-024 · IL WOPR · state clinical-scope · TX SB 1188</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Pre-voice</td>
+            <td><span class="act block">BLOCK</span> <span class="act route">ROUTE</span></td>
+            <td><span class="pill pass">Enforce</span></td>
+            <td class="right mono">1</td>
+            <td class="right"><button class="btn ghost sm" onclick="toast('1 therapy-shaped request routed to licensed staff')">Events</button></td>
+          </tr>
+          <tr data-p="enforce">
+            <td><b style="font-weight:600">Controlled-substance escalation</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">AGT-117 · DEA / CSA · patient-safety escalation</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Pre-model</td>
+            <td><span class="act route">ROUTE</span></td>
+            <td><span class="pill pass">Enforce</span></td>
+            <td class="right mono">6</td>
+            <td class="right"><button class="btn ghost sm" onclick="toast('6 requests escalated to clinical staff')">Events</button></td>
+          </tr>
+          <tr data-p="enforce">
+            <td><b style="font-weight:600">Outbound consent verified before dial</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">TCPA §227(b) · FCC 24-17 AI-voice ruling</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Pre-dial</td>
+            <td><span class="act block">BLOCK</span></td>
+            <td><span class="pill pass">Enforce</span></td>
+            <td class="right mono">12</td>
+            <td class="right"><button class="btn ghost sm" onclick="toast('12 dials suppressed · no consent on file')">Events</button></td>
+          </tr>
+          <tr data-p="observe">
+            <td><b style="font-weight:600">Retention statements match policy</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">AGT-121 ↔ ORG-052 · cross-layer conflict open</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Post-call</td>
+            <td><span class="act observe">FLAG</span></td>
+            <td><span class="pill off">Observe</span></td>
+            <td class="right mono">4</td>
+            <td class="right"><button class="btn ghost sm" onclick="toast('Enforce blocked until ORG-052 ↔ AGT-121 conflict is reconciled')">Enforce</button></td>
+          </tr>
+          <tr data-p="observe">
+            <td><b style="font-weight:600">Dosage arithmetic zero-tolerance</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">AGT-130 · zero dosage arithmetic · verbatim units</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Pre-voice</td>
+            <td><span class="act observe">FLAG</span></td>
+            <td><span class="pill off">Observe</span></td>
+            <td class="right mono">0</td>
+            <td class="right"><button class="btn primary sm" onclick="enforceRow(this)">Enforce</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
+        Policies certify in observe mode; enforce is enabled per policy after a clean observation window. Mode changes are signed and audit-logged. <a class="link" href="frameworks.html">Directive breakdown</a>
+      </div>
+    </div>
+
+    <!-- ── Enforcement feed ── -->
+    <div class="blk">
+      <div class="blk-h"><b>Enforcement feed</b><span class="note">every action is evidence · replayable</span></div>
+      <table class="tbl">
+        <thead><tr><th>When</th><th>Agent</th><th style="width:34%">What happened</th><th>Action</th><th class="right"></th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="mono">10:42:18</td>
+            <td style="font-size:12px;color:var(--ink-2)">[Live] Aqua FS Florida</td>
+            <td style="font-size:12px;color:var(--ink-2)">Reply contained balance before verification completed — utterance stopped, caller routed to staff</td>
+            <td><span class="act block">BLOCKED</span></td>
+            <td class="right"><a class="link" style="font-size:12px" href="monitor.html">Session</a></td>
+          </tr>
+          <tr>
+            <td class="mono">10:31:02</td>
+            <td style="font-size:12px;color:var(--ink-2)">[Live] Aqua FS Florida</td>
+            <td style="font-size:12px;color:var(--ink-2)">SSN spoken by caller — redacted from transcript, model context and logs in-stream</td>
+            <td><span class="act redact">REDACTED</span></td>
+            <td class="right"><a class="link" style="font-size:12px" href="monitor.html">Session</a></td>
+          </tr>
+          <tr>
+            <td class="mono">09:58:44</td>
+            <td style="font-size:12px;color:var(--ink-2)">Lakeside Ped Rx Refill</td>
+            <td style="font-size:12px;color:var(--ink-2)">"Am I talking to a person?" — reply corrected to include AI disclosure before speaking</td>
+            <td><span class="act update">UPDATED</span></td>
+            <td class="right"><a class="link" style="font-size:12px" href="monitor.html">Session</a></td>
+          </tr>
+          <tr>
+            <td class="mono">09:36:11</td>
+            <td style="font-size:12px;color:var(--ink-2)">Lakeside Ped Rx Refill</td>
+            <td style="font-size:12px;color:var(--ink-2)">Oxycodone refill request — routed to clinical staff before model response</td>
+            <td><span class="act route">ROUTED</span></td>
+            <td class="right"><a class="link" style="font-size:12px" href="monitor.html">Session</a></td>
+          </tr>
+          <tr>
+            <td class="mono">09:31:47</td>
+            <td style="font-size:12px;color:var(--ink-2)">[Live] Aqua FS Florida</td>
+            <td style="font-size:12px;color:var(--ink-2)">PHI stated after one verification factor — observe-mode policy, flagged, incident opened</td>
+            <td><span class="act observe">FLAGGED</span></td>
+            <td class="right"><a class="link" style="font-size:12px" href="#incidents">Incident</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
+        Showing 5 of 41 this week · <a class="link" href="#" onclick="toast('Exported enforcement_log.csv · hash-chained');return false">Export log</a>
+      </div>
+    </div>
+
+    <!-- ── Incidents & reporting clocks ── -->
+    <div class="blk" id="incidents">
+      <div class="blk-h"><b>Incidents &amp; reporting clocks</b><span class="note">detection starts the statutory countdown</span></div>
+      <table class="tbl">
+        <thead><tr><th style="width:30%">Incident</th><th>Applicable clock</th><th>Remaining</th><th>Status</th><th class="right"></th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b style="font-weight:600">PHI disclosed before full verification</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">inc_014 · session s_9f21 · detected Jul 28, 09:31</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">HIPAA breach assessment · 60 days<div style="font-size:11px;color:var(--muted);margin-top:2px">BA → covered entity: 72h per BAA · sent</div></td>
+            <td><div class="clock"><i style="width:8%;background:var(--score-high)"></i></div><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px">58 of 60 days</div></td>
+            <td><span class="pill ind">Assessment open</span></td>
+            <td class="right"><button class="btn ghost sm" onclick="toast('Incident record opened · risk-of-harm assessment in progress')">Open</button></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight:600">Retention statement contradiction</b><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px">inc_013 · 4 sessions · linked to ORG-052 ↔ AGT-121</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">No statutory clock · FTC §5 exposure<div style="font-size:11px;color:var(--muted);margin-top:2px">accuracy of consumer statements</div></td>
+            <td><div class="clock"><i style="width:0%"></i></div><div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px">—</div></td>
+            <td><span class="pill ind">Remediation</span></td>
+            <td class="right"><a class="btn ghost sm" href="frameworks.html">Pair</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
+        Configured clocks: HIPAA 60d individual / 60d HHS · BA notice 72h per BAA · GDPR 72h · EU AI Act serious incident 15d (10d death · 2d critical) · CA &amp; CO breach 30d. Clocks start at detection.
+      </div>
+    </div>
+
+    <!-- ── Coverage by agent ── -->
+    <div class="blk">
+      <div class="blk-h"><b>Governance coverage</b><span class="note">enforcement requires certification · certification requires assessment</span></div>
+      <table class="tbl">
+        <thead><tr><th style="width:26%">Agent</th><th>Certification</th><th>Mode</th><th>Policies</th><th class="right">Actions · 7d</th><th class="right"></th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b style="font-weight:600">[Live] Aqua FS Florida</b><div style="font-size:11px;color:var(--muted);margin-top:2px">deployed v13 · assessed v12 · <span style="color:var(--score-mid)">drift</span></div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Certified with monitoring</td>
+            <td><span class="pill pass">Enforcing</span></td>
+            <td class="mono">6</td>
+            <td class="right mono">29</td>
+            <td class="right"><a class="btn ghost sm" href="registry.html">Registry</a></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight:600">Lakeside Ped Rx Refill</b><div style="font-size:11px;color:var(--muted);margin-top:2px">deployed v9 · assessed v9</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Certified with monitoring</td>
+            <td><span class="pill pass">Enforcing</span></td>
+            <td class="mono">5</td>
+            <td class="right mono">12</td>
+            <td class="right"><a class="btn ghost sm" href="registry.html">Registry</a></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight:600">Manage — TEST swarm</b><div style="font-size:11px;color:var(--muted);margin-top:2px">not deployed · 2 open high-severity issues</div></td>
+            <td style="font-size:12px;color:var(--ink-2)">Failing deploy gate</td>
+            <td><span class="pill off">Observing</span></td>
+            <td class="mono">3</td>
+            <td class="right mono">0</td>
+            <td class="right"><a class="btn ghost sm" href="assessment.html">Assessment</a></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight:600;color:var(--muted)">Lakeside Ped Wells Rx</b><div style="font-size:11px;color:var(--muted);margin-top:2px">never assessed</div></td>
+            <td style="font-size:12px;color:var(--muted)">None</td>
+            <td><span class="pill fail dot">Ungoverned</span></td>
+            <td class="mono" style="color:var(--faint)">0</td>
+            <td class="right mono" style="color:var(--faint)">—</td>
+            <td class="right"><button class="btn primary sm" onclick="toast('Assessment queued')">Assess</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding:12px 24px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--muted)">
+        36 detected agents are not registered and cannot be governed. <a class="link" href="registry.html">Review in Registry</a>
+      </div>
+    </div>
+  </div></main>
+</div>
+
+<div class="toast" id="toast"><span class="ck-toast"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span id="toast-msg"></span></div>
+<script>
+function setP(btn, key) {
+  document.querySelectorAll('.seg button').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('tr[data-p]').forEach(tr => { tr.hidden = key !== 'all' && tr.dataset.p !== key; });
+}
+function enforceRow(btn) {
+  const tr = btn.closest('tr');
+  tr.dataset.p = 'enforce';
+  tr.querySelector('.pill').className = 'pill pass';
+  tr.querySelector('.pill').textContent = 'Enforce';
+  const act = tr.querySelector('.act');
+  act.className = 'act block'; act.textContent = 'BLOCK';
+  btn.className = 'btn ghost sm'; btn.textContent = 'Events';
+  btn.onclick = () => toast('No events yet');
+  toast('Dosage zero-tolerance → Enforce · signed · audit-logged');
+}
+let tt;
+function toast(msg) {
+  document.getElementById('toast-msg').textContent = msg;
+  const el = document.getElementById('toast');
+  el.classList.add('show');
+  clearTimeout(tt); tt = setTimeout(() => el.classList.remove('show'), 2800);
+}
+</script>
+</body>
+</html>
